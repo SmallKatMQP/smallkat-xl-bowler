@@ -1,20 +1,17 @@
-@Grab(group='com.neuronrobotics', module='SimplePacketComsJava', version='0.1.9')
-//@Grab(group='org.hid4java', module='hid4java', version='0.5.0')
+@GrabResolver(name='sonatype', root='https://oss.sonatype.org/content/repositories/releases/')
+@Grab(group='com.neuronrobotics', module='SimplePacketComsJava', version='0.1.2')
+@Grab(group='org.hid4java', module='hid4java', version='0.5.0')
 
 import edu.wpi.SimplePacketComs.*;
-import edu.wpi.SimplePacketComs.phy.*;
+import edu.wpi.SimplePacketComs.phy.HIDSimplePacketComs;
 import com.neuronrobotics.sdk.addons.kinematics.imu.*;
-
-if(args == null)
-	args = ["https://github.com/OperationSmallKat/SmallKat_V2.git",
-		"Bowler/MediumKat.xml"]
 
 public class SimpleServoHID extends HIDSimplePacketComs {
 	private PacketType servos = new edu.wpi.SimplePacketComs.BytePacketType(1962, 64);
 	private PacketType imuData = new edu.wpi.SimplePacketComs.FloatPacketType(1804, 64);
 	private final double[] status = new double[12];
 	private final byte[] data = new byte[16];
-	
+
 	public SimpleServoHID(int vidIn, int pidIn) {
 		super(vidIn, pidIn);
 		addPollingPacket(servos);
@@ -34,45 +31,20 @@ public class SimpleServoHID extends HIDSimplePacketComs {
 	}
 }
 
-public class SimpleServoUDP extends UDPSimplePacketComs {
-	private PacketType servos = new edu.wpi.SimplePacketComs.BytePacketType(1962, 64);
-	private PacketType imuData = new edu.wpi.SimplePacketComs.FloatPacketType(1804, 64);
-	private final double[] status = new double[12];
-	private final byte[] data = new byte[16];
-	
-	public SimpleServoUDP(def address) {
-		super(address);
-		addPollingPacket(servos);
-		addPollingPacket(imuData);
-		addEvent(1962, {
-			writeBytes(1962, data);
-		});
-		addEvent(1804, {
-			readFloats(1804,status);
-		});
-	}
-	public double[] getImuData() {
-		return status;
-	}
-	public byte[] getData() {
-		return data;
-	}
-}
-
 
 public class HIDSimpleComsDevice extends NonBowlerDevice{
-	def simple;
-	
-	public HIDSimpleComsDevice(def simp){
-		simple = simp
+	SimpleServoHID simple;
+
+	public HIDSimpleComsDevice(int vidIn, int pidIn){
+		simple = new SimpleServoHID(vidIn,pidIn)
 		setScriptingName("hidbowler")
 	}
 	@Override
-	public  void disconnectDeviceImp(){		
+	public  void disconnectDeviceImp(){
 		simple.disconnect()
 		println "HID device Termination signel shutdown"
 	}
-	
+
 	@Override
 	public  boolean connectDeviceImp(){
 		simple.connect()
@@ -93,8 +65,8 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 		// no namespaces on dummy
 		return [];
 	}
-	
-	
+
+
 }
 
 public class HIDRotoryLink extends AbstractRotoryLink{
@@ -125,9 +97,9 @@ public class HIDRotoryLink extends AbstractRotoryLink{
 			}else{
 				//println index+" value same "+getCurrentPosition()
 			}
-			
+
 		})
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -145,7 +117,7 @@ public class HIDRotoryLink extends AbstractRotoryLink{
 	public void flushDevice(double time) {
 		// auto flushing
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.neuronrobotics.sdk.addons.kinematics.AbstractLink#flushAll(double)
 	 */
@@ -167,15 +139,8 @@ public class HIDRotoryLink extends AbstractRotoryLink{
 
 def dev = DeviceManager.getSpecificDevice( "hidDevice",{
 	//If the device does not exist, prompt for the connection
-	def simp = null;
-	
-	HashSet<InetAddress> addresses = UDPSimplePacketComs.getAllAddresses("hidDevice");
-	if (addresses.size() < 1) {
-			simp = new SimpleServoHID(0x16C0 ,0x0486) 
-	}else{
-		simp = new SimpleServoUDP(addresses.get(0))
-	}
-	HIDSimpleComsDevice d = new HIDSimpleComsDevice(simp)
+
+	HIDSimpleComsDevice d = new HIDSimpleComsDevice(0x16C0 ,0x0486 )
 	d.connect(); // Connect to it.
 
 	LinkFactory.addLinkProvider("hidfast",{LinkConfiguration conf->
@@ -189,10 +154,10 @@ def dev = DeviceManager.getSpecificDevice( "hidDevice",{
 
 def cat =DeviceManager.getSpecificDevice( "MediumKat",{
 	//If the device does not exist, prompt for the connection
-	
+
 	MobileBase m = MobileBaseLoader.fromGit(
-		args[0],
-		args[1]
+		"https://bitbucket.org/smallkat/smallkat-xl-kernel.git",
+		"Bowler/xlKat.xml"
 		)
 	dev.simple.addEvent(1804, {
 		 double[] imuDataValues = dev.simple.getImuData()
@@ -204,10 +169,10 @@ def cat =DeviceManager.getSpecificDevice( "MediumKat",{
 			 		imuDataValues[2],//,Double zAcceleration
 					imuDataValues[3],//Double rotxAcceleration,
 					imuDataValues[4],//Double rotyAcceleration,
-					imuDataValues[5],//Double rotzAcceleration 
+					imuDataValues[5],//Double rotzAcceleration
 			))
-		 
-		 
+
+
 	});
 	if(m==null)
 		throw new RuntimeException("Arm failed to assemble itself")

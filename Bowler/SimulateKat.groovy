@@ -128,9 +128,9 @@ public class MyMobileBasePhysics {
 				TransformFactory.bulletToAffine(baseCad.get(0).getManipulator(), start);
 			}
 		});
-		
+
 		def points = [	]
-		
+
 		for(DHParameterKinematics leg:base.getAllDHChains()){
 			TransformNR limbRoot = leg.getRobotToFiducialTransform();
 			points.add(new  eu.mihosoft.vrl.v3d.Vector3d(
@@ -154,8 +154,8 @@ public class MyMobileBasePhysics {
 		for (int j = 0; j < base.getAllDHChains().size(); j++) {
 			DHParameterKinematics dh = base.getAllDHChains().get(j);
 			TransformNR limbRoot = dh.getRobotToFiducialTransform()
-		
-		
+
+
 			RigidBody lastLink = body;
 			Matrix previousStep = null;
 			// ensure the dh-cache chain is computed and recent
@@ -196,7 +196,7 @@ public class MyMobileBasePhysics {
 						localLink= cached.get(i-1)
 					else
 						localLink=limbRoot.copy()
-						
+
 					// Lift it in the air so nothing is below the ground to
 					// start.
 					localLink.translateZ(lift);
@@ -235,10 +235,10 @@ public class MyMobileBasePhysics {
 						collisions.get(x).setColor(color);
 
 					}
-					
-					
-					
-					
+
+
+
+
 					// Build a hinge based on the link and mass
 					// was outCad
 					HingeCSGPhysicsManager hingePhysicsManager = new HingeCSGPhysicsManager(collisions, linkLoc, mass,
@@ -247,7 +247,7 @@ public class MyMobileBasePhysics {
 					HingeCSGPhysicsManager.setMuscleStrength(1000000);
 
 					RigidBody linkSection = hingePhysicsManager.getFallRigidBody();
-					
+
 					hingePhysicsManager.setUpdateManager(getUpdater(linkSection, abstractLink.getImu()));
 					// // Setup some damping on the m_bodies
 					linkSection.setDamping(0.5f, 08.5f);
@@ -326,7 +326,7 @@ public class MyMobileBasePhysics {
 }
 
 
-def base =ScriptingEngine.gitScriptRun("https://github.com/OperationSmallKat/SmallKat_V2.git", "loadRobot.groovy", null);
+def base =ScriptingEngine.gitScriptRun("https://bitbucket.org/smallkat/smallkat-xl-kernel.git", "loadRobot.groovy", null);
 
 
 PhysicsEngine.clear();
@@ -338,7 +338,7 @@ while(MobileBaseCadManager.get( base).getProcesIndictor().get()<1){
 	ThreadUtil.wait(1000)
 }
 
-HashMap<DHLink, CSG> simplecad = MobileBaseCadManager.getSimplecad(base) 
+HashMap<DHLink, CSG> simplecad = MobileBaseCadManager.getSimplecad(base)
 def baseCad=MobileBaseCadManager.getBaseCad(base)
 m = new MyMobileBasePhysics(base, baseCad, simplecad);
 
