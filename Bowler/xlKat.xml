@@ -2,11 +2,11 @@
 <root>
   <mobilebase> <name>MediumKat</name>
     <cadEngine>
-      <git>git@bitbucket.org:smallkat/smallkat-xl-kernel.git</git>
+      <git>https://github.com/OperationSmallKat/smallkat_xl_bowler.git</git>
       <file>Bowler/xlCad.groovy</file>
     </cadEngine>
     <driveEngine>
-      <git>git@bitbucket.org:smallkat/smallkat-xl-kernel.git</git>
+      <git>https://github.com/OperationSmallKat/smallkat_xl_bowler.git</git>
       <file>Bowler/DynamicWalking.groovy</file>
     </driveEngine>
 		<ZframeToRAS>
@@ -50,7 +50,7 @@
 
     <leg> <name>RearLeft</name>
       <cadEngine>
-        <git>git@bitbucket.org:smallkat/smallkat-xl-kernel.git</git>
+        <git>https://github.com/OperationSmallKat/smallkat_xl_bowler.git</git>
         <file>Bowler/xlCad.groovy</file>
       </cadEngine>
       <kinematics>
@@ -240,7 +240,7 @@
     </leg>
     <leg> <name>FrontRight</name>
       <cadEngine>
-        <git>git@bitbucket.org:smallkat/smallkat-xl-kernel.git</git>
+        <git>https://github.com/OperationSmallKat/smallkat_xl_bowler.git</git>
         <file>Bowler/xlCad.groovy</file>
       </cadEngine>
       <kinematics>
@@ -430,7 +430,7 @@
     </leg>
     <leg> <name>FrontLeft</name>
       <cadEngine>
-        <git>git@bitbucket.org:smallkat/smallkat-xl-kernel.git</git>
+        <git>https://github.com/OperationSmallKat/smallkat_xl_bowler.git</git>
         <file>Bowler/xlCad.groovy</file>
       </cadEngine>
       <kinematics>
@@ -620,7 +620,7 @@
     </leg>
     <leg> <name>RearRight</name>
       <cadEngine>
-        <git>git@bitbucket.org:smallkat/smallkat-xl-kernel.git</git>
+        <git>https://github.com/OperationSmallKat/smallkat_xl_bowler.git</git>
         <file>Bowler/xlCad.groovy</file>
       </cadEngine>
       <kinematics>
@@ -810,7 +810,7 @@
     </leg>
     <appendage> <name>Head</name>
       <cadEngine>
-        <git>git@bitbucket.org:smallkat/smallkat-xl-kernel.git</git>
+        <git>https://github.com/OperationSmallKat/smallkat_xl_bowler.git</git>
         <file>Bowler/xlCad.groovy</file>
       </cadEngine>
       <kinematics>
@@ -946,7 +946,7 @@
     </appendage>
     <appendage> <name>Tail</name>
       <cadEngine>
-        <git>git@bitbucket.org:smallkat/smallkat-xl-kernel.git</git>
+        <git>https://github.com/OperationSmallKat/smallkat_xl_bowler.git</git>
         <file>Bowler/xlCad.groovy</file>
       </cadEngine>
       <kinematics>

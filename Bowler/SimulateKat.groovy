@@ -326,7 +326,7 @@ public class MyMobileBasePhysics {
 }
 
 
-def base =ScriptingEngine.gitScriptRun("https://bitbucket.org/smallkat/smallkat-xl-kernel.git", "loadRobot.groovy", null);
+def base =ScriptingEngine.gitScriptRun("https://github.com/OperationSmallKat/smallkat_xl_bowler.git", "loadRobot.groovy", null);
 
 
 PhysicsEngine.clear();

@@ -11,7 +11,7 @@ println "Loading STL file"
 // Load an STL file from a git repo
 // Loading a local file also works here
 
-String giturl = "https://bitbucket.org/smallkat/smallkat-xl-kernel.git"
+String giturl = "https://github.com/OperationSmallKat/smallkat_xl_bowler.git"
 
 return new ICadGenerator(){
 

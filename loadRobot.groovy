@@ -156,7 +156,7 @@ def cat =DeviceManager.getSpecificDevice( "MediumKat",{
 	//If the device does not exist, prompt for the connection
 
 	MobileBase m = MobileBaseLoader.fromGit(
-		"https://bitbucket.org/smallkat/smallkat-xl-kernel.git",
+		"https://github.com/OperationSmallKat/smallkat_xl_bowler.git",
 		"Bowler/xlKat.xml"
 		)
 	dev.simple.addEvent(1804, {
