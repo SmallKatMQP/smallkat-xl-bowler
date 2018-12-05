@@ -65,14 +65,18 @@ return new ICadGenerator(){
 				return allCad;
 		}else{
 			if(leftSide){
-				if(linkIndex ==0){
+				if(linkIndex == 0){
 					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Shoulder.stl");
 				}
-				if(linkIndex ==1){
+				if(linkIndex == 1){
 					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Leg Mirror.stl");
 				}
 
-				if(linkIndex ==2){
+				if(linkIndex == 2){
+					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Foot.stl");
+				}
+
+				if (linkIndex == 3){
 					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Foot.stl");
 				}
 			}
@@ -87,6 +91,10 @@ return new ICadGenerator(){
 
 				if(linkIndex ==2){
 					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Foot Mirror.stl");
+				}
+
+				if (linkIndex == 3){
+					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Foot.stl");
 				}
 			}
 		}
