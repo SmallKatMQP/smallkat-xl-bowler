@@ -43,26 +43,32 @@ return new ICadGenerator(){
 		}
 
 		if(limbName.contentEquals("Tail")){
-			if(linkIndex >1)
-				return allCad;
+			
 			if(linkIndex ==0){
-				legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKTailandHeadMount.stl");
-			}
-			if(linkIndex ==1){
-				legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKTail.stl");
+				legFile = ScriptingEngine.fileFromGit(giturl, "cad/TailJoint.stl");
+			} else if(linkIndex ==1){
+				legFile = ScriptingEngine.fileFromGit(giturl, "cad/Tail.stl");
+			} else if (linkIndex == 2) {
+				reteurn allCad;
+			} else {
+				println "Incorrect Tail Index"
 			}
 
 		}else if(limbName.contentEquals("Head")){
+			
 			if(linkIndex >1)
 				return allCad;
 			if(linkIndex ==0){
-				legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKTailandHeadMount.stl");
-			}
-			if(linkIndex ==1){
-				legFile = ScriptingEngine.fileFromGit(giturl,"STLs/MKHead.stl");
-			}
-			if(linkIndex ==2)
+				legFile = ScriptingEngine.fileFromGit(giturl, "cad/HeadLink.stl");
+			} else if(linkIndex ==1){
+				legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
+			} else if (linkIndex == 2){
+				legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
+			} else if(linkIndex == 3){
 				return allCad;
+			} else {
+				println "Incorrect Head Index"
+			}
 		}else{
 			if(leftSide){
 				if(linkIndex == 0){
