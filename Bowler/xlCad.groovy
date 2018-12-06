@@ -11,8 +11,6 @@ println "Loading STL file"
 // Load an STL file from a git repo
 // Loading a local file also works here
 
-String giturl = "https://github.com/OperationSmallKat/smallkat_xl_bowler.git"
-
 return new ICadGenerator(){
 
 	private CSG moveDHValues(CSG incoming,DHLink dh ){
@@ -43,67 +41,88 @@ return new ICadGenerator(){
 		}
 
 		if(limbName.contentEquals("Tail")){
-			
-			if(linkIndex ==0){
-				legFile = ScriptingEngine.fileFromGit(giturl, "cad/TailJoint.stl");
-			} else if(linkIndex ==1){
-				legFile = ScriptingEngine.fileFromGit(giturl, "cad/Tail.stl");
-			} else if (linkIndex == 2) {
-				reteurn allCad;
-			} else {
-				println "Incorrect Tail Index"
-			}
-
-		}else if(limbName.contentEquals("Head")){
-			
-			if(linkIndex >1)
-				return allCad;
-			if(linkIndex ==0){
-				legFile = ScriptingEngine.fileFromGit(giturl, "cad/HeadLink.stl");
-			} else if(linkIndex ==1){
-				legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
-			} else if (linkIndex == 2){
-				legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
-			} else if(linkIndex == 3){
-				return allCad;
-			} else {
-				println "Incorrect Head Index"
-			}
-		}else{
-			if(leftSide){
-				if(linkIndex == 0){
-					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Shoulder.stl");
-				}
-				if(linkIndex == 1){
-					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Leg Mirror.stl");
-				}
-
-				if(linkIndex == 2){
-					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Foot.stl");
-				}
-
-				if (linkIndex == 3){
-					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Foot.stl");
-				}
-			}
-			else{
-				if(linkIndex ==0){
-					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Shoulder Mirror.stl");
-
-				}
-				if(linkIndex ==1){
-					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Leg.stl");
-				}
-
-				if(linkIndex ==2){
-					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Foot Mirror.stl");
-				}
-
-				if (linkIndex == 3){
-					legFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKCat Foot.stl");
-				}
-			}
+		  if(linkIndex ==0){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TailJoint.stl");
+		  } else if(linkIndex ==1){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Tail.stl");
+		  } else if (linkIndex == 2) {
+		    reteurn allCad;
+		  } else {
+		    println "Incorrect Tail Index"
+		  }
+		} else if(limbName.contentEquals("Head")){
+		  if(linkIndex >1)
+		    return allCad;
+		  if(linkIndex ==0){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/HeadLink.stl");
+		  } else if(linkIndex ==1){
+		    legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
+		  } else if (linkIndex == 2){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
+		  } else if(linkIndex > 2){
+		    return allCad;
+		  } else {
+		    print "Incorrect Head Index: "
+		    println linkIndex
+		  }
+		} else if (limbName.contentEquals("FrontLeft")){
+		  if(linkIndex == 0){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
+		  } else if(linkIndex == 1){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
+		  } else if(linkIndex == 2){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Left.stl");
+		  } else if (linkIndex == 3){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FL.stl");
+		  } else {
+		    print "Incorrect FrontLeft Leg Index: "
+		    println linkIndex
+		  }
+		} else if (limbName.contentEquals("FrontRight")){
+		  if(linkIndex == 0){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
+		  } else if(linkIndex == 1){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
+		  } else if(linkIndex == 2){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right.stl");
+		  } else if (linkIndex == 3){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR.stl");
+		  } else {
+		    print "Incorrect FrontLeft Leg Index: "
+		    println linkIndex
+		  }
+		} else if (limbName.contentEquals("BackLeft")){
+		  if(linkIndex == 0){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
+		  } else if(linkIndex == 1){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
+		  } else if(linkIndex == 2){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Left.stl");
+		  } else if (linkIndex == 3){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BL.stl");
+		  } else {
+		    print "Incorrect FrontLeft Leg Index: "
+		    println linkIndex
+		  }
+		} else if (limbName.contentEquals("BackRight")){
+		  if(linkIndex == 0){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
+		  } else if(linkIndex == 1){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");if(limbName.contentEquals("Tail")){
+		  } else if(linkIndex == 2){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right.stl");
+		  } else if (linkIndex == 3){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BR.stl");
+		  } else {
+		    print "Incorrect FrontLeft Leg Index: "
+		    println linkIndex
+		  }
+		} else {
+		  print "Unknown limbName:"
+		  println limbName
 		}
+
+
 
 		ArrayList<DHLink> dhLinks = d.getChain().getLinks()
 		DHLink dh = dhLinks.get(linkIndex)
@@ -169,11 +188,15 @@ return new ICadGenerator(){
 		return parts;
 
 	}
+	
+	}
 	@Override
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
 
-		File mainBodyFile = ScriptingEngine.fileFromGit(giturl, "STLs/MKBody.stl");
+		File mainBodyFile = ScriptingEngine.fileFromGit(
+			"https://github.com/OperationSmallKat/SmallKat_V2.git",
+			"STLs/MKBody.stl");
 
 		// Load the .CSG from the disk and cache it in memory
 		CSG body  = Vitamins.get(mainBodyFile)
@@ -186,4 +209,4 @@ return new ICadGenerator(){
 		}
 		return parts;
 	}
-};
+}

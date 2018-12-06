@@ -47,7 +47,6 @@
       <rotz>-0.0</rotz>
     </imuFromCentroid>
     <vitamins></vitamins>
-
     <leg> <name>RearLeft</name>
       <cadEngine>
         <git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
@@ -58,10 +57,10 @@
         <file>DefaultDhSolver.groovy</file>
       </kinematics>
       <link>
-        <name>basePan</name>
+        <name>shoulder</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
-        <index>1</index>
+        <index>0</index>
         <scale>0.833</scale>
         <upperLimit>180.0</upperLimit>
         <lowerLimit>0.0</lowerLimit>
@@ -112,10 +111,10 @@
         </DHParameters>
       </link>
       <link>
-        <name>baseTilt</name>
+        <name>topLeg</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
-        <index>2</index>
+        <index>1</index>
         <scale>0.833</scale>
         <upperLimit>180.0</upperLimit>
         <lowerLimit>0.0</lowerLimit>

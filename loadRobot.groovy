@@ -28,7 +28,8 @@ public class SimpleServoHID extends HIDSimplePacketComs {
 	}
 	public byte[] getData() {
 		return data;
-	}
+	}	
+
 }
 
 
@@ -152,9 +153,8 @@ def dev = DeviceManager.getSpecificDevice( "hidDevice",{
 	return d
 })
 
-def cat =DeviceManager.getSpecificDevice( "MediumKat",{
+def cat =DeviceManager.getSpecificDevice( "XLKat",{
 	//If the device does not exist, prompt for the connection
-
 	MobileBase m = MobileBaseLoader.fromGit(
 		"https://github.com/SmallKatMQP/smallkat-xl-bowler.git",
 		"Bowler/xlKat.xml"
