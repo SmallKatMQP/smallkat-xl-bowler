@@ -10,7 +10,7 @@ import com.neuronrobotics.bowlerstudio.physics.TransformFactory;
 println "Loading STL file"
 // Load an STL file from a git repo
 // Loading a local file also works here
-
+String giturl = "https://github.com/SmallKatMQP/smallkat-xl-bowler.git";
 return new ICadGenerator(){
 
 	private CSG moveDHValues(CSG incoming,DHLink dh ){
@@ -108,7 +108,7 @@ return new ICadGenerator(){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
 		  } else if(linkIndex == 1){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");if(limbName.contentEquals("Tail")){
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
 		  } else if(linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right.stl");
 		  } else if (linkIndex == 3){
@@ -122,8 +122,6 @@ return new ICadGenerator(){
 		  println limbName
 		}
 
-
-
 		ArrayList<DHLink> dhLinks = d.getChain().getLinks()
 		DHLink dh = dhLinks.get(linkIndex)
 		// Hardware to engineering units configuration
@@ -132,7 +130,6 @@ return new ICadGenerator(){
 		AbstractLink abstractLink = d.getAbstractLink(linkIndex);// Transform used by the UI to render the location of the object
 		// Transform used by the UI to render the location of the object
 		Affine manipulator = dh.getListener();
-
 
 		// Load the .CSG from the disk and cache it in memory
 		println "Loading " +legFile
@@ -154,7 +151,6 @@ return new ICadGenerator(){
 				//if(rear)
 					//body=body.rotx(180)
 			}
-
 		}
 		if(linkIndex ==1){
 
@@ -166,7 +162,7 @@ return new ICadGenerator(){
 					//.movey(-18)
 					//.movez(-38.5)
 			}else if(limbName.contentEquals("Tail")){
-				body=body
+				body=body"https://github.com/OperationSmallKat/SmallKat_V2.git"
 				.roty(180)
 				.rotz(-90)
 				.movey(125)
@@ -176,7 +172,6 @@ return new ICadGenerator(){
 		}
 		if(linkIndex ==2){
 			body=body.roty(180)
-
 		}
 
 		body.setManipulator(manipulator);
@@ -188,15 +183,13 @@ return new ICadGenerator(){
 		return parts;
 
 	}
-	
-	}
+
+
 	@Override
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
 
-		File mainBodyFile = ScriptingEngine.fileFromGit(
-			"https://github.com/OperationSmallKat/SmallKat_V2.git",
-			"STLs/MKBody.stl");
+		File mainBodyFile = ScriptingEngine.fileFromGit(giturl, "cad/Body.stl");
 
 		// Load the .CSG from the disk and cache it in memory
 		CSG body  = Vitamins.get(mainBodyFile)
