@@ -65,7 +65,7 @@ return new ICadGenerator(){
 		    print "Incorrect Head Index: "
 		    println linkIndex
 		  }
-		} else if (limbName.contentEquals("FrontLeft")){
+		} else if (leftSide && !rear){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
 		  } else if(linkIndex == 1){
@@ -78,7 +78,7 @@ return new ICadGenerator(){
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
 		  }
-		} else if (limbName.contentEquals("FrontRight")){
+		} else if (!leftSide && !rear){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
 		  } else if(linkIndex == 1){
@@ -91,7 +91,7 @@ return new ICadGenerator(){
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
 		  }
-		} else if (limbName.contentEquals("BackLeft")){
+		} else if (leftSide && rear){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
 		  } else if(linkIndex == 1){
@@ -104,7 +104,7 @@ return new ICadGenerator(){
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
 		  }
-		} else if (limbName.contentEquals("BackRight")){
+		} else if (!leftSide && rear){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
 		  } else if(linkIndex == 1){
@@ -189,7 +189,7 @@ return new ICadGenerator(){
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
 
-		File mainBodyFile = ScriptingEngine.fileFromGit(giturl, "cad/Body.stl");
+		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
 
 		// Load the .CSG from the disk and cache it in memory
 		CSG body  = Vitamins.get(mainBodyFile)
