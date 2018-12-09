@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-  <mobilebase> <name>MediumKat</name>
+  <mobilebase> <name>XLKat</name>
     <cadEngine>
       <git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
       <file>Bowler/xlCad.groovy</file>

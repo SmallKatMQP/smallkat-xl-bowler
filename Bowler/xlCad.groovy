@@ -151,6 +151,7 @@ return new ICadGenerator(){
 				//if(rear)
 					//body=body.rotx(180)
 			}
+
 		}
 		if(linkIndex ==1){
 
@@ -162,7 +163,7 @@ return new ICadGenerator(){
 					//.movey(-18)
 					//.movez(-38.5)
 			}else if(limbName.contentEquals("Tail")){
-				body=body"https://github.com/OperationSmallKat/SmallKat_V2.git"
+				body=body
 				.roty(180)
 				.rotz(-90)
 				.movey(125)
@@ -172,6 +173,7 @@ return new ICadGenerator(){
 		}
 		if(linkIndex ==2){
 			body=body.roty(180)
+
 		}
 
 		body.setManipulator(manipulator);
@@ -188,7 +190,7 @@ return new ICadGenerator(){
 	@Override
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
-
+		println "I am here"
 		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
 
 		// Load the .CSG from the disk and cache it in memory
