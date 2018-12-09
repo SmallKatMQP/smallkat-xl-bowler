@@ -25,11 +25,11 @@ return new ICadGenerator(){
 		ArrayList<CSG> allCad=new ArrayList<>();
 		String limbName = d.getScriptingName()
 		File legFile = null
-		boolean mirror=true
-		if(limbName.contentEquals("DefaultLeg3")||limbName.contentEquals("DefaultLeg4")){
-			println "Mirror leg parts"
-			mirror=false
-		}
+		// boolean mirror=true
+		// if(limbName.contentEquals("DefaultLeg3")||limbName.contentEquals("DefaultLeg4")){
+		// 	println "Mirror leg parts"
+		// 	mirror=false
+		// }
 		TransformNR  legRoot= d.getRobotToFiducialTransform()
 		def leftSide=false
 		def rear = true
@@ -65,7 +65,8 @@ return new ICadGenerator(){
 		    print "Incorrect Head Index: "
 		    println linkIndex
 		  }
-		} else if (leftSide && !rear){
+		} else if (limbName.contentEquals("FrontLeft")){
+			println "FrontLeft"
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
 		  } else if(linkIndex == 1){
@@ -78,7 +79,8 @@ return new ICadGenerator(){
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
 		  }
-		} else if (!leftSide && !rear){
+		} else if (limbName.contentEquals("FrontRight")){
+			println "FrontRight"
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
 		  } else if(linkIndex == 1){
@@ -91,7 +93,8 @@ return new ICadGenerator(){
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
 		  }
-		} else if (leftSide && rear){
+		} else if (limbName.contentEquals("BackLeft")){
+			println "BackLeft"
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
 		  } else if(linkIndex == 1){
@@ -104,7 +107,8 @@ return new ICadGenerator(){
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
 		  }
-		} else if (!leftSide && rear){
+		} else if (limbName.contentEquals("BackRight")){
+			println "BackRight"
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
 		  } else if(linkIndex == 1){
@@ -112,7 +116,7 @@ return new ICadGenerator(){
 		  } else if(linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right.stl");
 		  } else if (linkIndex == 3){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR.stl");
 		  } else {
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
@@ -135,19 +139,19 @@ return new ICadGenerator(){
 		println "Loading " +legFile
 		CSG body  = Vitamins.get(legFile)
 		if(linkIndex ==0){
-			//body=moveDHValues(body,dh)
+			body=moveDHValues(body,dh)
 
 			if(limbName.contentEquals("Head")||limbName.contentEquals("Tail")){
 				body=body
-				.rotz(90)
-				.rotx(180)
+				// .rotz(90)
+				// .rotx(180)
 				.movex(-41)
 				.movey(-21)
 				.movez(-22)
 					//.movez(-11.5)
 			}	else{
-				body=body.roty(180)
-				.rotx(180)
+				// body=body.roty(180)
+				// .rotx(180)
 				//if(rear)
 					//body=body.rotx(180)
 			}
@@ -157,22 +161,15 @@ return new ICadGenerator(){
 
 
 			if(limbName.contentEquals("Head")){
-				body=body
-				.roty(180)
-				.movex(50)
-					//.movey(-18)
-					//.movez(-38.5)
+				body=body.roty(180).movex(50).movey(-18).movez(-38.5)
 			}else if(limbName.contentEquals("Tail")){
-				body=body
-				.roty(180)
-				.rotz(-90)
-				.movey(125)
+				body=body.roty(180).rotz(-90).movey(125)
 			}else{
-				body=body.roty(180)
+				// body=body.roty(180)
 			}
 		}
 		if(linkIndex ==2){
-			body=body.roty(180)
+			// body=body.roty(180)
 
 		}
 
@@ -190,7 +187,6 @@ return new ICadGenerator(){
 	@Override
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
-		println "I am here"
 		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
 
 		// Load the .CSG from the disk and cache it in memory

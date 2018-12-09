@@ -47,7 +47,7 @@
       <rotz>-0.0</rotz>
     </imuFromCentroid>
     <vitamins></vitamins>
-    <leg> <name>RearLeft</name>
+    <leg> <name>FrontRight</name>
       <cadEngine>
         <git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
         <file>Bowler/xlCad.groovy</file>
@@ -56,8 +56,7 @@
         <git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
         <file>DefaultDhSolver.groovy</file>
       </kinematics>
-      <link>
-        <name>shoulder</name>
+      <link> <name>shoulderRoll</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
         <index>0</index>
@@ -110,8 +109,7 @@
           <Alpha>-89.97</Alpha>
         </DHParameters>
       </link>
-      <link>
-        <name>topLeg</name>
+      <link> <name>shoulderPitch</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
         <index>1</index>
@@ -122,142 +120,6 @@
         <lowerVelocity>-1.0E8</lowerVelocity>
         <staticOffset>90.0</staticOffset>
         <isLatch>true</isLatch>
-        <indexLatch>97</indexLatch>
-        <isStopOnLatch>false</isStopOnLatch>
-        <homingTPS>10000000</homingTPS>
-        <vitamins>
-          <vitamin>
-            <name>electroMechanical</name>
-            <type>hobbyServo</type>
-            <id>DHV56mg_sub_Micro</id>
-          </vitamin>
-          <vitamin>
-            <name>shaft</name>
-            <type>hobbyServoHorn</type>
-            <id>DHV56mg_sub_Micro_1</id>
-          </vitamin>
-        </vitamins>
-        <passive>false</passive>
-        <mass>0.01</mass>
-        <centerOfMassFromCentroid>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
-          <rotw>1.0</rotw>
-          <rotx>0.0</rotx>
-          <roty>0.0</roty>
-          <rotz>0.0</rotz>
-        </centerOfMassFromCentroid>
-        <imuFromCentroid>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
-          <rotw>1.0</rotw>
-          <rotx>-0.0</rotx>
-          <roty>-0.0</roty>
-          <rotz>-0.0</rotz>
-        </imuFromCentroid>
-        <DHParameters>
-          <Delta>0.0</Delta>
-          <Theta>-90.0</Theta>
-          <Radius>50.8</Radius>
-          <Alpha>0.01</Alpha>
-        </DHParameters>
-      </link>
-      <link>
-        <name>elbow</name>
-        <deviceName>hidDevice</deviceName>
-        <type>hidfast</type>
-        <index>0</index>
-        <scale>0.833</scale>
-        <upperLimit>180.0</upperLimit>
-        <lowerLimit>0.0</lowerLimit>
-        <upperVelocity>1.0E8</upperVelocity>
-        <lowerVelocity>-1.0E8</lowerVelocity>
-        <staticOffset>90.0</staticOffset>
-        <isLatch>true</isLatch>
-        <indexLatch>145</indexLatch>
-        <isStopOnLatch>false</isStopOnLatch>
-        <homingTPS>10000000</homingTPS>
-        <vitamins>
-          <vitamin>
-            <name>electroMechanical</name>
-            <type>hobbyServo</type>
-            <id>DHV56mg_sub_Micro</id>
-          </vitamin>
-          <vitamin>
-            <name>shaft</name>
-            <type>hobbyServoHorn</type>
-            <id>DHV56mg_sub_Micro_1</id>
-          </vitamin>
-        </vitamins>
-        <passive>false</passive>
-        <mass>0.01</mass>
-        <centerOfMassFromCentroid>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
-          <rotw>1.0</rotw>
-          <rotx>0.0</rotx>
-          <roty>0.0</roty>
-          <rotz>0.0</rotz>
-        </centerOfMassFromCentroid>
-        <imuFromCentroid>
-          <x>0.0</x>
-          <y>0.0</y>
-          <z>0.0</z>
-          <rotw>1.0</rotw>
-          <rotx>-0.0</rotx>
-          <roty>-0.0</roty>
-          <rotz>-0.0</rotz>
-        </imuFromCentroid>
-        <DHParameters>
-          <Delta>0.0</Delta>
-          <Theta>90.01</Theta>
-          <Radius>47.86</Radius>
-          <Alpha>0.01</Alpha>
-        </DHParameters>
-      </link>
-      <ZframeToRAS>
-        <x>0.0</x>
-        <y>0.0</y>
-        <z>0.0</z>
-        <rotw>1.0</rotw>
-        <rotx>-0.0</rotx>
-        <roty>-0.0</roty>
-        <rotz>-0.0</rotz>
-      </ZframeToRAS>
-      <baseToZframe>
-        <x>-98.04</x>
-        <y>37.15</y>
-        <z>106.24</z>
-        <rotw>7.5577511764289E-5</rotw>
-        <rotx>-0.8660544878420067</rotx>
-        <roty>4.362883439682798E-5</roty>
-        <rotz>0.49994961393452864</rotz>
-      </baseToZframe>
-    </leg>
-    <leg> <name>FrontRight</name>
-      <cadEngine>
-        <git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-        <file>Bowler/xlCad.groovy</file>
-      </cadEngine>
-      <kinematics>
-        <git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
-        <file>DefaultDhSolver.groovy</file>
-      </kinematics>
-      <link>
-        <name>basePan</name>
-        <deviceName>hidDevice</deviceName>
-        <type>hidfast</type>
-        <index>5</index>
-        <scale>0.833</scale>
-        <upperLimit>180.0</upperLimit>
-        <lowerLimit>0.0</lowerLimit>
-        <upperVelocity>1.0E8</upperVelocity>
-        <lowerVelocity>-1.0E8</lowerVelocity>
-        <staticOffset>90.0</staticOffset>
-        <isLatch>true</isLatch>
         <indexLatch>105</indexLatch>
         <isStopOnLatch>false</isStopOnLatch>
         <homingTPS>10000000</homingTPS>
@@ -300,11 +162,10 @@
           <Alpha>-89.97</Alpha>
         </DHParameters>
       </link>
-      <link>
-        <name>baseTilt</name>
+      <link> <name>kneePitch</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
-        <index>4</index>
+        <index>2</index>
         <scale>0.833</scale>
         <upperLimit>180.0</upperLimit>
         <lowerLimit>0.0</lowerLimit>
@@ -354,8 +215,7 @@
           <Alpha>0.01</Alpha>
         </DHParameters>
       </link>
-      <link>
-        <name>elbow</name>
+      <link> <name>anklePitch</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
         <index>3</index>
@@ -436,11 +296,10 @@
         <git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
         <file>DefaultDhSolver.groovy</file>
       </kinematics>
-      <link>
-        <name>basePan</name>
+      <link> <name>shoulderRoll</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
-        <index>7</index>
+        <index>4</index>
         <scale>0.833</scale>
         <upperLimit>180.0</upperLimit>
         <lowerLimit>0.0</lowerLimit>
@@ -484,14 +343,66 @@
           <rotz>-0.0</rotz>
         </imuFromCentroid>
         <DHParameters>
-          <Delta>4.19</Delta>
+          <Delta>0.0</Delta>
           <Theta>0.01</Theta>
-          <Radius>28.58</Radius>
+          <Radius>28.575</Radius>
           <Alpha>-89.97</Alpha>
         </DHParameters>
       </link>
-      <link>
-        <name>baseTilt</name>
+      <link> <name>shoulderPitch</name>
+        <deviceName>hidDevice</deviceName>
+        <type>hidfast</type>
+        <index>5</index>
+        <scale>0.833</scale>
+        <upperLimit>180.0</upperLimit>
+        <lowerLimit>0.0</lowerLimit>
+        <upperVelocity>1.0E8</upperVelocity>
+        <lowerVelocity>-1.0E8</lowerVelocity>
+        <staticOffset>90.0</staticOffset>
+        <isLatch>true</isLatch>
+        <indexLatch>105</indexLatch>
+        <isStopOnLatch>false</isStopOnLatch>
+        <homingTPS>10000000</homingTPS>
+        <vitamins>
+          <vitamin>
+            <name>electroMechanical</name>
+            <type>hobbyServo</type>
+            <id>DHV56mg_sub_Micro</id>
+          </vitamin>
+          <vitamin>
+            <name>shaft</name>
+            <type>hobbyServoHorn</type>
+            <id>DHV56mg_sub_Micro_1</id>
+          </vitamin>
+        </vitamins>
+        <passive>false</passive>
+        <mass>0.01</mass>
+        <centerOfMassFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>0.0</rotx>
+          <roty>0.0</roty>
+          <rotz>0.0</rotz>
+        </centerOfMassFromCentroid>
+        <imuFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>-0.0</rotx>
+          <roty>-0.0</roty>
+          <rotz>-0.0</rotz>
+        </imuFromCentroid>
+        <DHParameters>
+          <Delta>0.0</Delta>
+          <Theta>0.01</Theta>
+          <Radius>28.575</Radius>
+          <Alpha>-89.97</Alpha>
+        </DHParameters>
+      </link>
+      <link> <name>kneePitch</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
         <index>6</index>
@@ -500,7 +411,7 @@
         <lowerLimit>0.0</lowerLimit>
         <upperVelocity>1.0E8</upperVelocity>
         <lowerVelocity>-1.0E8</lowerVelocity>
-        <staticOffset>90.0</staticOffset>
+        <staticOffset>117.00623746936958</staticOffset>
         <isLatch>true</isLatch>
         <indexLatch>97</indexLatch>
         <isStopOnLatch>false</isStopOnLatch>
@@ -544,12 +455,11 @@
           <Alpha>0.01</Alpha>
         </DHParameters>
       </link>
-      <link>
-        <name>elbow</name>
+      <link> <name>anklePitch</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
-        <index>15</index>
-        <scale>0.833</scale>
+        <index>7</index>
+        <scale>-0.829</scale>
         <upperLimit>180.0</upperLimit>
         <lowerLimit>0.0</lowerLimit>
         <upperVelocity>1.0E8</upperVelocity>
@@ -617,7 +527,7 @@
         <rotz>0.4999999980961411</rotz>
       </baseToZframe>
     </leg>
-    <leg> <name>RearRight</name>
+    <leg> <name>BackRight</name>
       <cadEngine>
         <git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
         <file>Bowler/xlCad.groovy</file>
@@ -626,8 +536,7 @@
         <git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
         <file>DefaultDhSolver.groovy</file>
       </kinematics>
-      <link>
-        <name>basePan</name>
+      <link> <name>shoulderRoll</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
         <index>8</index>
@@ -675,13 +584,12 @@
         </imuFromCentroid>
         <DHParameters>
           <Delta>0.0</Delta>
-          <Theta>0.0</Theta>
+          <Theta>0.01</Theta>
           <Radius>28.575</Radius>
-          <Alpha>-90.0</Alpha>
+          <Alpha>-89.97</Alpha>
         </DHParameters>
       </link>
-      <link>
-        <name>baseTilt</name>
+      <link> <name>shoulderPitch</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
         <index>9</index>
@@ -691,6 +599,59 @@
         <upperVelocity>1.0E8</upperVelocity>
         <lowerVelocity>-1.0E8</lowerVelocity>
         <staticOffset>90.0</staticOffset>
+        <isLatch>true</isLatch>
+        <indexLatch>105</indexLatch>
+        <isStopOnLatch>false</isStopOnLatch>
+        <homingTPS>10000000</homingTPS>
+        <vitamins>
+          <vitamin>
+            <name>electroMechanical</name>
+            <type>hobbyServo</type>
+            <id>DHV56mg_sub_Micro</id>
+          </vitamin>
+          <vitamin>
+            <name>shaft</name>
+            <type>hobbyServoHorn</type>
+            <id>DHV56mg_sub_Micro_1</id>
+          </vitamin>
+        </vitamins>
+        <passive>false</passive>
+        <mass>0.01</mass>
+        <centerOfMassFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>0.0</rotx>
+          <roty>0.0</roty>
+          <rotz>0.0</rotz>
+        </centerOfMassFromCentroid>
+        <imuFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>-0.0</rotx>
+          <roty>-0.0</roty>
+          <rotz>-0.0</rotz>
+        </imuFromCentroid>
+        <DHParameters>
+          <Delta>0.0</Delta>
+          <Theta>0.01</Theta>
+          <Radius>28.575</Radius>
+          <Alpha>-89.97</Alpha>
+        </DHParameters>
+      </link>
+      <link> <name>kneePitch</name>
+        <deviceName>hidDevice</deviceName>
+        <type>hidfast</type>
+        <index>10</index>
+        <scale>0.833</scale>
+        <upperLimit>180.0</upperLimit>
+        <lowerLimit>0.0</lowerLimit>
+        <upperVelocity>1.0E8</upperVelocity>
+        <lowerVelocity>-1.0E8</lowerVelocity>
+        <staticOffset>117.00623746936958</staticOffset>
         <isLatch>true</isLatch>
         <indexLatch>97</indexLatch>
         <isStopOnLatch>false</isStopOnLatch>
@@ -729,17 +690,16 @@
         </imuFromCentroid>
         <DHParameters>
           <Delta>0.0</Delta>
-          <Theta>-90.0</Theta>
+          <Theta>0.0</Theta>
           <Radius>50.8</Radius>
           <Alpha>0.0</Alpha>
         </DHParameters>
       </link>
-      <link>
-        <name>elbow</name>
+      <link> <name>anklePitch</name>
         <deviceName>hidDevice</deviceName>
         <type>hidfast</type>
-        <index>10</index>
-        <scale>0.833</scale>
+        <index>11</index>
+        <scale>-0.829</scale>
         <upperLimit>180.0</upperLimit>
         <lowerLimit>0.0</lowerLimit>
         <upperVelocity>1.0E8</upperVelocity>
@@ -783,9 +743,9 @@
         </imuFromCentroid>
         <DHParameters>
           <Delta>0.0</Delta>
-          <Theta>90.0</Theta>
-          <Radius>47.86</Radius>
-          <Alpha>0.0</Alpha>
+          <Theta>90.01</Theta>
+          <Radius>47.86253</Radius>
+          <Alpha>0.01</Alpha>
         </DHParameters>
       </link>
       <ZframeToRAS>
@@ -805,6 +765,246 @@
         <rotx>0.8660254004868585</rotx>
         <roty>4.3633231244394104E-5</roty>
         <rotz>-0.4999999980961411</rotz>
+      </baseToZframe>
+    </leg>
+    <leg> <name>BackLeft</name>
+      <cadEngine>
+        <git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
+        <file>Bowler/xlCad.groovy</file>
+      </cadEngine>
+      <kinematics>
+        <git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
+        <file>DefaultDhSolver.groovy</file>
+      </kinematics>
+      <link> <name>shoulderRoll</name>
+        <deviceName>hidDevice</deviceName>
+        <type>hidfast</type>
+        <index>12</index>
+        <scale>0.833</scale>
+        <upperLimit>180.0</upperLimit>
+        <lowerLimit>0.0</lowerLimit>
+        <upperVelocity>1.0E8</upperVelocity>
+        <lowerVelocity>-1.0E8</lowerVelocity>
+        <staticOffset>90.0</staticOffset>
+        <isLatch>true</isLatch>
+        <indexLatch>105</indexLatch>
+        <isStopOnLatch>false</isStopOnLatch>
+        <homingTPS>10000000</homingTPS>
+        <vitamins>
+          <vitamin>
+            <name>electroMechanical</name>
+            <type>hobbyServo</type>
+            <id>DHV56mg_sub_Micro</id>
+          </vitamin>
+          <vitamin>
+            <name>shaft</name>
+            <type>hobbyServoHorn</type>
+            <id>DHV56mg_sub_Micro_1</id>
+          </vitamin>
+        </vitamins>
+        <passive>false</passive>
+        <mass>0.01</mass>
+        <centerOfMassFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>0.0</rotx>
+          <roty>0.0</roty>
+          <rotz>0.0</rotz>
+        </centerOfMassFromCentroid>
+        <imuFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>-0.0</rotx>
+          <roty>-0.0</roty>
+          <rotz>-0.0</rotz>
+        </imuFromCentroid>
+        <DHParameters>
+          <Delta>0.0</Delta>
+          <Theta>0.01</Theta>
+          <Radius>28.575</Radius>
+          <Alpha>-89.97</Alpha>
+        </DHParameters>
+      </link>
+      <link> <name>shoulderPitch</name>
+        <deviceName>hidDevice</deviceName>
+        <type>hidfast</type>
+        <index>13</index>
+        <scale>0.833</scale>
+        <upperLimit>180.0</upperLimit>
+        <lowerLimit>0.0</lowerLimit>
+        <upperVelocity>1.0E8</upperVelocity>
+        <lowerVelocity>-1.0E8</lowerVelocity>
+        <staticOffset>90.0</staticOffset>
+        <isLatch>true</isLatch>
+        <indexLatch>105</indexLatch>
+        <isStopOnLatch>false</isStopOnLatch>
+        <homingTPS>10000000</homingTPS>
+        <vitamins>
+          <vitamin>
+            <name>electroMechanical</name>
+            <type>hobbyServo</type>
+            <id>DHV56mg_sub_Micro</id>
+          </vitamin>
+          <vitamin>
+            <name>shaft</name>
+            <type>hobbyServoHorn</type>
+            <id>DHV56mg_sub_Micro_1</id>
+          </vitamin>
+        </vitamins>
+        <passive>false</passive>
+        <mass>0.01</mass>
+        <centerOfMassFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>0.0</rotx>
+          <roty>0.0</roty>
+          <rotz>0.0</rotz>
+        </centerOfMassFromCentroid>
+        <imuFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>-0.0</rotx>
+          <roty>-0.0</roty>
+          <rotz>-0.0</rotz>
+        </imuFromCentroid>
+        <DHParameters>
+          <Delta>0.0</Delta>
+          <Theta>0.01</Theta>
+          <Radius>28.575</Radius>
+          <Alpha>-89.97</Alpha>
+        </DHParameters>
+      </link>
+      <link> <name>kneePitch</name>
+        <deviceName>hidDevice</deviceName>
+        <type>hidfast</type>
+        <index>14</index>
+        <scale>0.833</scale>
+        <upperLimit>180.0</upperLimit>
+        <lowerLimit>0.0</lowerLimit>
+        <upperVelocity>1.0E8</upperVelocity>
+        <lowerVelocity>-1.0E8</lowerVelocity>
+        <staticOffset>117.00623746936958</staticOffset>
+        <isLatch>true</isLatch>
+        <indexLatch>97</indexLatch>
+        <isStopOnLatch>false</isStopOnLatch>
+        <homingTPS>10000000</homingTPS>
+        <vitamins>
+          <vitamin>
+            <name>electroMechanical</name>
+            <type>hobbyServo</type>
+            <id>DHV56mg_sub_Micro</id>
+          </vitamin>
+          <vitamin>
+            <name>shaft</name>
+            <type>hobbyServoHorn</type>
+            <id>DHV56mg_sub_Micro_1</id>
+          </vitamin>
+        </vitamins>
+        <passive>false</passive>
+        <mass>0.01</mass>
+        <centerOfMassFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>0.0</rotx>
+          <roty>0.0</roty>
+          <rotz>0.0</rotz>
+        </centerOfMassFromCentroid>
+        <imuFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>-0.0</rotx>
+          <roty>-0.0</roty>
+          <rotz>-0.0</rotz>
+        </imuFromCentroid>
+        <DHParameters>
+          <Delta>0.0</Delta>
+          <Theta>-90.0</Theta>
+          <Radius>50.8</Radius>
+          <Alpha>0.01</Alpha>
+        </DHParameters>
+      </link>
+      <link> <name>anklePitch</name>
+        <deviceName>hidDevice</deviceName>
+        <type>hidfast</type>
+        <index>15</index>
+        <scale>-0.829</scale>
+        <upperLimit>180.0</upperLimit>
+        <lowerLimit>0.0</lowerLimit>
+        <upperVelocity>1.0E8</upperVelocity>
+        <lowerVelocity>-1.0E8</lowerVelocity>
+        <staticOffset>90.0</staticOffset>
+        <isLatch>true</isLatch>
+        <indexLatch>145</indexLatch>
+        <isStopOnLatch>false</isStopOnLatch>
+        <homingTPS>10000000</homingTPS>
+        <vitamins>
+          <vitamin>
+            <name>electroMechanical</name>
+            <type>hobbyServo</type>
+            <id>DHV56mg_sub_Micro</id>
+          </vitamin>
+          <vitamin>
+            <name>shaft</name>
+            <type>hobbyServoHorn</type>
+            <id>DHV56mg_sub_Micro_1</id>
+          </vitamin>
+        </vitamins>
+        <passive>false</passive>
+        <mass>0.01</mass>
+        <centerOfMassFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>0.0</rotx>
+          <roty>0.0</roty>
+          <rotz>0.0</rotz>
+        </centerOfMassFromCentroid>
+        <imuFromCentroid>
+          <x>0.0</x>
+          <y>0.0</y>
+          <z>0.0</z>
+          <rotw>1.0</rotw>
+          <rotx>-0.0</rotx>
+          <roty>-0.0</roty>
+          <rotz>-0.0</rotz>
+        </imuFromCentroid>
+        <DHParameters>
+          <Delta>0.0</Delta>
+          <Theta>90.01</Theta>
+          <Radius>47.86253</Radius>
+          <Alpha>0.01</Alpha>
+        </DHParameters>
+      </link>
+      <ZframeToRAS>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+        <rotw>1.0</rotw>
+        <rotx>-0.0</rotx>
+        <roty>-0.0</roty>
+        <rotz>-0.0</rotz>
+      </ZframeToRAS>
+      <baseToZframe>
+        <x>-98.04</x>
+        <y>37.15</y>
+        <z>106.24</z>
+        <rotw>7.5577511764289E-5</rotw>
+        <rotx>-0.8660544878420067</rotx>
+        <roty>4.362883439682798E-5</roty>
+        <rotz>0.49994961393452864</rotz>
       </baseToZframe>
     </leg>
     <appendage> <name>Head</name>
