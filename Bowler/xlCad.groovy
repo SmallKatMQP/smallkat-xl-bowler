@@ -58,7 +58,8 @@ return new ICadGenerator(){
 		  } else if(linkIndex ==1){
 		    legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
 		  } else if (linkIndex == 2){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
+		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
+				legFile= new Cube(5).toCSG();
 		  } else if(linkIndex > 2){
 		    return allCad;
 		  } else {
