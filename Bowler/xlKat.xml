@@ -337,16 +337,16 @@
           <x>0.0</x>
           <y>0.0</y>
           <z>0.0</z>
-          <rotw>1.0</rotw>
+          <rotw>0</rotw>
           <rotx>-0.0</rotx>
           <roty>-0.0</roty>
-          <rotz>-0.0</rotz>
+          <rotz>-0    </rotz>
         </imuFromCentroid>
         <DHParameters>
           <Delta>0.0</Delta>
-          <Theta>0.01</Theta>
-          <Radius>28.575</Radius>
-          <Alpha>-89.97</Alpha>
+          <Theta>0</Theta>
+          <Radius>0</Radius>
+          <Alpha>0</Alpha>
         </DHParameters>
       </link>
       <link> <name>shoulderPitch</name>
@@ -513,9 +513,9 @@
         <y>0.0</y>
         <z>0.0</z>
         <rotw>1.0</rotw>
-        <rotx>-0.0</rotx>
-        <roty>-0.0</roty>
-        <rotz>-0.0</rotz>
+        <rotx>0.0</rotx>
+        <roty>0.0</roty>
+        <rotz>0.0</rotz>
       </ZframeToRAS>
       <baseToZframe>
         <x>0</x>
