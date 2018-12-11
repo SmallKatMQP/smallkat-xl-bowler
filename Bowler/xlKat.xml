@@ -311,8 +311,6 @@
 	<imuFromCentroid>	<x>0.0</x>
 	<y>0.0</y>
 	<z>0.0</z>
-
-	<!-- ERROR a NaN was detected and replaced with a valid rotation -->
 	<rotw>1.0</rotw>
 	<rotx>-0.0</rotx>
 	<roty>-0.0</roty>
@@ -320,8 +318,8 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>0.0</Theta>
-		<Radius>0.0</Radius>
+		<Theta>-90.0</Theta>
+		<Radius>200.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
 
@@ -374,8 +372,8 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>180.0</Theta>
-		<Radius>28.575</Radius>
+		<Theta>0.0</Theta>
+		<Radius>200.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
 
@@ -500,12 +498,12 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>0.0</x>
-	<y>38.261</y>
+	<x>100.0</x>
+	<y>38.26</y>
 	<z>0.0</z>
-	<rotw>0.7071684852014806</rotw>
+	<rotw>1.0</rotw>
 	<rotx>-0.0</rotx>
-	<roty>0.7070450717866884</roty>
+	<roty>-0.0</roty>
 	<rotz>-0.0</rotz>
 </baseToZframe>
 
@@ -752,10 +750,10 @@
 	<x>-230.0</x>
 	<y>-38.261</y>
 	<z>0.0</z>
-	<rotw>0.00392865317977874</rotw>
-	<rotx>-0.7070341608498762</rotx>
-	<roty>0.003927967560277028</roty>
-	<rotz>0.7071575723601845</rotz>
+	<rotw>0.003928653179778741</rotw>
+	<rotx>-0.7070341608498764</rotx>
+	<roty>0.003927967560277029</roty>
+	<rotz>0.7071575723601846</rotz>
 </baseToZframe>
 
 </leg>
@@ -1001,10 +999,10 @@
 	<x>-230.0</x>
 	<y>38.261</y>
 	<z>0.0</z>
-	<rotw>0.00392865317977874</rotw>
-	<rotx>0.7070341608498762</rotx>
-	<roty>-0.003927967560277028</roty>
-	<rotz>0.7071575723601845</rotz>
+	<rotw>0.003928653179778741</rotw>
+	<rotx>0.7070341608498764</rotx>
+	<roty>-0.003927967560277029</roty>
+	<rotz>0.7071575723601846</rotz>
 </baseToZframe>
 
 </leg>
