@@ -38,7 +38,7 @@ return new ICadGenerator(){
 		}
 		if(legRoot.getX()>0){
 			rear=false;
-		}
+		} 
 
 		if(limbName.contentEquals("Tail")){
 		  if(linkIndex ==0){
@@ -71,7 +71,7 @@ return new ICadGenerator(){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
 		  } else if(linkIndex == 1){
-		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
 		  } else if(linkIndex == 2){
 		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
@@ -84,15 +84,14 @@ return new ICadGenerator(){
 			println "FrontRight"
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
-
 		  } else if(linkIndex == 1){
-		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
 		  } else if(linkIndex == 2){
 		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
 		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR.stl");
 		  } else {
-		    print "Incorrect FrontLeft Leg Index: "
+		    print "Incorrect FrontRight Leg Index: "
 		    println linkIndex
 		  }
 		} else if (limbName.contentEquals("BackLeft")){
@@ -100,13 +99,13 @@ return new ICadGenerator(){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
 		  } else if(linkIndex == 1){
-		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
 		  } else if(linkIndex == 2){
 		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
 		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BL.stl");
 		  } else {
-		    print "Incorrect FrontLeft Leg Index: "
+		    print "Incorrect BackLeft Leg Index: "
 		    println linkIndex
 		  }
 		} else if (limbName.contentEquals("BackRight")){
@@ -114,13 +113,13 @@ return new ICadGenerator(){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
 		  } else if(linkIndex == 1){
-		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
 		  } else if(linkIndex == 2){
 		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
 		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR.stl");
 		  } else {
-		    print "Incorrect FrontLeft Leg Index: "
+		    print "Incorrect BackRight Leg Index: "
 		    println linkIndex
 		  }
 		} else {
