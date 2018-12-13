@@ -231,8 +231,8 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>90.01</Theta>
-		<Radius>47.86253</Radius>
+		<Theta>-33.300000000000004</Theta>
+		<Radius>-71.03</Radius>
 		<Alpha>0.01</Alpha>
 	</DHParameters>
 
@@ -480,9 +480,9 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>90.01</Theta>
-		<Radius>47.86253</Radius>
-		<Alpha>0.01</Alpha>
+		<Theta>24.3</Theta>
+		<Radius>-71.03</Radius>
+		<Alpha>180.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -729,8 +729,8 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>90.01</Theta>
-		<Radius>47.86253</Radius>
+		<Theta>-24.3</Theta>
+		<Radius>-94.64</Radius>
 		<Alpha>0.01</Alpha>
 	</DHParameters>
 
@@ -978,9 +978,9 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>90.01</Theta>
-		<Radius>47.86253</Radius>
-		<Alpha>0.01</Alpha>
+		<Theta>24.3</Theta>
+		<Radius>-94.64</Radius>
+		<Alpha>180.0</Alpha>
 	</DHParameters>
 
 </link>
