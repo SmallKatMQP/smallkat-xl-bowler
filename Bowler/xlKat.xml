@@ -18,8 +18,8 @@
 		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
+		<file>dhsolver.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
@@ -267,8 +267,8 @@
 		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
+		<file>dhsolver.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
@@ -516,8 +516,8 @@
 		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
+		<file>dhsolver.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
@@ -765,8 +765,8 @@
 		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/17f2da51abe25e043043946d91610ddd.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
+		<file>dhsolver.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
