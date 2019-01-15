@@ -57,10 +57,16 @@ return new DhInverseSolver() {
             theta4_1 = (Math.PI / 2 - ang) - (theta2_1 + theta3_1);
             theta4_2 = (Math.PI / 2 - ang) - (theta2_2 + theta3_2);
 
-            inv[0] = theta1;
-            inv[1] = theta2_1;
-            inv[2] = theta3_1;
-            inv[3] = theta3_1;
+		println(theta1);
+		println(theta2_1);
+		println(theta3_1);
+		println(theta4_1);
+		
+			
+            inv[0] = 0;//theta1;
+            inv[1] = 0;//theta2_1;
+            inv[2] = 0;//theta3_1;
+            inv[3] = 0;//theta3_1;
 
             println("\r\n\r\nJoint Vector = " + inv + "\r\n\r\n");
 
