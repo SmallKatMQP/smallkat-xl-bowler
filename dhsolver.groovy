@@ -25,30 +25,31 @@ return new DhInverseSolver() {
             double y = target.getY();
             double z = target.getZ();
 
-            target.
+		double ang = 0;
 
-            println(target.getRotation().toString());
+
+            println(target.getRotationMatrixArray().toString());
 
             double l1_d = links.get(0).getD();
             double l2_d = links.get(1).getD();
             double l3_d = links.get(2).getD();
-            double l4_d = links.get(3).getd();
+            double l4_d = links.get(3).getD();
 
             double[] inv = new double[linkNum];
 
-            double theta1 = Math.atan2(y / Math.abs(z));
+            double theta1 = Math.atan(y / Math.abs(z));
 
-            double r1 = Math.sqrt(z ^ 2 + y ^ 2);
+            double r1 = Math.sqrt(Math.pow(z, 2) + Math.pow(y,2));
             double x1 = r1;
             double y1 = x;
             double Px = x1 - l4_d * Math.sin(ang);
             double Py = y1 - l4_d * Math.cos(ang);
             // Make below negative to switch to other angle
-            double theta3_1 = Math.acos(((Px ^ 2 + Py ^ 2) - (l2_d ^ 2 + l3_d ^ 2)) / (2 * l2_d * l3_d));
+            double theta3_1 = Math.acos(((Math.pow(Px, 2) + Math.pow(Py,2)) - (Math.pow(l2_d,2) + Math.pow(l3_d, 2))) / (2 * l2_d * l3_d));
             double theta3_2 = theta3_1 * -1;
 
             double B = Math.atan(Py / Px);
-            double Y = Math.acos((Px ^ 2 + Py ^ 2 + l2_d ^ 2 - l3_d ^ 2) / (2 * l2_d * Math.sqrt(Px ^ 2 + Py ^ 2)));
+            double Y = Math.acos((Math.pow(Px, 2) + Math.pow(Py, 2) + Math.pow(l2_d, 2) - Math.pow(l3_d, 2)) / (2 * l2_d * Math.sqrt(Math.pow(Px, 2) + Math.pow(Py, 2))));
 
             double theta2_1 = B + Y;
             double theta2_2 = B - Y;
@@ -61,7 +62,7 @@ return new DhInverseSolver() {
             inv[2] = theta3_1;
             inv[3] = theta3_1;
 
-            println("\r\n\r\nJoint Vector = " + inv);
+            println("\r\n\r\nJoint Vector = " + inv + "\r\n\r\n");
 
             return inv;
         } catch (Throwable t) {
