@@ -144,37 +144,6 @@ return new ICadGenerator(){
 		} else {
 			body = Vitamins.get(legFile)
 		}
-		//body = moveDHValues(body,dh)
-		// if(linkIndex ==0){
-		// 	// body=moveDHValues(body,dh)
-		// 	if(limbName.contentEquals("Head")||limbName.contentEquals("Tail")){
-		// 		// body=body
-		// 		// // .rotz(90)
-		// 		// // .rotx(180)
-		// 		// .movex(-41)
-		// 		// .movey(-21)
-		// 		// .movez(-22)
-		// 			//.movez(-11.5)
-		// 	}	else{
-		// 		// body=body.roty(180)
-		// 		// .rotx(180)
-		// 		//if(rear)
-		// 			//body=body.rotx(180)
-		// 	}
-		//
-		// }
-		// if(linkIndex ==1){
-		// 	if(limbName.contentEquals("Head")){
-		// 		body=body.roty(180).movex(50).movey(-18).movez(-38.5)
-		// 	}else if(limbName.contentEquals("Tail")){
-		// 		body=body.roty(180).rotz(-90).movey(125)
-		// 	}else{
-		// 		// body=body.roty(180)
-		// 	}
-		// }
-		// if(linkIndex ==2){
-		// 	body=body.roty(180)
-		// }
 
 		body.setManipulator(manipulator);
 
@@ -193,7 +162,7 @@ return new ICadGenerator(){
 		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
 
 		// Load the .CSG from the disk and cache it in memory
-		CSG body  = Vitamins.get(mainBodyFile)
+		CSG body  = Vitamins.get(mainBodyFile).movez(200);
 
 		body.setManipulator(b.getRootListener());
 		body.setColor(javafx.scene.paint.Color.WHITE)
