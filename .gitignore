@@ -1,3 +1,11 @@
 smallkat-xl-bowler.iml
 .idea/
 *.swp
+
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+smallkat-xl-bowler.iml
+smallkat-xl-bowler.ipr
+smallkat-xl-bowler.iws
