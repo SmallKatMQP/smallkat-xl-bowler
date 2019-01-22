@@ -6,6 +6,11 @@ import edu.wpi.SimplePacketComs.*;
 import edu.wpi.SimplePacketComs.phy.HIDSimplePacketComs;
 import com.neuronrobotics.sdk.addons.kinematics.imu.*;
 
+if (args==null)
+	args=[
+		"https://github.com/SmallKatMQP/smallkat-xl-bowler.git",
+		"Bowler/xlKat.xml"]
+
 public class SimpleServoHID extends HIDSimplePacketComs {
 	private PacketType servos = new edu.wpi.SimplePacketComs.BytePacketType(1962, 64);
 	private PacketType imuData = new edu.wpi.SimplePacketComs.FloatPacketType(1804, 64);
@@ -156,8 +161,8 @@ def dev = DeviceManager.getSpecificDevice( "hidDevice",{
 def cat =DeviceManager.getSpecificDevice( "XLKat",{
 	//If the device does not exist, prompt for the connection
 	MobileBase m = MobileBaseLoader.fromGit(
-		"https://github.com/SmallKatMQP/smallkat-xl-bowler.git",
-		"Bowler/xlKat.xml"
+		args[0],
+		args[1]
 		)
 	dev.simple.addEvent(1804, {
 		 double[] imuDataValues = dev.simple.getImuData()
