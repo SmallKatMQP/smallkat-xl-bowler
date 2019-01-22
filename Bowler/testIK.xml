@@ -210,11 +210,11 @@
 
 <baseToZframe>
 	<x>0.0</x>
-	<y>-38.261</y>
-	<z>200.0</z>
-	<rotw>0.7071684852014806</rotw>
+	<y>0</y>
+	<z>0</z>
+	<rotw>1</rotw>
 	<rotx>-0.0</rotx>
-	<roty>-0.7070450717866884</roty>
+	<roty>0</roty>
 	<rotz>-0.0</rotz>
 </baseToZframe>
 
