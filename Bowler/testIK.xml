@@ -19,7 +19,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>dhsolver.groovy</file>
+		<file>intrnalIK.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
