@@ -69,13 +69,13 @@ return new ICadGenerator(){
 		} else if (limbName.contentEquals("FrontLeft")){
 			println "FrontLeft"
 		  if(linkIndex == 0){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL.stl");
 		  } else if(linkIndex == 1){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
 		  } else if(linkIndex == 2){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FL.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FL.stl");
 		  } else {
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
@@ -83,13 +83,13 @@ return new ICadGenerator(){
 		} else if (limbName.contentEquals("FrontRight")){
 			println "FrontRight"
 		  if(linkIndex == 0){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR.stl");
 		  } else if(linkIndex == 1){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
 		  } else if(linkIndex == 2){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR.stl");
 		  } else {
 		    print "Incorrect FrontRight Leg Index: "
 		    println linkIndex
@@ -97,13 +97,13 @@ return new ICadGenerator(){
 		} else if (limbName.contentEquals("BackLeft")){
 			println "BackLeft"
 		  if(linkIndex == 0){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR_BL.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_BL.stl");
 		  } else if(linkIndex == 1){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
 		  } else if(linkIndex == 2){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BL.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BL.stl");
 		  } else {
 		    print "Incorrect BackLeft Leg Index: "
 		    println linkIndex
@@ -111,13 +111,13 @@ return new ICadGenerator(){
 		} else if (limbName.contentEquals("BackRight")){
 			println "BackRight"
 		  if(linkIndex == 0){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL_BR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_BR.stl");
 		  } else if(linkIndex == 1){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
 		  } else if(linkIndex == 2){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BR.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BR.stl");
 		  } else {
 		    print "Incorrect BackRight Leg Index: "
 		    println linkIndex
@@ -162,7 +162,7 @@ return new ICadGenerator(){
 		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
 
 		// Load the .CSG from the disk and cache it in memory
-		CSG body  = Vitamins.get(mainBodyFile).movez(200);
+		CSG body  = Vitamins.get(mainBodyFile);
 
 		body.setManipulator(b.getRootListener());
 		body.setColor(javafx.scene.paint.Color.WHITE)

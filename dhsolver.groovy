@@ -25,6 +25,10 @@ return new DhInverseSolver() {
             double y = target.getY();
             double z = target.getZ();
 
+            println("x: " + x);
+            println("y: " + y);
+            println("z: " + z);
+
 	       double ang = 0;
 
 
@@ -57,10 +61,10 @@ return new DhInverseSolver() {
             theta4_1 = (Math.PI / 2 - ang) - (theta2_1 + theta3_1);
             theta4_2 = (Math.PI / 2 - ang) - (theta2_2 + theta3_2);
 
-		theta1 = 90;
-		theta2_1 = 0;
-		theta3_1 = 0;
-		theta4_1 = 0;
+		//theta1 = 90;
+		//theta2_1 = 0;
+		//theta3_1 = 0;
+		//theta4_1 = 0;
 			
 		println(theta1);
 		println(theta2_1);
