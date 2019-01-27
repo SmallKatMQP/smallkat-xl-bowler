@@ -59,7 +59,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>0.01</Theta>
+		<Theta>0.0</Theta>
 		<Radius>0.0</Radius>
 		<Alpha>90.0</Alpha>
 	</DHParameters>
@@ -103,8 +103,8 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>180.0</Theta>
-		<Radius>92.0</Radius>
+		<Theta>0.0</Theta>
+		<Radius>-92.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
 
@@ -312,9 +312,9 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>180.0</Theta>
+		<Theta>0.0</Theta>
 		<Radius>-92.0</Radius>
-		<Alpha>180.0</Alpha>
+		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -500,6 +500,16 @@
 	<homingTPS>10000000</homingTPS>
 
 	<vitamins>
+		<vitamin>
+			<name>electroMechanical</name>
+			<type>hobbyServo</type>
+			<id>standardMicro</id>
+		</vitamin>
+		<vitamin>
+			<name>shaft</name>
+			<type>hobbyServoHorn</type>
+			<id>standardMicro1</id>
+		</vitamin>
 
 	</vitamins>
 	<passive>false</passive>
@@ -521,9 +531,9 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>180.0</Theta>
+		<Theta>0.0</Theta>
 		<Radius>-92.0</Radius>
-		<Alpha>180.0</Alpha>
+		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -730,8 +740,8 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>180.0</Theta>
-		<Radius>92.0</Radius>
+		<Theta>0.0</Theta>
+		<Radius>-92.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
 
