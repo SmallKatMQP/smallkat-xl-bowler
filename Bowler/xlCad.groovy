@@ -71,7 +71,7 @@ return new ICadGenerator(){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FL.stl");
 		  } else if(linkIndex == 1){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL.stl");
 		  } else if(linkIndex == 2){
 		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
@@ -85,7 +85,7 @@ return new ICadGenerator(){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR.stl");
 		  } else if(linkIndex == 1){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR.stl");
 		  } else if(linkIndex == 2){
 		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
@@ -99,7 +99,7 @@ return new ICadGenerator(){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_BL.stl");
 		  } else if(linkIndex == 1){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR_BL.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_BL.stl");
 		  } else if(linkIndex == 2){
 		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
@@ -113,7 +113,7 @@ return new ICadGenerator(){
 		  if(linkIndex == 0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_BR.stl");
 		  } else if(linkIndex == 1){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FL_BR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_BR.stl");
 		  } else if(linkIndex == 2){
 		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg.stl");
 		  } else if (linkIndex == 3){
