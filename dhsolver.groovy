@@ -72,10 +72,11 @@ return new DhInverseSolver() {
 		println(theta4_1);
 		
 			
-            inv[0] = theta1; inv[1] = theta2_1; inv[2] = theta3_1; inv[3] = theta4_1;
-            //inv[1] = Math.toDegrees(theta2_1);
-            //inv[2] = Math.toDegrees(theta3_1);
-            //inv[3] = Math.toDegrees(theta4_1);
+            //inv[0] = theta1; inv[1] = theta2_1; inv[2] = theta3_1; inv[3] = theta4_1;
+            inv[0] = Math.toDegrees(theta1);
+            inv[1] = Math.toDegrees(theta2_1);
+            inv[2] = Math.toDegrees(theta3_1);
+            inv[3] = Math.toDegrees(theta4_1);
 
             println("\r\n\r\nJoint Vector = " + inv + "\r\n\r\n");
 

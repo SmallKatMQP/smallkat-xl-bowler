@@ -75,7 +75,7 @@ return new ICadGenerator(){
 		  } else if(linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Left.stl");
 		  } else if (linkIndex == 3){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FL.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FL.stl");
 		  } else {
 		    print "Incorrect FrontLeft Leg Index: "
 		    println linkIndex
@@ -89,7 +89,7 @@ return new ICadGenerator(){
 		  } else if(linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right.stl");
 		  } else if (linkIndex == 3){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR.stl");
 		  } else {
 		    print "Incorrect FrontRight Leg Index: "
 		    println linkIndex
@@ -103,7 +103,7 @@ return new ICadGenerator(){
 		  } else if(linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Left.stl");
 		  } else if (linkIndex == 3){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BL.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BL.stl");
 		  } else {
 		    print "Incorrect BackLeft Leg Index: "
 		    println linkIndex
@@ -117,7 +117,7 @@ return new ICadGenerator(){
 		  } else if(linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right.stl");
 		  } else if (linkIndex == 3){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BR.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BR.stl");
 		  } else {
 		    print "Incorrect BackRight Leg Index: "
 		    println linkIndex
