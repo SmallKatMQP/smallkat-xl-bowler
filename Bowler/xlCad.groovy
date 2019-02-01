@@ -157,19 +157,19 @@ return new ICadGenerator(){
 
 
 	@Override
-	public ArrayList<CSG> generateBody(MobileBase b ) {
-		ArrayList<CSG> allCad=new ArrayList<>();
-		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
-
-		// Load the .CSG from the disk and cache it in memory
-		CSG body  = Vitamins.get(mainBodyFile);
-
-		body.setManipulator(b.getRootListener());
-		body.setColor(javafx.scene.paint.Color.WHITE)
-		def parts = [body ] as ArrayList<CSG>
-		for(int i=0;i<parts.size();i++){
-			parts.get(i).setColor(javafx.scene.paint.Color.GRAY)
-		}
-		return parts;
-	}
+//	public ArrayList<CSG> generateBody(MobileBase b ) {
+//		ArrayList<CSG> allCad=new ArrayList<>();
+//		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
+//
+//		// Load the .CSG from the disk and cache it in memory
+//		CSG body  = Vitamins.get(mainBodyFile);
+//
+	//	body.setManipulator(b.getRootListener());
+	//	body.setColor(javafx.scene.paint.Color.WHITE)
+	//	def parts = [body ] as ArrayList<CSG>
+	//	for(int i=0;i<parts.size();i++){
+	//		parts.get(i).setColor(javafx.scene.paint.Color.GRAY)
+	//	}
+	//	return parts;
+	//}
 }
