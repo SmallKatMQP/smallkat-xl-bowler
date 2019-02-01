@@ -153,6 +153,7 @@ return new ICadGenerator(){
 				.rotx(90)
 				
 		}
+		}
 
 		body.setManipulator(manipulator);
 
