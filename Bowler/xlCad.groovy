@@ -144,6 +144,15 @@ return new ICadGenerator(){
 		} else {
 			body = Vitamins.get(legFile)
 		}
+		if(linkIndex ==0){
+			//body=moveDHValues(body,dh)
+
+			if(limbName.contentEquals("Shoulder")){
+				body=body
+				.rotz(90)
+				.rotx(90)
+				
+		}
 
 		body.setManipulator(manipulator);
 
