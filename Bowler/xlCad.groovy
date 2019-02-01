@@ -147,7 +147,7 @@ return new ICadGenerator(){
 		if(linkIndex ==0){
 			//body=moveDHValues(body,dh)
 
-			if(limbName.contentEquals("Shoulder")){
+			if(limbName.contentEquals("FrontRight")){
 				body=body
 				.rotz(90)
 				.rotx(90)
