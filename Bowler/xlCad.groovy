@@ -160,7 +160,7 @@ return new ICadGenerator(){
 @Override
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
-		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
+		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Shoulder_BR.stl");
 
 	// Load the .CSG from the disk and cache it in memory
 		CSG body  = Vitamins.get(mainBodyFile);

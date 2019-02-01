@@ -38,6 +38,16 @@
 	<homingTPS>10000000</homingTPS>
 
 	<vitamins>
+		<vitamin>
+			<name>electroMechanical</name>
+			<type>hobbyServo</type>
+			<id>standardMicro</id>
+		</vitamin>
+		<vitamin>
+			<name>shaft</name>
+			<type>hobbyServoHorn</type>
+			<id>standardMicro1</id>
+		</vitamin>
 
 	</vitamins>
 	<passive>false</passive>
@@ -61,7 +71,7 @@
 		<Delta>0.0</Delta>
 		<Theta>90.0</Theta>
 		<Radius>0.0</Radius>
-		<Alpha>0.0</Alpha>
+		<Alpha>90.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -103,9 +113,9 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>90.0</Theta>
+		<Theta>0.0</Theta>
 		<Radius>92.0</Radius>
-		<Alpha>90.0</Alpha>
+		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -212,10 +222,10 @@
 	<x>0.0</x>
 	<y>0.0</y>
 	<z>0.0</z>
-	<rotw>8.726646248878822E-5</rotw>
+	<rotw>1.0</rotw>
 	<rotx>-0.0</rotx>
 	<roty>-0.0</roty>
-	<rotz>0.9999999961922823</rotz>
+	<rotz>-0.0</rotz>
 </baseToZframe>
 
 </leg>
