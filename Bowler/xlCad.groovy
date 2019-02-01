@@ -147,12 +147,12 @@ return new ICadGenerator(){
 		if(linkIndex ==0){
 			//body=moveDHValues(body,dh)
 
-			if(limbName.contentEquals("FrontRight")){
-				body=body
-				.rotz(90)
-				.rotx(90)
-				
-		}
+			//if(limbName.contentEquals("FrontRight")){
+			//	body=body
+			//	.rotz(90)
+			//	.rotx(90)
+		//		
+		//}
 		}
 
 		body.setManipulator(manipulator);
