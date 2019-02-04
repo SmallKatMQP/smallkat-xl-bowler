@@ -15,7 +15,12 @@ import com.neuronrobotics.sdk.common.Log;
 import Jama.Matrix;
 import eu.mihosoft.vrl.v3d.Transform;
 
-public class JavaIKModel implements DhInverseSolver {
+public class scriptJavaIKModel implements DhInverseSolver {
+
+	int limbIndex =0;
+	public scriptJavaIKModel(int index){
+		limbIndex=index;
+	}
 
 	@Override
 	public double[] inverseKinematics(TransformNR target, double[] jointSpaceVector, DHChain chain) {
@@ -182,3 +187,7 @@ public class JavaIKModel implements DhInverseSolver {
 	}
 
 }
+
+if(args==null)
+	args=[0]
+return new scriptJavaIKModel (args[0])
