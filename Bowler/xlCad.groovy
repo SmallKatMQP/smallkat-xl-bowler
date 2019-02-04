@@ -83,13 +83,13 @@ return new ICadGenerator(){
 		} else if (limbName.contentEquals("FrontRight")){
 			println "FrontRight"
 		  if(linkIndex == 0){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR2.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR2.stl");
 		  } else if(linkIndex == 1){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR2.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR2.stl");
 		  } else if(linkIndex == 2){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right2.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right2.stl");
 		  } else if (linkIndex == 3){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR2.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR2.stl");
 		  } else {
 		    print "Incorrect FrontRight Leg Index: "
 		    println linkIndex
@@ -111,13 +111,13 @@ return new ICadGenerator(){
 		} else if (limbName.contentEquals("BackRight")){
 			println "BackRight"
 		  if(linkIndex == 0){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_BR.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_BR.stl");
 		  } else if(linkIndex == 1){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_BR.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_BR.stl");
 		  } else if(linkIndex == 2){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right.stl");
 		  } else if (linkIndex == 3){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BR.stl");
+		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BR.stl");
 		  } else {
 		    print "Incorrect BackRight Leg Index: "
 		    println linkIndex
@@ -170,7 +170,7 @@ return new ICadGenerator(){
 @Override
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
-		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Shoulder_BR.stl");
+		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
 
 	// Load the .CSG from the disk and cache it in memory
 		CSG body  = Vitamins.get(mainBodyFile);
