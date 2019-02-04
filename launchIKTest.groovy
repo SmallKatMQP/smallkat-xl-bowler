@@ -3,5 +3,5 @@ def cat =ScriptingEngine.gitScriptRun("https://github.com/SmallKatMQP/smallkat-x
                                      
                                      [
 		"https://github.com/SmallKatMQP/smallkat-xl-bowler.git",
-		"Bowler/xlKat.xml"]);
+		"Bowler/testIK.xml"]);
 
