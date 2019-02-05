@@ -117,8 +117,8 @@ public class scriptJavaIKModel implements DhInverseSolver {
              System.out.println(inv[3]);
             }
             
-           else if(limbIndex == 1) {
-            //Link 2
+           if(limbIndex == 1) {
+            Link 2
             theta2_2 = -theta2_1;
             theta3_2 = -theta3_1;
             theta4_2 = -theta4_1;
