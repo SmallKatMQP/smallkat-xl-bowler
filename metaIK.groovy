@@ -118,10 +118,10 @@ public class scriptJavaIKModel implements DhInverseSolver {
             }
             
            if(limbIndex == 1) {
-            Link 2
-            theta2_2 = -theta2_1;
-            theta3_2 = -theta3_1;
-            theta4_2 = -theta4_1;
+            //Link 2
+            theta2_2 = -1*theta2_1;
+            theta3_2 = -1*theta3_1;
+            theta4_2 = -1*theta4_1;
             inv[0] = Math.toDegrees(theta_1);
             inv[1] = Math.toDegrees(theta2_2);
             inv[2] = Math.toDegrees(theta3_2);
