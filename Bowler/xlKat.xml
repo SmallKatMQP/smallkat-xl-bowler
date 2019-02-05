@@ -688,10 +688,10 @@
 	<index>11</index>
 	<scale>-0.829</scale>
 	<upperLimit>360.0</upperLimit>
-	<lowerLimit>0.0</lowerLimit>
+	<lowerLimit>-360.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>90.0</staticOffset>
+	<staticOffset>180.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>145</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
