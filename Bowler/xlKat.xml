@@ -268,7 +268,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>dhsolver.groovy</file>
+		<file>dhsolver2.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
