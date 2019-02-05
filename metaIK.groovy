@@ -119,18 +119,26 @@ public class scriptJavaIKModel implements DhInverseSolver {
             
            if(limbIndex == 1) {
             //Link 2
-            theta2_2 = -1*theta2_1;
-            theta3_2 = -1*theta3_1;
-            theta4_2 = -1*theta4_1;
             inv[0] = Math.toDegrees(theta_1);
-            inv[1] = Math.toDegrees(theta2_2);
-            inv[2] = Math.toDegrees(theta3_2);
-            inv[3] = Math.toDegrees(theta4_2);
+            inv[1] = Math.toDegrees(-theta2_1);
+            inv[2] = Math.toDegrees(-theta3_1);
+            inv[3] = Math.toDegrees(-theta4_1);
             System.out.println(inv[0]);
             System.out.println(inv[1]);
             System.out.println(inv[2]);
             System.out.println(inv[3]);
            }
+           if(limbIndex == 2) {
+             //Link 3
+             inv[0] = Math.toDegrees(theta_1);
+             inv[1] = Math.toDegrees(theta2_2);
+             inv[2] = Math.toDegrees(-theta3_1);
+             inv[3] = Math.toDegrees(theta4_2);
+             System.out.println(inv[0]);
+             System.out.println(inv[1]);
+             System.out.println(inv[2]);
+             System.out.println(inv[3]);
+            }
 
             if(Double.isNaN(inv[0]) || Double.isNaN(inv[1]) || Double.isNaN(inv[2]) || Double.isNaN(inv[3]))
             	throw new ArithmeticException("Can't move to that position");
