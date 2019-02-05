@@ -33,36 +33,22 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
             int linkNum = jointSpaceVector.length;
 
-
-//            double z = Math.round(target.getZ());
-//            double y = Math.round(target.getY());
-//            double x = Math.round(target.getX());
             double z = target.getZ();
             double y = target.getY();
             double x = target.getX();
-           RotationNR q = target.getRotation();
+            RotationNR q = target.getRotation();
              
             System.out.println("z: " + z);
             System.out.println("y: " + y);
             System.out.println("x: " + x);
             
             double Oang = Math.PI/2 + q.getRotationElevation();
-            //testang = Math.toDegrees(testang);
-            //System.out.println("q: " +testang);
-            
-//            double Oang = 30;
-//            Oang = Math.toRadians(Oang);
             double Oanginv = (Math.PI/2) - Oang;
 
             double l1_d = links.get(0).getR();
             double l2_d = links.get(1).getR();
             double l3_d = links.get(2).getR();
             double l4_d = links.get(3).getR();
-//            
-//            double l1_d = 0;
-//            double l2_d = 92;
-//            double l3_d = 75;
-//            double l4_d = 71.03;
 
             System.out.println("L1: " + l1_d);
             System.out.println("L2: " + l2_d);
@@ -117,21 +103,42 @@ public class scriptJavaIKModel implements DhInverseSolver {
             System.out.println(theta2_1);
             System.out.println(theta3_1);
             System.out.println(theta4_1);
-		
+
+
+		if(limbIndex == 0) {
+             //Link 1
+             inv[0] = Math.toDegrees(theta_1);
+             inv[1] = Math.toDegrees(theta2_1);
+             inv[2] = Math.toDegrees(theta3_1);
+             inv[3] = Math.toDegrees(theta4_1);
+             System.out.println(inv[0]);
+             System.out.println(inv[1]);
+             System.out.println(inv[2]);
+             System.out.println(inv[3]);
+            }
+            
+           else if(limbIndex == 1) {
+            //Link 2
+            theta2_2 = -theta2_1;
+            theta3_2 = -theta3_1;
+            theta4_2 = -theta4_1;
             inv[0] = Math.toDegrees(theta_1);
-            inv[1] = Math.toDegrees(theta2_1);
-            inv[2] = Math.toDegrees(theta3_1);
-            inv[3] = Math.toDegrees(theta4_1);
+            inv[1] = Math.toDegrees(theta2_2);
+            inv[2] = Math.toDegrees(theta3_2);
+            inv[3] = Math.toDegrees(theta4_2);
             System.out.println(inv[0]);
             System.out.println(inv[1]);
             System.out.println(inv[2]);
             System.out.println(inv[3]);
-            
+           }
 
             if(Double.isNaN(inv[0]) || Double.isNaN(inv[1]) || Double.isNaN(inv[2]) || Double.isNaN(inv[3]))
             	throw new ArithmeticException("Can't move to that position");
             else
             	return inv;
+
+
+            	
         } catch (Throwable t) {
             BowlerStudio.printStackTrace(t);
             return null;
