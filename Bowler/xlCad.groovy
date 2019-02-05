@@ -83,13 +83,13 @@ return new ICadGenerator(){
 		} else if (limbName.contentEquals("FrontRight")){
 			println "FrontRight"
 		  if(linkIndex == 0){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_BF2.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Shoulder_FR2.stl");
 		  } else if(linkIndex == 1){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_BF2.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TopLeg_FR2.stl");
 		  } else if(linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/MidLeg_Right2.stl");
 		  } else if (linkIndex == 3){
-		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_BF2.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Foot_FR2.stl");
 		  } else {
 		    print "Incorrect FrontRight Leg Index: "
 		    println linkIndex
