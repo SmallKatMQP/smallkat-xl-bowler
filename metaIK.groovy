@@ -139,6 +139,17 @@ public class scriptJavaIKModel implements DhInverseSolver {
              System.out.println(inv[2]);
              System.out.println(inv[3]);
             }
+            if(limbIndex == 3) {
+             //Link 4
+             inv[0] = Math.toDegrees(theta_1);
+             inv[1] = Math.toDegrees(-theta2_2);
+             inv[2] = Math.toDegrees(theta3_1);
+             inv[3] = Math.toDegrees(-theta4_2);
+             System.out.println(inv[0]);
+             System.out.println(inv[1]);
+             System.out.println(inv[2]);
+             System.out.println(inv[3]);
+            }
 
             if(Double.isNaN(inv[0]) || Double.isNaN(inv[1]) || Double.isNaN(inv[2]) || Double.isNaN(inv[3]))
             	throw new ArithmeticException("Can't move to that position");
