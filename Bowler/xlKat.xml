@@ -529,7 +529,7 @@
 	<lowerLimit>0.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>90.0</staticOffset>
+	<staticOffset>0.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>105</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -774,11 +774,11 @@
 	<type>dummy</type>
 	<index>12</index>
 	<scale>0.833</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>-360.0</lowerLimit>
+	<upperLimit>45.0</upperLimit>
+	<lowerLimit>-45.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>90.0</staticOffset>
+	<staticOffset>0.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>105</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -828,11 +828,11 @@
 	<type>dummy</type>
 	<index>13</index>
 	<scale>0.833</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>0.0</lowerLimit>
+	<upperLimit>135.0</upperLimit>
+	<lowerLimit>-135.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>90.0</staticOffset>
+	<staticOffset>0.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>105</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -882,11 +882,11 @@
 	<type>dummy</type>
 	<index>14</index>
 	<scale>0.833</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>0.0</lowerLimit>
+	<upperLimit>135.0</upperLimit>
+	<lowerLimit>-45.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>117.00623746936958</staticOffset>
+	<staticOffset>0.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>97</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -936,11 +936,11 @@
 	<type>dummy</type>
 	<index>15</index>
 	<scale>-0.829</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>0.0</lowerLimit>
+	<upperLimit>90.0</upperLimit>
+	<lowerLimit>-90.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>90.0</staticOffset>
+	<staticOffset>0.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>145</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
