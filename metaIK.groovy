@@ -130,9 +130,12 @@ public class scriptJavaIKModel implements DhInverseSolver {
            if(limbIndex == 1) {
             //Link 2
             inv[0] = Math.toDegrees(theta_1);
-            inv[1] = Math.toDegrees(-theta2_1);
-            inv[2] = Math.toDegrees(-theta3_1);
-            inv[3] = Math.toDegrees(-theta4_1);
+            theta2_1 = -theta2_1 - (Math.toRadians(22.5))
+            inv[1] = Math.toDegrees(theta2_1);
+            theta3_1 = -theta3_1 + (Math.toRadians(22.5))
+            inv[2] = Math.toDegrees(theta3_1);
+            theta4_1 = -theta4_1 + (Math.toRadians(45))
+            inv[3] = Math.toDegrees(theta4_1);
             System.out.println(inv[0]);
             System.out.println(inv[1]);
             System.out.println(inv[2]);
