@@ -21,7 +21,7 @@ enum WalkingState {
 
 if(args==null){
 	double stepOverHeight=15;
-	long stepOverTime=20*5*3;// Servo loop times number of points times Nyquest doubeling
+	long stepOverTime=200*5*3;// Servo loop times number of points times Nyquest doubeling
 	Double zLock=-200;
 	Closure calcHome = { DHParameterKinematics leg ->
 			TransformNR h=leg.calcHome()
@@ -41,13 +41,13 @@ if(args==null){
 	boolean usePhysicsToMove = true;
 	long stepCycleTime =5000
 	long walkingTimeout =stepCycleTime*2
-	int numStepCycleGroups = 2
+	int numStepCycleGroups = 4
 	double standardHeadTailAngle =0;// -20
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
 	double maxBodyDisplacementPerStep = 30
-	double minBodyDisplacementPerStep = 20
+	double minBodyDisplacementPerStep = 10
 	args =  [stepOverHeight,
 	stepOverTime,
 	zLock,
@@ -234,6 +234,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 		}
 	}
 	void sit(double sitAngle){
+		return
 	if(!source.getScriptingName().contains("Kat"))
 		return
 		double incremnt = 0.05
