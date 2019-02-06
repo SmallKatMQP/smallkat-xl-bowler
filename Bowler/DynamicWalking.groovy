@@ -20,7 +20,7 @@ enum WalkingState {
 }
 
 if(args==null){
-	double stepOverHeight=10;
+	double stepOverHeight=-180;
 	long stepOverTime=20*5*3;// Servo loop times number of points times Nyquest doubeling
 	Double zLock=-3;
 	Closure calcHome = { DHParameterKinematics leg ->

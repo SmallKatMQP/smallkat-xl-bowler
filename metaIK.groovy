@@ -36,13 +36,19 @@ public class scriptJavaIKModel implements DhInverseSolver {
             double z = target.getZ();
             double y = target.getY();
             double x = target.getX();
+//		  z = Math.round(z*100.0)/100.0;
+//		  y = Math.round(y*100.0)/100.0;
+//            x = Math.round(x*100.0)/100.0;
+//            
             RotationNR q = target.getRotation();
              
             System.out.println("z: " + z);
             System.out.println("y: " + y);
             System.out.println("x: " + x);
             
-            double Oang = Math.PI/2 + q.getRotationElevation();
+            //double Oang = Math.PI/2 + q.getRotationElevation();
+            double Oang = Math.toRadians(45);
+            
             double Oanginv = (Math.PI/2) - Oang;
 
             double l1_d = links.get(0).getR();
@@ -106,11 +112,15 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
 
 		if(limbIndex == 0) {
-             //Link 1
+             System.out.println("link1");
              inv[0] = Math.toDegrees(theta_1);
+             theta2_1 = theta2_1 + (Math.toRadians(22.5))
              inv[1] = Math.toDegrees(theta2_1);
+             theta3_1 = theta3_1 - (Math.toRadians(22.5))
              inv[2] = Math.toDegrees(theta3_1);
-             inv[3] = Math.toDegrees(theta4_1);
+		   // adding in offset
+		   theta4_1 = theta4_1 - (Math.toRadians(45))
+             inv[3] = (Math.toDegrees(theta4_1));
              System.out.println(inv[0]);
              System.out.println(inv[1]);
              System.out.println(inv[2]);
