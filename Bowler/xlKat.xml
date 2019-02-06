@@ -24,7 +24,7 @@
 <link>
 	<name>shoulderRoll</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>0</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -78,7 +78,7 @@
 <link>
 	<name>shoulderPitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>1</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -132,7 +132,7 @@
 <link>
 	<name>kneePitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>2</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -186,7 +186,7 @@
 <link>
 	<name>anklePitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>3</index>
 	<scale>-0.829</scale>
 	<upperLimit>360.0</upperLimit>
@@ -273,7 +273,7 @@
 <link>
 	<name>shoulderRoll</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>4</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -327,7 +327,7 @@
 <link>
 	<name>shoulderPitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>5</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -381,7 +381,7 @@
 <link>
 	<name>kneePitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>6</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -435,7 +435,7 @@
 <link>
 	<name>anklePitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>7</index>
 	<scale>-0.829</scale>
 	<upperLimit>360.0</upperLimit>
@@ -522,7 +522,7 @@
 <link>
 	<name>shoulderRoll</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>8</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -576,7 +576,7 @@
 <link>
 	<name>shoulderPitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>9</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -630,7 +630,7 @@
 <link>
 	<name>kneePitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>10</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -684,7 +684,7 @@
 <link>
 	<name>anklePitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>11</index>
 	<scale>-0.829</scale>
 	<upperLimit>360.0</upperLimit>
@@ -771,7 +771,7 @@
 <link>
 	<name>shoulderRoll</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>12</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -825,7 +825,7 @@
 <link>
 	<name>shoulderPitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>13</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -879,7 +879,7 @@
 <link>
 	<name>kneePitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>14</index>
 	<scale>0.833</scale>
 	<upperLimit>360.0</upperLimit>
@@ -933,7 +933,7 @@
 <link>
 	<name>anklePitch</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>15</index>
 	<scale>-0.829</scale>
 	<upperLimit>360.0</upperLimit>
@@ -1020,7 +1020,7 @@
 <link>
 	<name>basePan</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>11</index>
 	<scale>0.33</scale>
 	<upperLimit>255.0</upperLimit>
@@ -1064,7 +1064,7 @@
 <link>
 	<name>baseTilt</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>12</index>
 	<scale>0.33</scale>
 	<upperLimit>255.0</upperLimit>
@@ -1141,7 +1141,7 @@
 <link>
 	<name>basePan</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>13</index>
 	<scale>0.33</scale>
 	<upperLimit>255.0</upperLimit>
@@ -1185,7 +1185,7 @@
 <link>
 	<name>baseTilt</name>
 	<deviceName>hidDevice</deviceName>
-	<type>hidfast</type>
+	<type>dummy</type>
 	<index>14</index>
 	<scale>0.33</scale>
 	<upperLimit>255.0</upperLimit>
