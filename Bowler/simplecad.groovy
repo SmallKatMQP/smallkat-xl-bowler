@@ -29,8 +29,11 @@ return new ICadGenerator(){
 		AbstractLink abstractLink = d.getAbstractLink(linkIndex);// Transform used by the UI to render the location of the object
 		// Transform used by the UI to render the location of the object
 		Affine manipulator = dh.getListener();
+
+		def rVal = new Cube(dh.getR()>0?dh.getR():5,5,5).toCSG()
+					.toXMax()
 		
-		def parts = [new Cube(5).toCSG() ] as ArrayList<CSG>
+		def parts = [rVal] as ArrayList<CSG>
 		for(int i=0;i<parts.size();i++){
 			parts.get(i).setManipulator(manipulator);
 			parts.get(i).setColor(javafx.scene.paint.Color.RED)
