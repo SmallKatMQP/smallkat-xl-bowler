@@ -32,11 +32,36 @@ return new ICadGenerator(){
 
 		def rVal = new Cube(dh.getR()>0?dh.getR():5,5,5).toCSG()
 					.toXMax()
-		
-		def parts = [rVal] as ArrayList<CSG>
+		rVal.setColor(javafx.scene.paint.Color.RED)
+		CSG profile = new Cube(1,// x dimention
+					20,// y dimention
+				
+				1//  Z dimention
+				)
+				.toCSG()// converts it to a CSG tor display
+				.toYMin()
+				.toZMin()
+				.toXMin()
+				
+		CSG theta;
+		double thetaval = Math.toDegrees(dh.getTheta())
+		if(thetaval>1){
+			println "Theta is "+dh.getTheta()
+			theta= CSG.unionAll(
+			Extrude.revolve(profile,
+						(double)5, // rotation center radius, if 0 it is a circle, larger is a donut. Note it can be negative too
+						thetaval,// degrees through wich it should sweep
+						(int)10)//number of sweep increments
+			)
+		}else{
+			theta = profile.movex(5)
+		}
+		theta= moveDHValues(theta, dh )
+		theta.setColor(javafx.scene.paint.Color.BLUE)
+		def parts = [rVal,theta] as ArrayList<CSG>
 		for(int i=0;i<parts.size();i++){
 			parts.get(i).setManipulator(manipulator);
-			parts.get(i).setColor(javafx.scene.paint.Color.RED)
+			//parts.get(i).setColor(javafx.scene.paint.Color.RED)
 		}
 		return parts;
 
