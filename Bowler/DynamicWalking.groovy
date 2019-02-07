@@ -41,7 +41,7 @@ if(args==null){
 	boolean usePhysicsToMove = true;
 	long stepCycleTime =5000
 	long walkingTimeout =stepCycleTime*2
-	int numStepCycleGroups = 4
+	int numStepCycleGroups = 2
 	double standardHeadTailAngle =0;// -20
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
