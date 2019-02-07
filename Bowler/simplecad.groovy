@@ -46,7 +46,6 @@ return new ICadGenerator(){
 		CSG theta;
 		double thetaval = Math.toDegrees(dh.getTheta())
 		if(thetaval>1){
-			println "Theta is "+dh.getTheta()
 			theta= CSG.unionAll(
 			Extrude.revolve(profile,
 						(double)5, // rotation center radius, if 0 it is a circle, larger is a donut. Note it can be negative too
@@ -58,7 +57,23 @@ return new ICadGenerator(){
 		}
 		theta= moveDHValues(theta, dh )
 		theta.setColor(javafx.scene.paint.Color.BLUE)
-		def parts = [rVal,theta] as ArrayList<CSG>
+
+		CSG alpha;
+		double alphaVal = Math.toDegrees(dh.getAlpha())
+		if(alphaVal>1){
+			alpha= CSG.unionAll(
+			Extrude.revolve(profile,
+						(double)5, // rotation center radius, if 0 it is a circle, larger is a donut. Note it can be negative too
+						alphaVal,// degrees through wich it should sweep
+						(int)10)//number of sweep increments
+			)
+		}else{
+			alpha = profile.movex(5)
+		}
+		alpha= moveDHValues(alpha, dh )
+		alpha.setColor(javafx.scene.paint.Color.YELLOW)
+		
+		def parts = [rVal,theta,alpha] as ArrayList<CSG>
 		for(int i=0;i<parts.size();i++){
 			parts.get(i).setManipulator(manipulator);
 			//parts.get(i).setColor(javafx.scene.paint.Color.RED)
