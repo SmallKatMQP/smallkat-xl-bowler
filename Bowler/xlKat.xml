@@ -268,7 +268,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>dhsolver2.groovy</file>
+		<file>dhsolver.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
@@ -320,7 +320,7 @@
 		<Delta>0.0</Delta>
 		<Theta>0.0</Theta>
 		<Radius>0.0</Radius>
-		<Alpha>-90.0</Alpha>
+		<Alpha>90.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -372,7 +372,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>22.5</Theta>
+		<Theta>-22.5</Theta>
 		<Radius>92.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -426,7 +426,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-22.5</Theta>
+		<Theta>22.5</Theta>
 		<Radius>75.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -439,10 +439,10 @@
 	<index>7</index>
 	<scale>-0.829</scale>
 	<upperLimit>360.0</upperLimit>
-	<lowerLimit>0.0</lowerLimit>
+	<lowerLimit>-360.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>90.0</staticOffset>
+	<staticOffset>180.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>145</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -480,7 +480,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-45.0</Theta>
+		<Theta>45.0</Theta>
 		<Radius>71.03</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -499,7 +499,7 @@
 
 <baseToZframe>
 	<x>115.0</x>
-	<y>38.26</y>
+	<y>38.261</y>
 	<z>0.0</z>
 	<rotw>0.7071684852014806</rotw>
 	<rotx>-0.0</rotx>
