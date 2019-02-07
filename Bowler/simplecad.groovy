@@ -71,7 +71,7 @@ return new ICadGenerator(){
 		}else{
 			alpha = profile.movex(5)
 		}
-		alpha= moveDHValues(alpha.roty(90), dh )
+		alpha= alpha.roty(90)
 		alpha.setColor(javafx.scene.paint.Color.YELLOW)
 		
 		def parts = [rVal,theta,alpha] as ArrayList<CSG>
