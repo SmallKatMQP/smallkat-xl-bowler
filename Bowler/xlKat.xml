@@ -1142,7 +1142,7 @@
 	<name>basePan</name>
 	<deviceName>hidDevice</deviceName>
 	<type>dummy</type>
-	<index>13</index>
+	<index>16</index>
 	<scale>0.33</scale>
 	<upperLimit>255.0</upperLimit>
 	<lowerLimit>0.0</lowerLimit>
@@ -1186,7 +1186,7 @@
 	<name>baseTilt</name>
 	<deviceName>hidDevice</deviceName>
 	<type>dummy</type>
-	<index>14</index>
+	<index>17</index>
 	<scale>0.33</scale>
 	<upperLimit>255.0</upperLimit>
 	<lowerLimit>0.0</lowerLimit>
