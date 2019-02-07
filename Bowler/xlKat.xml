@@ -766,7 +766,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>dhsolver4.groovy</file>
+		<file>dhsolver3.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
@@ -774,8 +774,8 @@
 	<type>dummy</type>
 	<index>12</index>
 	<scale>0.833</scale>
-	<upperLimit>45.0</upperLimit>
-	<lowerLimit>-45.0</lowerLimit>
+	<upperLimit>360.0</upperLimit>
+	<lowerLimit>0.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
 	<staticOffset>0.0</staticOffset>
@@ -818,7 +818,7 @@
 		<Delta>0.0</Delta>
 		<Theta>0.0</Theta>
 		<Radius>0.0</Radius>
-		<Alpha>-90.0</Alpha>
+		<Alpha>90.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -828,11 +828,11 @@
 	<type>dummy</type>
 	<index>13</index>
 	<scale>0.833</scale>
-	<upperLimit>135.0</upperLimit>
-	<lowerLimit>-135.0</lowerLimit>
+	<upperLimit>360.0</upperLimit>
+	<lowerLimit>0.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>0.0</staticOffset>
+	<staticOffset>90.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>105</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -870,7 +870,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-22.5</Theta>
+		<Theta>22.5</Theta>
 		<Radius>92.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -882,11 +882,11 @@
 	<type>dummy</type>
 	<index>14</index>
 	<scale>0.833</scale>
-	<upperLimit>135.0</upperLimit>
-	<lowerLimit>-45.0</lowerLimit>
+	<upperLimit>360.0</upperLimit>
+	<lowerLimit>0.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>0.0</staticOffset>
+	<staticOffset>117.00623746936958</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>97</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -924,7 +924,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>22.5</Theta>
+		<Theta>-22.5</Theta>
 		<Radius>75.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -936,11 +936,11 @@
 	<type>dummy</type>
 	<index>15</index>
 	<scale>-0.829</scale>
-	<upperLimit>90.0</upperLimit>
-	<lowerLimit>-90.0</lowerLimit>
+	<upperLimit>360.0</upperLimit>
+	<lowerLimit>-360.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>0.0</staticOffset>
+	<staticOffset>180.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>145</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -978,7 +978,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-45.0</Theta>
+		<Theta>45.0</Theta>
 		<Radius>95.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
