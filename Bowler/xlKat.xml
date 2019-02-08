@@ -525,7 +525,7 @@
 	<type>dummy</type>
 	<index>8</index>
 	<scale>0.833</scale>
-	<upperLimit>86.25</upperLimit>
+	<upperLimit>100.0</upperLimit>
 	<lowerLimit>-100.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
@@ -579,11 +579,11 @@
 	<type>dummy</type>
 	<index>9</index>
 	<scale>0.833</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>0.0</lowerLimit>
+	<upperLimit>135.0</upperLimit>
+	<lowerLimit>-135.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>90.0</staticOffset>
+	<staticOffset>0.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>105</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -828,11 +828,11 @@
 	<type>dummy</type>
 	<index>13</index>
 	<scale>0.833</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>0.0</lowerLimit>
+	<upperLimit>100.0</upperLimit>
+	<lowerLimit>-100.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>90.0</staticOffset>
+	<staticOffset>0.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>105</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
