@@ -47,9 +47,9 @@ public class scriptJavaIKModel implements DhInverseSolver {
             System.out.println("x: " + x);
             
             //double Oang = Math.PI/2 + q.getRotationElevation();
-            double Oang = Math.toRadians(45);
-            
-            double Oanginv = (Math.PI/2) - Oang;
+//            double Oang = Math.toRadians(45);
+//            
+//            double Oanginv = (Math.PI/2) - Oang;
 
             double l1_d = links.get(0).getR();
             double l2_d = links.get(1).getR();
@@ -66,11 +66,15 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
 			double a1 = Math.atan2(y , x);
 			double a1d = Math.toDegrees(a1);
-			double a2 = Math.atan2(z,x); // Z angle using x axis and z axis
+			double a2 = Math.atan(z/x); // Z angle using x axis and z axis
 			double a2d = Math.toDegrees(a2);
 			double theta_1 = a1;
-	        double theta1d = Math.toDegrees(theta_1);	            
-            System.out.println("The first link angle = "+theta1d);
+	        double theta1d = Math.toDegrees(theta_1);	    
+
+	                
+            double Oang = Math.PI/4 - (a2*1.5);
+		  double Oangd = Math.toDegrees(Oang)
+    		  double Oanginv = ((Math.PI/2)-Oang);
 
             double r1 = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)); // X and Y plane Vector
             double r2 = Math.sqrt(Math.pow(x, 2) + Math.pow(y,2)+Math.pow(z, 2)); // Leg Vector
@@ -97,12 +101,15 @@ public class scriptJavaIKModel implements DhInverseSolver {
     		double B = Math.atan2(Py , Px);
     		double Y = Math.acos((Math.pow(Px, 2) + Math.pow(Py, 2) + Math.pow(l2_d, 2) - Math.pow(l3_d, 2)) / (2 * l2_d * Math.sqrt(Math.pow(Px, 2) + Math.pow(Py, 2))));
     		double theta2_1 = B - Y;
-            double theta2_2 = B + Y;
-    		
-            double ang1 = (Math.PI-(-theta2_1+theta3_2));
-            double theta4_1 = (((Math.PI - ang1) + Oanginv)) - Math.PI;
-            double ang2 = (theta2_2+theta3_2);
-            double theta4_2 = ((Math.PI-ang2)+Oanginv);
+          double theta2_2 = B + Y;
+
+		
+    		//double modifier = 2;
+  		//double AnkleAng = (a2*modifier);
+          double ang1 = (Math.PI-(-theta2_1+theta3_2));
+          double theta4_1 = (((Math.PI - ang1) + Oanginv)) - Math.PI;
+          double ang2 = (theta2_2+theta3_2);
+          double theta4_2 = ((Math.PI-ang2)+Oanginv);
             
             
             System.out.println(theta_1);

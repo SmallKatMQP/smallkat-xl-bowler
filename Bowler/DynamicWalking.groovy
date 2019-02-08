@@ -46,7 +46,7 @@ if(args==null){
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
-	double maxBodyDisplacementPerStep = 15
+	double maxBodyDisplacementPerStep = 30
 	double minBodyDisplacementPerStep = 10
 	args =  [stepOverHeight,
 	stepOverTime,
