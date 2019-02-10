@@ -686,12 +686,12 @@
 	<deviceName>hidDevice</deviceName>
 	<type>dummy</type>
 	<index>11</index>
-	<scale>0.0</scale>
-	<upperLimit>360.0</upperLimit>
-	<lowerLimit>-360.0</lowerLimit>
+	<scale>1.0</scale>
+	<upperLimit>170</upperLimit>
+	<lowerLimit>-165</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>180.0</staticOffset>
+	<staticOffset>10</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>145</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
