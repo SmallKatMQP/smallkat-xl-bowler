@@ -73,7 +73,7 @@ return new ICadGenerator(){
 
 		CSG alpha;
 		double alphaVal = Math.toDegrees(dh.getAlpha())
-		if(Math.abs(alphaVal)>0){
+		if(Math.abs(alphaVal)>10){
 			alpha= CSG.unionAll(
 			Extrude.revolve(profile,
 						0, // rotation center radius, if 0 it is a circle, larger is a donut. Note it can be negative too
