@@ -686,7 +686,7 @@
 	<deviceName>hidDevice</deviceName>
 	<type>dummy</type>
 	<index>11</index>
-	<scale>-0.829</scale>
+	<scale>0.0</scale>
 	<upperLimit>360.0</upperLimit>
 	<lowerLimit>-360.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>

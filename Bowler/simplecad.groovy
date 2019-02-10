@@ -20,8 +20,9 @@ return new ICadGenerator(){
 
 	@Override
 	public ArrayList<CSG> generateCad(DHParameterKinematics d, int linkIndex) {
+		
 		ArrayList<CSG> allCad=new ArrayList<>();
-				ArrayList<DHLink> dhLinks = d.getChain().getLinks()
+		ArrayList<DHLink> dhLinks = d.getChain().getLinks()
 		DHLink dh = dhLinks.get(linkIndex)
 		// Hardware to engineering units configuration
 		LinkConfiguration conf = d.getLinkConfiguration(linkIndex);
@@ -29,7 +30,12 @@ return new ICadGenerator(){
 		AbstractLink abstractLink = d.getAbstractLink(linkIndex);// Transform used by the UI to render the location of the object
 		// Transform used by the UI to render the location of the object
 		Affine manipulator = dh.getListener();
-
+		Affine lastLinkFrame
+		if(linkIndex==0)
+			lastLinkFrame=d.getRootListener()
+		else
+			lastLinkFrame=dhLinks.get(linkIndex-1).getListener();
+		
 		def rVal = new Cube(dh.getR()>0?dh.getR():5,5,5).toCSG()
 					.toXMax()
 		rVal.setColor(javafx.scene.paint.Color.RED)
@@ -55,8 +61,12 @@ return new ICadGenerator(){
 		}else{
 			theta = profile.movex(5)
 		}
-		theta= moveDHValues(theta, dh )
-		theta.setColor(javafx.scene.paint.Color.BLUE)
+		
+		if(thetaval>0){
+			theta= theta.rotz(-thetaval)
+		}
+		
+		theta.setColor(thetaval>0?javafx.scene.paint.Color.BLUE:javafx.scene.paint.Color.AQUA)
 
 		CSG alpha;
 		double alphaVal = Math.toDegrees(dh.getAlpha())
@@ -72,13 +82,40 @@ return new ICadGenerator(){
 			alpha = profile.movex(5)
 		}
 		alpha= alpha.roty(90)
-		alpha.setColor(javafx.scene.paint.Color.YELLOW)
+		if(alphaVal<0){
+			alpha= alpha.rotx(-alphaVal)	
+		}
+		alpha= alpha.rotz(-thetaval)
+				.movez(dh.getD())
+		alpha.setColor(alphaVal>0?javafx.scene.paint.Color.YELLOW:javafx.scene.paint.Color.GOLDENROD)
+
+		def dpart = new Cube(5,5,dh.getD()>0?dh.getD():2.5).toCSG()
+					.toZMin()
+		double upperLimit = abstractLink.getMaxEngineeringUnits()
+		double lowerLimit = abstractLink.getMinEngineeringUnits()
+		double totalRange = (upperLimit-lowerLimit)
+		if(totalRange>360)
+		totalRange=360
+		def linkLimits= CSG.unionAll(
+			Extrude.revolve(profile,
+						(double)5, // rotation center radius, if 0 it is a circle, larger is a donut. Note it can be negative too
+						totalRange,// degrees through wich it should sweep
+						(int)20)//number of sweep increments
+			)
+			.rotz(-thetaval)
+			.movez(-1)
 		
-		def parts = [rVal,theta,alpha] as ArrayList<CSG>
+		def lastFrameParts = [theta,alpha,dpart,linkLimits]
+		def parts = [rVal] as ArrayList<CSG>
 		for(int i=0;i<parts.size();i++){
 			parts.get(i).setManipulator(manipulator);
 			//parts.get(i).setColor(javafx.scene.paint.Color.RED)
 		}
+		for(int i=0;i<lastFrameParts.size();i++){
+			lastFrameParts.get(i).setManipulator(lastLinkFrame);
+			//parts.get(i).setColor(javafx.scene.paint.Color.RED)
+		}
+		parts.addAll(lastFrameParts)
 		return parts;
 
 	}
