@@ -96,20 +96,21 @@ return new ICadGenerator(){
 		double upperLimit = -abstractLink.getMaxEngineeringUnits()
 		double lowerLimit = -abstractLink.getMinEngineeringUnits()
 		double totalRange = -(upperLimit-lowerLimit)
-		if(totalRange>360)
-			totalRange=360
-		if(totalRange<20)
-			totalRange=20
+		def min = 20
+		if(totalRange>360-min)
+			totalRange=360-min
+		if(totalRange<min)
+			totalRange=min
 		println "Link range = "+totalRange
 		def rangeComp = 360-totalRange
 		def orentationAdjust = -thetaval+90
 		def Range = CSG.unionAll(
 		Extrude.revolve(profile,
 				0, // rotation center radius, if 0 it is a circle, larger is a donut. Note it can be negative too
-				totalRange,// degrees through wich it should sweep
-				(int)20)//number of sweep increments
+				rangeComp,// degrees through wich it should sweep
+				(int)min)//number of sweep increments
 		)
-		.rotz(upperLimit+orentationAdjust)
+		.rotz(lowerLimit+orentationAdjust)
 		.movez(-2)
 		.setColor(javafx.scene.paint.Color.LIGHTGREEN)
 		def upperLim = profile
