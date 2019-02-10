@@ -68,6 +68,7 @@ return new ICadGenerator(){
 			theta= theta.rotz(-thetaval)
 		}
 		theta= theta.rotz(90)
+		.movez(-0.5)
 		theta.setColor(thetaval>0?javafx.scene.paint.Color.BLUE:javafx.scene.paint.Color.AQUA)
 
 		CSG alpha;
@@ -84,11 +85,12 @@ return new ICadGenerator(){
 			alpha = profile
 		}
 		alpha= alpha.roty(90)
-		if(alphaVal<0){
-			alpha= alpha.rotx(-alphaVal)	
+		if(alphaVal>0){
+			alpha= alpha.rotx(alphaVal)	
 		}
-		alpha= alpha.rotz(-thetaval)
-				.movez(dh.getD())
+		alpha= alpha
+			.rotx(-90)
+			.movex(-dh.getR())
 		alpha.setColor(alphaVal>0?javafx.scene.paint.Color.YELLOW:javafx.scene.paint.Color.GOLDENROD)
 
 		def dpart = new Cube(5,5,dh.getD()>0?dh.getD():2.5).toCSG()
@@ -122,8 +124,8 @@ return new ICadGenerator(){
 		def zeroLim = profile
 					.rotz(orentationAdjust)
 					.setColor(javafx.scene.paint.Color.INDIGO)
-		def lastFrameParts = [theta,alpha,dpart,upperLim,lowerLim,zeroLim,Range]
-		def parts = [rVal] as ArrayList<CSG>
+		def lastFrameParts = [theta,dpart,upperLim,lowerLim,zeroLim,Range]
+		def parts = [rVal,alpha] as ArrayList<CSG>
 		for(int i=0;i<parts.size();i++){
 			parts.get(i).setManipulator(manipulator);
 			//parts.get(i).setColor(javafx.scene.paint.Color.RED)
