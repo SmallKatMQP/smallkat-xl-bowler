@@ -53,7 +53,7 @@ return new ICadGenerator(){
 				
 		CSG theta;
 		double thetaval = Math.toDegrees(dh.getTheta())
-		if(Math.abs(thetaval)>1){
+		if(Math.abs(thetaval)>10){
 			theta= CSG.unionAll(
 			Extrude.revolve(profile,
 						0, // rotation center radius, if 0 it is a circle, larger is a donut. Note it can be negative too
