@@ -67,7 +67,7 @@ return new ICadGenerator(){
 		if(thetaval>0){
 			theta= theta.rotz(-thetaval)
 		}
-		
+		theta= theta.rotz(90)
 		theta.setColor(thetaval>0?javafx.scene.paint.Color.BLUE:javafx.scene.paint.Color.AQUA)
 
 		CSG alpha;
