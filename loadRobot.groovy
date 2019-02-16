@@ -15,7 +15,7 @@ public class SimpleServoHID extends HIDSimplePacketComs {
 	private PacketType servos = new edu.wpi.SimplePacketComs.BytePacketType(1962, 64);
 	private PacketType imuData = new edu.wpi.SimplePacketComs.FloatPacketType(1804, 64);
 	private final double[] status = new double[12];
-	private final byte[] data = new byte[16];
+	private final byte[] data = new byte[64];
 
 	public SimpleServoHID(int vidIn, int pidIn) {
 		super(vidIn, pidIn);
@@ -56,12 +56,18 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 		simple.connect()
 	}
 	void setValue(int i,int position){
-		simple.getData()[i]=(byte)position;
+		byte[] shiftedPos = new byte[2];
+		shiftedPos = angleToBytes(position);
+		simple.getData()[i*2]=shiftedPos[0];
+		simple.getData()[i*2+1]=shiftedPos[1];
 	}
 	int getValue(int i){
-		if(simple.getData()[i]>0)
-			return simple.getData()[i]
-		return ((int)simple.getData()[i])+256
+		int angle;
+		byte[] data = new byte[2];
+		data[0] = simple.getData()[2*i]
+		data[1] = simple.getData()[2*i+1]
+		angle = bytesToAngle(data);
+		return (angle)
 	}
 	public float[] getImuData() {
 		return simple.getImuData();
@@ -71,6 +77,18 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 		// no namespaces on dummy
 		return [];
 	}
+	  public static byte[] angleToBytes(int angle){
+        byte[] angleBytes = new byte[2];
+        angleBytes[0] = (byte)(angle>>8);
+        angleBytes[1] = (byte)(angle);
+        return angleBytes;
+    }
+    public static int bytesToAngle(byte[] data){
+        int angle;
+        angle = data[1]|data[0]>>8;
+        System.out.println("Angle"+angle);
+        return angle;
+    }
 
 
 }
@@ -145,8 +163,8 @@ public class HIDRotoryLink extends AbstractRotoryLink{
 
 def dev = DeviceManager.getSpecificDevice( "hidDevice",{
 	//If the device does not exist, prompt for the connection
-
-	HIDSimpleComsDevice d = new HIDSimpleComsDevice(0x16C0 ,0x0486 )
+	
+	HIDSimpleComsDevice d = new HIDSimpleComsDevice(0x3742 ,0x5750 )
 	d.connect(); // Connect to it.
 
 	LinkFactory.addLinkProvider("hidfast",{LinkConfiguration conf->
