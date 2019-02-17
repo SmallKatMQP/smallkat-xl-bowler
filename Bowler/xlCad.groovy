@@ -54,9 +54,9 @@ return new ICadGenerator(){
 		  if(linkIndex >1)
 		    return allCad;
 		  if(linkIndex ==0){
-		    // legFile = ScriptingEngine.fileFromGit(giturl, "cad/HeadLink.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/HeadLink.stl");
 		  } else if(linkIndex ==1){
-		    // legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
 		  } else if (linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
 			
