@@ -33,7 +33,7 @@ public class SimpleServoHID extends HIDSimplePacketComs {
 	}
 	public byte[] getData() {
 		return data;
-	}	
+	}
 
 }
 
@@ -86,7 +86,7 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
     public static int bytesToAngle(byte[] data){
         int angle;
         angle = data[1]|data[0]>>8;
-        System.out.println("Angle"+angle);
+        //System.out.println("Angle"+angle);
         return angle;
     }
 
@@ -163,7 +163,7 @@ public class HIDRotoryLink extends AbstractRotoryLink{
 
 def dev = DeviceManager.getSpecificDevice( "hidDevice",{
 	//If the device does not exist, prompt for the connection
-	
+
 	HIDSimpleComsDevice d = new HIDSimpleComsDevice(0x3742 ,0x5750 )
 	d.connect(); // Connect to it.
 

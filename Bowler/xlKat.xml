@@ -2,7 +2,7 @@
 <mobilebase>
 	<cadEngine>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Bowler/simplecad.groovy</file>
+		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<driveEngine>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
@@ -15,7 +15,7 @@
 <name>FrontRight</name>
 	<cadEngine>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Bowler/simplecad.groovy</file>
+		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
@@ -264,7 +264,7 @@
 <name>FrontLeft</name>
 	<cadEngine>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Bowler/simplecad.groovy</file>
+		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
@@ -513,7 +513,7 @@
 <name>BackRight</name>
 	<cadEngine>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Bowler/simplecad.groovy</file>
+		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
@@ -762,7 +762,7 @@
 <name>BackLeft</name>
 	<cadEngine>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Bowler/simplecad.groovy</file>
+		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
@@ -1011,7 +1011,7 @@
 <name>Head</name>
 	<cadEngine>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Bowler/simplecad.groovy</file>
+		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/carl-the-hexapod.git</git>
@@ -1132,7 +1132,7 @@
 <name>Tail</name>
 	<cadEngine>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Bowler/simplecad.groovy</file>
+		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/madhephaestus/carl-the-hexapod.git</git>
