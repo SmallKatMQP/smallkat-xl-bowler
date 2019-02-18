@@ -1014,8 +1014,8 @@
 		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://github.com/madhephaestus/carl-the-hexapod.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
+		<file>Kinematics/headik.groovy</file>
 	</kinematics>
 <link>
 	<name>basetilt</name>
@@ -1209,8 +1209,8 @@
 		<file>Bowler/xlCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://github.com/madhephaestus/carl-the-hexapod.git</git>
-		<file>DefaultDhSolver.groovy</file>
+		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
+		<file>Kinematics/tailik.groovy</file>
 	</kinematics>
 <link>
 	<name>basePan</name>
