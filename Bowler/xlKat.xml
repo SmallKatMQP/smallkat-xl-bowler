@@ -1315,8 +1315,8 @@
 	<DHParameters>
 		<Delta>0.0</Delta>
 		<Theta>0.0</Theta>
-		<Radius>87.217</Radius>
-		<Alpha>-90.0</Alpha>
+		<Radius>235.07</Radius>
+		<Alpha>90.0</Alpha>
 	</DHParameters>
 
 </link>
