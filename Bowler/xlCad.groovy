@@ -39,13 +39,13 @@ return new ICadGenerator(){
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
 		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
-		
+
 	// Load the .CSG from the disk and cache it in memory
 		CSG body = new Cube(10).toCSG();
 		if (isFullModel){
 			body  = Vitamins.get(mainBodyFile);
 		}
-		
+
 		body.setManipulator(b.getRootListener());
 		body.setColor(javafx.scene.paint.Color.WHITE)
 		def parts = [body ] as ArrayList<CSG>
@@ -72,7 +72,7 @@ return new ICadGenerator(){
 		}
 		if(legRoot.getX()>0){
 			rear=false;
-		} 
+		}
 
 		if(limbName.contentEquals("Tail")){
 		  if(linkIndex ==0){
@@ -93,7 +93,7 @@ return new ICadGenerator(){
 		    legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
 		  } else if (linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
-			
+
 		  } else if(linkIndex > 2){
 		    return allCad;
 		  } else {
@@ -187,7 +187,7 @@ return new ICadGenerator(){
 		}
 		return parts;
 	}
-	
+
 	private ArrayList<CSG> generateStickModel(DHParameterKinematics d, int linkIndex){
 		ArrayList<CSG> allCad=new ArrayList<>();
 		ArrayList<DHLink> dhLinks = d.getChain().getLinks()
@@ -199,26 +199,26 @@ return new ICadGenerator(){
 		// Transform used by the UI to render the location of the object
 		Affine manipulator = dh.getListener();
 		Affine lastLinkFrame
-		
+
 		if(linkIndex==0)
 			lastLinkFrame=d.getRootListener()
 		else
 			lastLinkFrame=dhLinks.get(linkIndex-1).getListener();
-		
+
 		def rVal = new Cube(dh.getR()>0?dh.getR():5,5,5).toCSG()
 					.toXMax()
 					.toZMax()
 		rVal.setColor(javafx.scene.paint.Color.RED)
 		CSG profile = new Cube(1,// x dimention
 					20,// y dimention
-				
+
 				1//  Z dimention
 				)
 				.toCSG()// converts it to a CSG tor display
 				.toYMin()
 				.toZMin()
 				//.toXMin()
-				
+
 		CSG theta;
 		double thetaval = Math.toDegrees(dh.getTheta())
 		if(Math.abs(thetaval)>10){
@@ -231,7 +231,7 @@ return new ICadGenerator(){
 		}else{
 			theta = profile
 		}
-		
+
 		if(thetaval>0){
 			theta= theta.rotz(-thetaval)
 		}
@@ -254,7 +254,7 @@ return new ICadGenerator(){
 		}
 		alpha= alpha.roty(90)
 		if(alphaVal>0){
-			alpha= alpha.rotx(alphaVal)	
+			alpha= alpha.rotx(alphaVal)
 		}
 		alpha= alpha
 			.rotx(-90)
@@ -291,7 +291,7 @@ return new ICadGenerator(){
 
 
 		Range.setColor(javafx.scene.paint.Color.LIGHTGREEN)
-		
+
 		def upperLim = profile
 					.rotz(upperLimit+orentationAdjust)
 					.setColor(javafx.scene.paint.Color.HOTPINK)
