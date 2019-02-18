@@ -1213,7 +1213,7 @@
 		<file>Kinematics/tailik.groovy</file>
 	</kinematics>
 <link>
-	<name>basePan</name>
+	<name>baseTilt</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
 	<index>16</index>
@@ -1257,7 +1257,7 @@
 
 </link>
 <link>
-	<name>baseTilt</name>
+	<name>basePan</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
 	<index>17</index>
