@@ -92,7 +92,7 @@ return new ICadGenerator(){
 		  } else if(linkIndex ==1){
 		    legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
 		  } else if (linkIndex == 2){
-		    //legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
+		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
 
 		  } else if(linkIndex > 2){
 		    return allCad;

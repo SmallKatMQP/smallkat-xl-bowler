@@ -1218,17 +1218,27 @@
 	<type>hidfast</type>
 	<index>16</index>
 	<scale>0.33</scale>
-	<upperLimit>255.0</upperLimit>
+	<upperLimit>360.0</upperLimit>
 	<lowerLimit>0.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>128.43283582089552</staticOffset>
+	<staticOffset>0.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>235</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
 	<homingTPS>10000000</homingTPS>
 
 	<vitamins>
+		<vitamin>
+			<name>electroMechanical</name>
+			<type>hobbyServo</type>
+			<id>standardMicro</id>
+		</vitamin>
+		<vitamin>
+			<name>shaft</name>
+			<type>hobbyServoHorn</type>
+			<id>standardMicro1</id>
+		</vitamin>
 
 	</vitamins>
 	<passive>false</passive>
@@ -1250,9 +1260,9 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>0.0</Theta>
-		<Radius>40.5</Radius>
-		<Alpha>-90.0</Alpha>
+		<Theta>180.0</Theta>
+		<Radius>56.0</Radius>
+		<Alpha>0.0</Alpha>
 	</DHParameters>
 
 </link>
@@ -1294,8 +1304,8 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-90.0</Theta>
-		<Radius>0.0</Radius>
+		<Theta>0.0</Theta>
+		<Radius>171.9512195121951</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
 
@@ -1312,13 +1322,13 @@
 </ZframeToRAS>
 
 <baseToZframe>
-	<x>-96.4046556122449</x>
+	<x>-161.45</x>
 	<y>0.0</y>
-	<z>113.07849494778381</z>
-	<rotw>6.170670739598364E-5</rotw>
-	<rotx>-6.170670739598362E-5</rotx>
-	<roty>-0.7071067784940844</roty>
-	<rotz>0.7071067784940845</rotz>
+	<z>37.1</z>
+	<rotw>0.7071067811865476</rotw>
+	<rotx>0.7071067811865475</rotx>
+	<roty>-4.791541927135544E-21</roty>
+	<rotz>4.7915419271355436E-21</rotz>
 </baseToZframe>
 
 </appendage>
