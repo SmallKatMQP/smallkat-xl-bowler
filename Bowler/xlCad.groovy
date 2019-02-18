@@ -85,7 +85,7 @@ return new ICadGenerator(){
 		    println "Incorrect Tail Index"
 		  }
 		} else if(limbName.contentEquals("Head")){
-		  if(linkIndex >1)
+		  if(linkIndex >2)
 		    return allCad;
 		  if(linkIndex ==0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/HeadLink.stl");
