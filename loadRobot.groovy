@@ -80,7 +80,14 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 	  public static byte[] angleToBytes(int angle){
         byte[] angleBytes = new byte[2];
         angleBytes[0] = (byte)(angle>>8);
+        if(((int)angleBytes[0])<0){
+        	angleBytes[0] = (int)angleBytes[0]+255;
+        }
         angleBytes[1] = (byte)(angle);
+        if(((int)angleBytes[1])<0){
+        	angleBytes[1] = (int)angleBytes[1]+255;
+        }
+        System.out.println(angleBytes[0]+", "+angleBytes[1]);
         return angleBytes;
     }
     public static int bytesToAngle(byte[] data){
