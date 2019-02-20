@@ -20,7 +20,7 @@ enum WalkingState {
 }
 
 if(args==null){
-	double stepOverHeight=10;
+	double stepOverHeight=20;
 	long stepOverTime=20*5*3;// Servo loop times number of points times Nyquest doubeling
 	Double zLock=-200;
 	Closure calcHome = { DHParameterKinematics leg ->
@@ -40,14 +40,14 @@ if(args==null){
 	}
 	boolean usePhysicsToMove = true;
 	long stepCycleTime =5000
-	long walkingTimeout =stepCycleTime*2
+	long walkingTimeout =5000
 	int numStepCycleGroups = 2
 	double standardHeadTailAngle =0;// -20
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
 	double maxBodyDisplacementPerStep = 70
-	double minBodyDisplacementPerStep = 60
+	double minBodyDisplacementPerStep = 65
 	args =  [stepOverHeight,
 	stepOverTime,
 	zLock,
@@ -235,8 +235,8 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	}
 	void sit(double sitAngle){
 		return
-	if(!source.getScriptingName().contains("Kat"))
-		return
+	//if(!source.getScriptingName().contains("Kat"))
+	//	return
 		double incremnt = 0.05
 		for(double i=0;i<1;i+=incremnt){
 			double angle =  sitAngle*i+(startAngle*(1-i))
@@ -301,7 +301,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 		if(reset+walkingTimeout< System.currentTimeMillis()){
 			threadDone=true;
 			stepResetter=null;
-			if(!source.getScriptingName().contains("Kat")){
+			//if(!source.getScriptingName().contains("Kat")){
 				println "FIRING reset from reset thread"
 				resetting=true;
 				long tmp= reset;
@@ -332,11 +332,12 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 				for(int i=0;i<numlegs;i++){
 					StepHome(legs.get(i))
 				}
+				
 				resettingindex=numlegs;
 				resetting=false;
 				return
-			}
-			sit(-20);
+			//}
+			sit(-10);
 
 		}
 	}

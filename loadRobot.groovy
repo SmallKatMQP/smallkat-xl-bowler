@@ -79,7 +79,7 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 	}
 	  public static byte[] angleToBytes(int angle){
         byte[] angleBytes = new byte[2];
-        angleBytes[0] = (byte)(angle>>8);
+        angleBytes[0] = (byte)(angle>>8)
         angleBytes[1] = (byte)(angle);
         return angleBytes;
     }
@@ -94,7 +94,7 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
       		parts[i] = (int)data[i];
       	}
         }
-        angle = parts[0]<<8|parts[1];
+        angle = (parts[0]<<8)+parts[1];
        
         //System.out.println("Angle"+angle);
         return angle;
