@@ -20,7 +20,7 @@ enum WalkingState {
 }
 
 if(args==null){
-	double stepOverHeight=20;
+	double stepOverHeight=5;
 	long stepOverTime=20*5*3;// Servo loop times number of points times Nyquest doubeling
 	Double zLock=-200;
 	Closure calcHome = { DHParameterKinematics leg ->
@@ -46,8 +46,8 @@ if(args==null){
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
-	double maxBodyDisplacementPerStep = 70
-	double minBodyDisplacementPerStep = 65
+	double maxBodyDisplacementPerStep = 50
+	double minBodyDisplacementPerStep = 45
 	args =  [stepOverHeight,
 	stepOverTime,
 	zLock,
@@ -423,10 +423,15 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 				//println "To new target " +gaitIntermediatePercentage
 				walkingState= WalkingState.ToNewTarget
 				getUpLegs().collect{
-					if(it.checkTaskSpaceTransform(tf))
-				 		cycleStartPoint.put(it,calcForward(it,tf))
-				 	else
-				 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+					try{
+						if(it.checkTaskSpaceTransform(tf))
+					 		cycleStartPoint.put(it,calcForward(it,tf))
+					 	else
+					 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+			 		}catch(Exception ex){
+						System.err.println(it.getName()+" cant achive "+tf );
+						cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+					}
 				}
 				//computeUpdatePose()
 			}else
@@ -443,10 +448,15 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 				walkingState= WalkingState.Falling
 				//println "Falling " +gaitIntermediatePercentage
 				getUpLegs().collect{
-					if(it.checkTaskSpaceTransform(tf))
-				 		cycleStartPoint.put(it,calcForward(it,tf))
-				 	else
-				 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+					try{
+						if(it.checkTaskSpaceTransform(tf))
+					 		cycleStartPoint.put(it,calcForward(it,tf))
+					 	else
+					 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+					}catch(Exception ex){
+						System.err.println(it.getName()+" cant achive "+tf );
+						cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+					}
 				}
 				//computeUpdatePose()
 
@@ -715,7 +725,12 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	 * @return the transform nr
 	 */
 	public double[] calcForward(DHParameterKinematics leg ,TransformNR transformTarget){
-		return leg.inverseKinematics(leg.inverseOffset(transformTarget));
+		try{
+			return leg.inverseKinematics(leg.inverseOffset(transformTarget));
+		}catch(Exception ex){
+			System.err.println(leg.getName()+" cant achive "+transformTarget );
+			return leg.getCurrentJointSpaceVector();
+		}
 	}
 	boolean check(DHParameterKinematics leg,TransformNR newPose){
 		TransformNR stepup = newPose.copy();
