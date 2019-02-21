@@ -15,7 +15,6 @@
 <name>FrontRight</name>
 	<cadEngine>
 		<git>https://gist.github.com/76a595d821689e938078ca6c1af9a5f4.git</git>
-		<file>simplecad.groovy</file><git>https://gist.github.com/76a595d821689e938078ca6c1af9a5f4.git</git>
 		<file>simplecad.groovy</file>
 	</cadEngine>
 	<kinematics>
