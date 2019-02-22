@@ -20,13 +20,13 @@ enum WalkingState {
 }
 
 if(args==null){
-	double stepOverHeight=5;
+	double stepOverHeight=15;
 	long stepOverTime=20*5*3;// Servo loop times number of points times Nyquest doubeling
 	Double zLock=-200;
 	Closure calcHome = { DHParameterKinematics leg ->
 			TransformNR h=leg.calcHome()
 	 		TransformNR  legRoot= leg.getRobotToFiducialTransform()
-			TransformNR tr = leg.forwardOffset(new TransformNR())
+			TransformNR tr = legRoot.copy()
 			tr.setZ(zLock)
 			//Bambi-on-ice the legs a bit
 			if(legRoot.getY()>0){
@@ -46,8 +46,8 @@ if(args==null){
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
-	double maxBodyDisplacementPerStep = 50
-	double minBodyDisplacementPerStep = 45
+	double maxBodyDisplacementPerStep = 70
+	double minBodyDisplacementPerStep = 65
 	args =  [stepOverHeight,
 	stepOverTime,
 	zLock,
@@ -63,7 +63,7 @@ if(args==null){
 	minBodyDisplacementPerStep,
 	walkingTimeout]
 }
-
+Log.enableSystemPrint(true)
 return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	boolean resetting=false;
 	double stepOverHeight=(double)args.get(0);
@@ -375,6 +375,11 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			leg.setDesiredTaskSpaceTransform(pose, 0);
 	}
 	private void upStateMachine(def leg){
+		def debugFlag =false
+
+		if(leg.getScriptingName().equals("BackRight")){
+			debugFlag=true;
+		}
 		//println "Up Moving to "+percentage
 		double gaitTimeRemaining = (double) (System.currentTimeMillis()-timeOfCycleStart)
 		double gaitPercentage = gaitTimeRemaining/(double)(stepCycleTime)
@@ -390,10 +395,18 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			//gaitIntermediatePercentage=1
 			tf = compute(leg,gaitIntermediatePercentage,myPose)
 			tf.setZ(zLock+(stepOverHeight*gaitIntermediatePercentage));
+			if(leg.getScriptingName().equals("BackRight")){
+				println tf
+			}
 			if(gaitPercentage>0.25) {
 				walkingState= WalkingState.ToHome
-				//println "\nto Home "
-				getUpLegs().collect{
+				println "\n\n\nto Home "
+				getUpLegs().each{
+					tf = compute(it,gaitIntermediatePercentage,myPose)
+					tf.setZ(zLock+(stepOverHeight*gaitIntermediatePercentage));
+					if(it.getScriptingName().equals("BackRight")){
+						println tf
+					}
 					if(it.checkTaskSpaceTransform(tf))
 				 		cycleStartPoint.put(it,calcForward(it,tf))
 				 	else
@@ -420,9 +433,14 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			tf=dyHome
 			tf.setZ(zLock+(stepOverHeight));
 			if(gaitPercentage>0.5) {
-				//println "To new target " +gaitIntermediatePercentage
+				println "To new target " +gaitIntermediatePercentage
 				walkingState= WalkingState.ToNewTarget
-				getUpLegs().collect{
+				getUpLegs().each{
+					tf=dynamicHome( it)
+					tf.setZ(zLock+(stepOverHeight));
+					if(it.getScriptingName().equals("BackRight")){
+						println tf
+					}
 					try{
 						if(it.checkTaskSpaceTransform(tf))
 					 		cycleStartPoint.put(it,calcForward(it,tf))
@@ -446,9 +464,14 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			tf.setZ(zLock+(stepOverHeight));
 			if(gaitPercentage>0.75) {
 				walkingState= WalkingState.Falling
-				//println "Falling " +gaitIntermediatePercentage
-				getUpLegs().collect{
+				println "Falling " +gaitIntermediatePercentage
+				getUpLegs().each{
+					tf = compute(it,localPercent,NewTmpPose)
+					tf.setZ(zLock+(stepOverHeight));
 					try{
+						if(it.getScriptingName().equals("BackRight")){
+						println tf
+					}
 						if(it.checkTaskSpaceTransform(tf))
 					 		cycleStartPoint.put(it,calcForward(it,tf))
 					 	else
@@ -469,17 +492,22 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			tf = compute(leg,gaitIntermediatePercentage,myPose)
 			tf.setZ(zLock+stepOverHeight-(stepOverHeight*gaitIntermediatePercentage));
 			//tf.setZ(zLock+stepOverHeight);
-			if(gaitPercentage>1) {
+			if(gaitPercentage>=1) {
 				//tf = dynamicHome( leg)
 				walkingState=WalkingState.Rising
-				//print "\r\nRising Walk cycle loop time "+(System.currentTimeMillis()-timeOfCycleStart) +" "
-				getUpLegs().collect{
+				println "Rising Walk cycle loop time "+(System.currentTimeMillis()-timeOfCycleStart) +" "
+				getUpLegs().each{
+					tf = compute(it,gaitIntermediatePercentage,myPose)
+					tf.setZ(zLock+stepOverHeight-(stepOverHeight*gaitIntermediatePercentage));
+					if(it.getScriptingName().equals("BackRight")){
+						println tf
+					}
 					if(it.checkTaskSpaceTransform(tf))
 				 		cycleStartPoint.put(it,calcForward(it,tf))
 				 	else
 				 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
 				}
-				getDownLegs().collect{
+				getDownLegs().each{
 					//def pose =compute(it,1,newPose)
 					//if(it.checkTaskSpaceTransform(pose))
 				 	//	cycleStartPoint.put(it,calcForward(it,pose))
@@ -499,10 +527,11 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			break;
 		}
 		//println "Gait Percent = "+gaitIntermediatePercentage
+
 		if(leg.checkTaskSpaceTransform(tf))
 			leg.setDesiredTaskSpaceTransform(tf, 0);
 		else{
-			if(leg.getScriptingName().contains("One")){
+			if(leg.getScriptingName().contains("BackRight")){
 			//Log.enableErrorPrint()
 			println leg.getScriptingName()+" failed in state "+ walkingState+" "+tf
 			}
@@ -726,7 +755,8 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	 */
 	public double[] calcForward(DHParameterKinematics leg ,TransformNR transformTarget){
 		try{
-			return leg.inverseKinematics(leg.inverseOffset(transformTarget));
+			def joints= leg.inverseKinematics(leg.inverseOffset(transformTarget));
+			return joints
 		}catch(Exception ex){
 			System.err.println(leg.getName()+" cant achive "+transformTarget );
 			return leg.getCurrentJointSpaceVector();
@@ -922,7 +952,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 				stepResetter = new Thread(){
 					public void run(){
 						computeUpdatePose()
-						legs.collect{
+						legs.each{
 					 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
 						}
 						sit(0);
