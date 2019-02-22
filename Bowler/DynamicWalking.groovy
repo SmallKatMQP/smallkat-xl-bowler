@@ -405,7 +405,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 					tf = compute(it,gaitIntermediatePercentage,myPose)
 					tf.setZ(zLock+(stepOverHeight*gaitIntermediatePercentage));
 					if(it.getScriptingName().equals("BackRight")){
-						println tf
+						//println tf
 					}
 					if(it.checkTaskSpaceTransform(tf))
 				 		cycleStartPoint.put(it,calcForward(it,tf))
