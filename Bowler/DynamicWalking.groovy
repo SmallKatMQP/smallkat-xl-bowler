@@ -396,11 +396,11 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			tf = compute(leg,gaitIntermediatePercentage,myPose)
 			tf.setZ(zLock+(stepOverHeight*gaitIntermediatePercentage));
 			if(leg.getScriptingName().equals("BackRight")){
-				println tf
+				//println tf
 			}
 			if(gaitPercentage>0.25) {
 				walkingState= WalkingState.ToHome
-				println "\n\n\nto Home "
+				//println "\n\n\nto Home "
 				getUpLegs().each{
 					tf = compute(it,gaitIntermediatePercentage,myPose)
 					tf.setZ(zLock+(stepOverHeight*gaitIntermediatePercentage));
@@ -433,13 +433,13 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			tf=dyHome
 			tf.setZ(zLock+(stepOverHeight));
 			if(gaitPercentage>0.5) {
-				println "To new target " +gaitIntermediatePercentage
+				//println "To new target " +gaitIntermediatePercentage
 				walkingState= WalkingState.ToNewTarget
 				getUpLegs().each{
 					tf=dynamicHome( it)
 					tf.setZ(zLock+(stepOverHeight));
 					if(it.getScriptingName().equals("BackRight")){
-						println tf
+						//println tf
 					}
 					try{
 						if(it.checkTaskSpaceTransform(tf))
@@ -458,19 +458,19 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			gaitIntermediatePercentage=(gaitPercentage-0.5)*4.0
 			if(gaitIntermediatePercentage>1)
 				gaitIntermediatePercentage=1
-			double localPercent = gaitIntermediatePercentage*((double)numStepCycleGroups-1)
+			double localPercent = gaitIntermediatePercentage*((double)numStepCycleGroups)
 			//localPercent=((double)numStepCycleGroups-1)
 			tf = compute(leg,localPercent,NewTmpPose)
 			tf.setZ(zLock+(stepOverHeight));
 			if(gaitPercentage>0.75) {
 				walkingState= WalkingState.Falling
-				println "Falling " +gaitIntermediatePercentage
+				//println "Falling " +gaitIntermediatePercentage
 				getUpLegs().each{
 					tf = compute(it,localPercent,NewTmpPose)
 					tf.setZ(zLock+(stepOverHeight));
 					try{
 						if(it.getScriptingName().equals("BackRight")){
-						println tf
+						//println tf
 					}
 						if(it.checkTaskSpaceTransform(tf))
 					 		cycleStartPoint.put(it,calcForward(it,tf))
@@ -495,12 +495,12 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			if(gaitPercentage>=1) {
 				//tf = dynamicHome( leg)
 				walkingState=WalkingState.Rising
-				println "Rising Walk cycle loop time "+(System.currentTimeMillis()-timeOfCycleStart) +" "
+				//println "Rising Walk cycle loop time "+(System.currentTimeMillis()-timeOfCycleStart) +" "
 				getUpLegs().each{
 					tf = compute(it,gaitIntermediatePercentage,myPose)
 					tf.setZ(zLock+stepOverHeight-(stepOverHeight*gaitIntermediatePercentage));
 					if(it.getScriptingName().equals("BackRight")){
-						println tf
+						//println tf
 					}
 					if(it.checkTaskSpaceTransform(tf))
 				 		cycleStartPoint.put(it,calcForward(it,tf))
