@@ -20,13 +20,13 @@ enum WalkingState {
 }
 
 if(args==null){
-	double stepOverHeight=10;
+	double stepOverHeight=15;
 	long stepOverTime=20*5*3;// Servo loop times number of points times Nyquest doubeling
 	Double zLock=-200;
 	Closure calcHome = { DHParameterKinematics leg ->
 			TransformNR h=leg.calcHome()
 	 		TransformNR  legRoot= leg.getRobotToFiducialTransform()
-			TransformNR tr = leg.forwardOffset(new TransformNR())
+			TransformNR tr = legRoot.copy()
 			tr.setZ(zLock)
 			//Bambi-on-ice the legs a bit
 			if(legRoot.getY()>0){
@@ -40,14 +40,14 @@ if(args==null){
 	}
 	boolean usePhysicsToMove = true;
 	long stepCycleTime =5000
-	long walkingTimeout =stepCycleTime*2
+	long walkingTimeout =5000
 	int numStepCycleGroups = 2
 	double standardHeadTailAngle =0;// -20
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
 	double maxBodyDisplacementPerStep = 70
-	double minBodyDisplacementPerStep = 60
+	double minBodyDisplacementPerStep = 65
 	args =  [stepOverHeight,
 	stepOverTime,
 	zLock,
@@ -63,7 +63,7 @@ if(args==null){
 	minBodyDisplacementPerStep,
 	walkingTimeout]
 }
-
+Log.enableSystemPrint(true)
 return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	boolean resetting=false;
 	double stepOverHeight=(double)args.get(0);
@@ -235,8 +235,8 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	}
 	void sit(double sitAngle){
 		return
-	if(!source.getScriptingName().contains("Kat"))
-		return
+	//if(!source.getScriptingName().contains("Kat"))
+	//	return
 		double incremnt = 0.05
 		for(double i=0;i<1;i+=incremnt){
 			double angle =  sitAngle*i+(startAngle*(1-i))
@@ -301,7 +301,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 		if(reset+walkingTimeout< System.currentTimeMillis()){
 			threadDone=true;
 			stepResetter=null;
-			if(!source.getScriptingName().contains("Kat")){
+			//if(!source.getScriptingName().contains("Kat")){
 				println "FIRING reset from reset thread"
 				resetting=true;
 				long tmp= reset;
@@ -332,11 +332,12 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 				for(int i=0;i<numlegs;i++){
 					StepHome(legs.get(i))
 				}
+				
 				resettingindex=numlegs;
 				resetting=false;
 				return
-			}
-			sit(-20);
+			//}
+			sit(-10);
 
 		}
 	}
@@ -374,6 +375,11 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			leg.setDesiredTaskSpaceTransform(pose, 0);
 	}
 	private void upStateMachine(def leg){
+		def debugFlag =false
+
+		if(leg.getScriptingName().equals("BackRight")){
+			debugFlag=true;
+		}
 		//println "Up Moving to "+percentage
 		double gaitTimeRemaining = (double) (System.currentTimeMillis()-timeOfCycleStart)
 		double gaitPercentage = gaitTimeRemaining/(double)(stepCycleTime)
@@ -389,10 +395,18 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			//gaitIntermediatePercentage=1
 			tf = compute(leg,gaitIntermediatePercentage,myPose)
 			tf.setZ(zLock+(stepOverHeight*gaitIntermediatePercentage));
+			if(leg.getScriptingName().equals("BackRight")){
+				//println tf
+			}
 			if(gaitPercentage>0.25) {
 				walkingState= WalkingState.ToHome
-				//println "\nto Home "
-				getUpLegs().collect{
+				//println "\n\n\nto Home "
+				getUpLegs().each{
+					tf = compute(it,gaitIntermediatePercentage,myPose)
+					tf.setZ(zLock+(stepOverHeight*gaitIntermediatePercentage));
+					if(it.getScriptingName().equals("BackRight")){
+						//println tf
+					}
 					if(it.checkTaskSpaceTransform(tf))
 				 		cycleStartPoint.put(it,calcForward(it,tf))
 				 	else
@@ -421,11 +435,21 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			if(gaitPercentage>0.5) {
 				//println "To new target " +gaitIntermediatePercentage
 				walkingState= WalkingState.ToNewTarget
-				getUpLegs().collect{
-					if(it.checkTaskSpaceTransform(tf))
-				 		cycleStartPoint.put(it,calcForward(it,tf))
-				 	else
-				 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+				getUpLegs().each{
+					tf=dynamicHome( it)
+					tf.setZ(zLock+(stepOverHeight));
+					if(it.getScriptingName().equals("BackRight")){
+						//println tf
+					}
+					try{
+						if(it.checkTaskSpaceTransform(tf))
+					 		cycleStartPoint.put(it,calcForward(it,tf))
+					 	else
+					 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+			 		}catch(Exception ex){
+						System.err.println(it.getName()+" cant achive "+tf );
+						cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+					}
 				}
 				//computeUpdatePose()
 			}else
@@ -434,18 +458,28 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			gaitIntermediatePercentage=(gaitPercentage-0.5)*4.0
 			if(gaitIntermediatePercentage>1)
 				gaitIntermediatePercentage=1
-			double localPercent = gaitIntermediatePercentage*((double)numStepCycleGroups-1)
+			double localPercent = gaitIntermediatePercentage*((double)numStepCycleGroups)
 			//localPercent=((double)numStepCycleGroups-1)
 			tf = compute(leg,localPercent,NewTmpPose)
 			tf.setZ(zLock+(stepOverHeight));
 			if(gaitPercentage>0.75) {
 				walkingState= WalkingState.Falling
 				//println "Falling " +gaitIntermediatePercentage
-				getUpLegs().collect{
-					if(it.checkTaskSpaceTransform(tf))
-				 		cycleStartPoint.put(it,calcForward(it,tf))
-				 	else
-				 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+				getUpLegs().each{
+					tf = compute(it,localPercent,NewTmpPose)
+					tf.setZ(zLock+(stepOverHeight));
+					try{
+						if(it.getScriptingName().equals("BackRight")){
+						//println tf
+					}
+						if(it.checkTaskSpaceTransform(tf))
+					 		cycleStartPoint.put(it,calcForward(it,tf))
+					 	else
+					 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+					}catch(Exception ex){
+						System.err.println(it.getName()+" cant achive "+tf );
+						cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
+					}
 				}
 				//computeUpdatePose()
 
@@ -458,17 +492,22 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			tf = compute(leg,gaitIntermediatePercentage,myPose)
 			tf.setZ(zLock+stepOverHeight-(stepOverHeight*gaitIntermediatePercentage));
 			//tf.setZ(zLock+stepOverHeight);
-			if(gaitPercentage>1) {
+			if(gaitPercentage>=1) {
 				//tf = dynamicHome( leg)
 				walkingState=WalkingState.Rising
-				//print "\r\nRising Walk cycle loop time "+(System.currentTimeMillis()-timeOfCycleStart) +" "
-				getUpLegs().collect{
+				//println "Rising Walk cycle loop time "+(System.currentTimeMillis()-timeOfCycleStart) +" "
+				getUpLegs().each{
+					tf = compute(it,gaitIntermediatePercentage,myPose)
+					tf.setZ(zLock+stepOverHeight-(stepOverHeight*gaitIntermediatePercentage));
+					if(it.getScriptingName().equals("BackRight")){
+						//println tf
+					}
 					if(it.checkTaskSpaceTransform(tf))
 				 		cycleStartPoint.put(it,calcForward(it,tf))
 				 	else
 				 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
 				}
-				getDownLegs().collect{
+				getDownLegs().each{
 					//def pose =compute(it,1,newPose)
 					//if(it.checkTaskSpaceTransform(pose))
 				 	//	cycleStartPoint.put(it,calcForward(it,pose))
@@ -488,10 +527,11 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			break;
 		}
 		//println "Gait Percent = "+gaitIntermediatePercentage
+
 		if(leg.checkTaskSpaceTransform(tf))
 			leg.setDesiredTaskSpaceTransform(tf, 0);
 		else{
-			if(leg.getScriptingName().contains("One")){
+			if(leg.getScriptingName().contains("BackRight")){
 			//Log.enableErrorPrint()
 			println leg.getScriptingName()+" failed in state "+ walkingState+" "+tf
 			}
@@ -587,86 +627,10 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 		BodyDisplacement = Math.sqrt(Math.pow(newPose.getX(),2)+Math.pow(newPose.getY(),2))
 		speedCalc = BodyDisplacement/((double)stepCycleTime)
 		rotCalc = Math.toDegrees(newPose.getRotation().getRotationAzimuth())/((double)stepCycleTime)*1000.0
-		println  String.format("Actual displacement = %.2f Moving at down target Absolute Velocity %.2f m/s and  Z degrees per second= %.2f cycle time = %d", BodyDisplacement,speedCalc,rotCalc,stepCycleTime);
+		//println  String.format("Actual displacement = %.2f Moving at down target Absolute Velocity %.2f m/s and  Z degrees per second= %.2f cycle time = %d", BodyDisplacement,speedCalc,rotCalc,stepCycleTime);
 
 	}
-	private void computeUpdatePoseOld(){
-		if (cachedNewPose==null)
-			return
-		resetStepTimer();
-		TransformNR n=cachedNewPose;
-		double sec=cachedSecond
-		cachedNewPose=null
 
-		//n=new TransformNR()
-		miliseconds = Math.round(sec*1000)
-		//stepCycleTime=Math.round(sec*1000)
-		numlegs = source.getLegs().size();
-		legs = source.getLegs();
-		global= source.getFiducialToGlobalTransform();
-		if(global==null){
-			global=new TransformNR()
-
-		}
-		global=new TransformNR(global.getX(),
-		  global.getY(),
-		  global.getZ(),
-		  new RotationNR(Math.toDegrees(n.getRotation().getRotationTilt()),
-				  Math.toDegrees(global.getRotation().getRotationAzimuth()),
-				 Math.toDegrees( n.getRotation().getRotationElevation())));
-		source.setGlobalToFiducialTransform(global)
-		n=new TransformNR(n.getX(),
-		  n.getY(),
-		  n.getZ(),
-		  new RotationNR(0,
-				  Math.toDegrees(n.getRotation().getRotationAzimuth()),
-				  0));
-
-		double timescaleing = ((double)stepCycleTime)/(sec*1000.0)
-		newPose=scaleTransform(n,timescaleing)
-		// Compute the incremental transform size
-		double speedCalc = getMaximumDisplacement(newPose)/((double)stepCycleTime)
-		double rotCalc = Math.toDegrees(n.getRotation().getRotationAzimuth())/((double)stepCycleTime)*1000.0
-		//println "Speed = " +speedCalc+" m/s "+rotCalc+" degrees per second"
-		while(getMaximumDisplacement(newPose)>maxBodyDisplacementPerStep/(numStepCycleGroups-1) && stepCycleTime>stepOverTime){
-			stepCycleTime-=10
-			timescaleing = ((double)stepCycleTime)/(sec*1000.0)
-			newPose=scaleTransform(n,timescaleing)
-			//println "Speeding up gait to meet speed "+stepCycleTime
-		}
-		if(getMaximumDisplacement(newPose)>maxBodyDisplacementPerStep/numStepCycleGroups ){
-			// if it still cant fit in the constraints, then we slow down the command
-			while(getMaximumDisplacement(newPose)>maxBodyDisplacementPerStep/(numStepCycleGroups-1) ){
-				sec+=0.01
-				//miliseconds = Math.round(sec*1000)
-				timescaleing = ((double)stepCycleTime)/(sec*1000.0)
-				newPose=scaleTransform(n,timescaleing)
-				speedCalc = getMaximumDisplacement(newPose)/((double)stepCycleTime)
-				//println "Slowing down target Velocity "+stepCycleTime+" miliseconds "+speedCalc
-			}
-		}
-		while(getMaximumDisplacement(newPose)<minBodyDisplacementPerStep/(numStepCycleGroups-1) && stepCycleTime<stepCycleTimeMax){
-			stepCycleTime+=10
-			timescaleing = ((double)stepCycleTime)/(sec*1000.0)
-			newPose=scaleTransform(n,timescaleing)
-			//println "Slowing down up gait to meet speed "+stepCycleTime
-		}
-		double percentOfPose=1
-		while(!newPosePossible(	newPose) && percentOfPose>0.05){
-			percentOfPose-=0.05
-			newPose=scaleTransform(n,percentOfPose)
-		}
-		if(!newPosePossible(	newPose)){
-			println "Pose not possible "+newPose
-
-			newPose=new TransformNR()
-		}
-		miliseconds =((long) ((double)stepCycleTime)*1.25)
-		double BodyDisplacement = Math.sqrt(Math.pow(newPose.getX(),2)+Math.pow(newPose.getY(),2))
-		speedCalc = BodyDisplacement/((double)stepCycleTime)
-		rotCalc = Math.toDegrees(n.getRotation().getRotationAzimuth())/((double)stepCycleTime)*1000.0
-		println "Moving at down target Absolute Velocity "+speedCalc+"m/s and  Z degrees per second= "+rotCalc
-	}
 	private def getLegCurrentPose(def leg){
 		double[] joints = cycleStartPoint.get(leg)
 		TransformNR armOffset = leg.forwardKinematics(joints)
@@ -714,7 +678,13 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	 * @return the transform nr
 	 */
 	public double[] calcForward(DHParameterKinematics leg ,TransformNR transformTarget){
-		return leg.inverseKinematics(leg.inverseOffset(transformTarget));
+		try{
+			def joints= leg.inverseKinematics(leg.inverseOffset(transformTarget));
+			return joints
+		}catch(Exception ex){
+			System.err.println(leg.getName()+" cant achive "+transformTarget );
+			return leg.getCurrentJointSpaceVector();
+		}
 	}
 	boolean check(DHParameterKinematics leg,TransformNR newPose){
 		TransformNR stepup = newPose.copy();
@@ -906,7 +876,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 				stepResetter = new Thread(){
 					public void run(){
 						computeUpdatePose()
-						legs.collect{
+						legs.each{
 					 		cycleStartPoint.put(it,it.getCurrentJointSpaceVector())
 						}
 						sit(0);
