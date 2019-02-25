@@ -24,13 +24,18 @@ return new ICadGenerator(){
 
 	}
 
-@Override
+	@Override
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=new ArrayList<>();
 		File mainBodyFile = ScriptingEngine.fileFromGit("https://github.com/SmallKatMQP/smallkat-xl-bowler.git", "cad/Body.stl");
 
 		// Load the .CSG from the disk and cache it in memory
-		CSG body = new Cube(10).toCSG();
+		CSG body = new Cube(320,		// x dimension
+												 50,		// y dimension
+												 30)		// z dimension  
+												 .toCSG()
+												 .movex(15)
+												 .movez(20);
 		if (isFullModel){
 			body  = Vitamins.get(mainBodyFile);
 		}
@@ -44,29 +49,17 @@ return new ICadGenerator(){
 		return parts;
 	}
 
-@Override
+	@Override
 	public ArrayList<CSG> generateCad(DHParameterKinematics dhParams, int linkIndex){
 		ArrayList<CSG> allCad=new ArrayList<>();
 		String limbName = dhParams.getScriptingName()
 		File legFile = null
-
-		// TransformNR  legRoot= dhParams.getRobotToFiducialTransform()
-		// def leftSide=false
-		// def rear = true
-		// if(legRoot.getY()>0){
-		// 	leftSide=true;
-		// }
-		// if(legRoot.getX()>0){
-		// 	rear=false;
-		// }
 
 		if(limbName.contentEquals("Tail") && isFullModel){
 		  if(linkIndex ==0){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/TailJoint.stl");
 		  } else if(linkIndex ==1){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Tail.stl");
-		  } else if (linkIndex == 2) {
-		    reteurn allCad;
 		  } else {
 		    println "Incorrect Tail Index"
 		  }
@@ -79,9 +72,6 @@ return new ICadGenerator(){
 		    legFile = ScriptingEngine.fileFromGit(giturl,"cad/HeadNeck.stl");
 		  } else if (linkIndex == 2){
 		    legFile = ScriptingEngine.fileFromGit(giturl, "cad/Head.stl");
-
-		  } else if(linkIndex > 2){
-		    return allCad;
 		  } else {
 		    print "Incorrect Head Index: "
 		    println linkIndex
@@ -174,7 +164,7 @@ return new ICadGenerator(){
 		}
 	}
 
-	private ArrayList<CSG> generateStickModel(DHParameterKinematics dhParams, int linkIndex){
+	private ArrayList<CSG> generateStickModel(DHParameterKinematics d, int linkIndex){
 		ArrayList<CSG> allCad=new ArrayList<>();
 		ArrayList<DHLink> dhLinks = d.getChain().getLinks()
 		DHLink dh = dhLinks.get(linkIndex)
@@ -191,7 +181,11 @@ return new ICadGenerator(){
 		else
 			lastLinkFrame=dhLinks.get(linkIndex-1).getListener();
 		
-		def rVal = new Cube(dh.getR()>0?dh.getR():5,1,1).toCSG()
+		def rVal = new Cube(dh.getR()>0?dh.getR():
+					20, 	// x dimension
+					5,	// y dimension
+					5)	// z dimension
+					.toCSG()
 					.toXMax()
 					.toZMax()
 		rVal.setColor(javafx.scene.paint.Color.RED)
