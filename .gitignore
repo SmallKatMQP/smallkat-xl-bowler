@@ -9,3 +9,5 @@ gradlew.bat
 smallkat-xl-bowler.iml
 smallkat-xl-bowler.ipr
 smallkat-xl-bowler.iws
+
+*.code-workspace
