@@ -1,5 +1,8 @@
 smallkat-xl-bowler.iml
 .idea/
+.settings/
+.classpath
+.project
 *.swp
 
 .gradle/
