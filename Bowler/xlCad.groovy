@@ -13,7 +13,7 @@ println "Loading STL file"
 String giturl = "https://github.com/SmallKatMQP/smallkat-xl-bowler.git";
 
 // TRUE to render the model, FALSE to render a stick figure
-boolean isFullModel = true;
+boolean isFullModel = false;
 
 return new ICadGenerator(){
 
