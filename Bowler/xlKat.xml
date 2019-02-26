@@ -1015,7 +1015,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Kinematics/headik.groovy</file>
+		<file>Kinematics/dhsolver.groovy</file>
 	</kinematics>
 <link>
 	<name>basetilt</name>
@@ -1210,7 +1210,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Kinematics/tailik.groovy</file>
+		<file>Kinematics/dhsolver.groovy</file>
 	</kinematics>
 <link>
 	<name>baseTilt</name>
