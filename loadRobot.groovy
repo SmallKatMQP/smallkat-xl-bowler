@@ -16,18 +16,19 @@ public class SimpleServoHID extends HIDSimplePacketComs {
 	private PacketType imuData = new edu.wpi.SimplePacketComs.FloatPacketType(1804, 64);
 	private final double[] status = new double[12];
 	private final byte[] data = new byte[64];
+	private final byte[] dataUp = new byte[64];
 
 	public SimpleServoHID(int vidIn, int pidIn) {
 		super(vidIn, pidIn);
 		addPollingPacket(servos);
-	     //servos.waitToSendMode(); //this is broken
-		//addPollingPacket(imuData);
-		addEvent(1, {
-			writeBytes(1, data);
+		addPollingPacket(imuData);
+		addEvent(1962, {
+			writeBytes(1962, data);
+			readBytes(1962, dataUp);
 		});
-		//addEvent(1804, {
-		//	readFloats(1804,status);
-		//});
+		addEvent(1804, {
+			readFloats(1804,status);
+		});
 	}
 	public double[] getImuData() {
 		return status;
@@ -35,7 +36,9 @@ public class SimpleServoHID extends HIDSimplePacketComs {
 	public byte[] getData() {
 		return data;
 	}
-
+	public byte[] getDataUp() {
+		return dataUp;
+	}
 }
 
 
@@ -61,19 +64,22 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 		shiftedPos = angleToBytes(position);
 		simple.getData()[i*2]=shiftedPos[0];
 		simple.getData()[i*2+1]=shiftedPos[1];
-		 if(i == 0){
+		if(i == 0){
 			for(int x = 0;x<64;x++){
+				
 				System.out.println(simple.getData()[x])
+				
 			}
 		}
+		System.out.println()
+		
 	}
 	int getValue(int i){
 		int angle;
 		byte[] data = new byte[2];
-		data[0] = simple.getData()[i]
-		data[1] = simple.getData()[i+1]
+		data[0] = simple.getDataUp()[2*i]
+		data[1] = simple.getDataUp()[2*i+1]
 		angle = bytesToAngle(data);
-		
 		return (angle)
 	}
 	public float[] getImuData() {
@@ -88,7 +94,6 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
         byte[] angleBytes = new byte[2];
         angleBytes[0] = (byte)(angle>>8)
         angleBytes[1] = (byte)(angle);
-       
         return angleBytes;
     }
     public static int bytesToAngle(byte[] data){
@@ -223,3 +228,4 @@ def cat =DeviceManager.getSpecificDevice( "XLKat",{
 })
 
 return cat
+
