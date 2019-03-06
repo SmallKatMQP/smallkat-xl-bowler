@@ -20,13 +20,14 @@ public class SimpleServoHID extends HIDSimplePacketComs {
 	public SimpleServoHID(int vidIn, int pidIn) {
 		super(vidIn, pidIn);
 		addPollingPacket(servos);
-		addPollingPacket(imuData);
-		addEvent(1962, {
-			writeBytes(1962, data);
+	     //servos.waitToSendMode(); //this is broken
+		//addPollingPacket(imuData);
+		addEvent(1, {
+			writeBytes(1, data);
 		});
-		addEvent(1804, {
-			readFloats(1804,status);
-		});
+		//addEvent(1804, {
+		//	readFloats(1804,status);
+		//});
 	}
 	public double[] getImuData() {
 		return status;
@@ -60,13 +61,19 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 		shiftedPos = angleToBytes(position);
 		simple.getData()[i*2]=shiftedPos[0];
 		simple.getData()[i*2+1]=shiftedPos[1];
+		 if(i == 0){
+			for(int x = 0;x<64;x++){
+				System.out.println(simple.getData()[x])
+			}
+		}
 	}
 	int getValue(int i){
 		int angle;
 		byte[] data = new byte[2];
-		data[0] = simple.getData()[2*i]
-		data[1] = simple.getData()[2*i+1]
+		data[0] = simple.getData()[i]
+		data[1] = simple.getData()[i+1]
 		angle = bytesToAngle(data);
+		
 		return (angle)
 	}
 	public float[] getImuData() {
@@ -81,6 +88,7 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
         byte[] angleBytes = new byte[2];
         angleBytes[0] = (byte)(angle>>8)
         angleBytes[1] = (byte)(angle);
+       
         return angleBytes;
     }
     public static int bytesToAngle(byte[] data){
@@ -174,7 +182,7 @@ public class HIDRotoryLink extends AbstractRotoryLink{
 def dev = DeviceManager.getSpecificDevice( "hidDevice",{
 	//If the device does not exist, prompt for the connection
 
-	HIDSimpleComsDevice d = new HIDSimpleComsDevice(0x3742 ,0x5750 )
+	HIDSimpleComsDevice d = new HIDSimpleComsDevice(0x3742 ,0x5751 )
 	d.connect(); // Connect to it.
 
 	LinkFactory.addLinkProvider("hidfast",{LinkConfiguration conf->
