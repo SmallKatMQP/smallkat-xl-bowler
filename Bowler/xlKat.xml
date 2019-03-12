@@ -123,7 +123,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-22.5</Theta>
+		<Theta>-36.0</Theta>
 		<Radius>92.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -177,7 +177,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>22.5</Theta>
+		<Theta>38.0</Theta>
 		<Radius>75.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -231,7 +231,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>45.0</Theta>
+		<Theta>29.999999999999996</Theta>
 		<Radius>71.03</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -372,7 +372,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-22.5</Theta>
+		<Theta>-36.0</Theta>
 		<Radius>92.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -426,7 +426,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>22.5</Theta>
+		<Theta>38.0</Theta>
 		<Radius>75.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -480,7 +480,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>45.0</Theta>
+		<Theta>29.999999999999996</Theta>
 		<Radius>71.03</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -621,7 +621,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>22.5</Theta>
+		<Theta>25.2</Theta>
 		<Radius>92.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -675,7 +675,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-22.5</Theta>
+		<Theta>-74.0</Theta>
 		<Radius>75.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -729,7 +729,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>45.0</Theta>
+		<Theta>59.8</Theta>
 		<Radius>95.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -870,7 +870,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>22.5</Theta>
+		<Theta>25.2</Theta>
 		<Radius>92.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -924,7 +924,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>-22.5</Theta>
+		<Theta>-74.0</Theta>
 		<Radius>75.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
@@ -978,7 +978,7 @@
 
 	<DHParameters>
 		<Delta>0.0</Delta>
-		<Theta>45.0</Theta>
+		<Theta>59.8</Theta>
 		<Radius>95.0</Radius>
 		<Alpha>0.0</Alpha>
 	</DHParameters>
