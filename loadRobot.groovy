@@ -20,6 +20,7 @@ public class SimpleServoHID extends HIDSimplePacketComs {
 
 	public SimpleServoHID(int vidIn, int pidIn) {
 		super(vidIn, pidIn);
+		servos.waitToSendMode();
 		addPollingPacket(servos);
 		addPollingPacket(imuData);
 		addEvent(1962, {
@@ -64,6 +65,7 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 		shiftedPos = angleToBytes(position);
 		simple.getData()[i*2]=shiftedPos[0];
 		simple.getData()[i*2+1]=shiftedPos[1];
+		simple.servos.pollingMode();
 		if(i == 0){
 			for(int x = 0;x<64;x++){
 				
