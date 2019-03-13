@@ -69,7 +69,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 			double a2 = Math.atan(z/x); // Z angle using x axis and z axis
 			double a2d = Math.toDegrees(a2);
 			double theta_1 = a1;
-	        double theta1d = Math.toDegrees(theta_1);	    
+	        	double theta1d = Math.toDegrees(theta_1);	    
 
 	                
             //double Oang = Math.PI/4 - (a2*1.5);
@@ -119,13 +119,12 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
 
 		if(limbIndex == 0) {
-             System.out.println("link1");
              inv[0] = Math.toDegrees(theta_1);
-             theta2_1 = theta2_1 + (Math.toRadians(22.5))
+             theta2_1 = theta2_1 + (Math.toRadians(26.90))
              inv[1] = Math.toDegrees(theta2_1);
-             theta3_1 = theta3_1 - (Math.toRadians(22.5))
+             theta3_1 = theta3_1 - (Math.toRadians(25.90))
              inv[2] = Math.toDegrees(theta3_1);
-		   theta4_1 = theta4_1 - (Math.toRadians(45))
+		   theta4_1 = theta4_1 - (Math.toRadians(30.2))
              inv[3] = (Math.toDegrees(theta4_1));
              System.out.println(inv[0]);
              System.out.println(inv[1]);
