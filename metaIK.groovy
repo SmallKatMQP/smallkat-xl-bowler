@@ -47,9 +47,14 @@ public class scriptJavaIKModel implements DhInverseSolver {
             System.out.println("x: " + x);
             
             //double Oang = Math.PI/2 + q.getRotationElevation();
-            double Oang = Math.toRadians(45);
-//            
+
+            if(Math.toDegrees(links.get(2).getTheta())>0){
+            double Oang = Math.toRadians(60.8);
             double Oanginv = (Math.PI/2) - Oang;
+            }else{
+            double Oang = Math.toRadians(70);
+            double Oanginv = (Math.PI/2) - Oang;	
+            }
 
             double l1_d = links.get(0).getR();
             double l2_d = links.get(1).getR();
@@ -118,63 +123,46 @@ public class scriptJavaIKModel implements DhInverseSolver {
             System.out.println(theta4_1);
 
 
-		if(limbIndex == 0) {
-             inv[0] = Math.toDegrees(theta_1);
-             theta2_1 = theta2_1 + (Math.toRadians(26.90))
-             inv[1] = Math.toDegrees(theta2_1);
-             theta3_1 = theta3_1 - (Math.toRadians(25.90))
-             inv[2] = Math.toDegrees(theta3_1);
-		   theta4_1 = theta4_1 - (Math.toRadians(30.2))
-             inv[3] = (Math.toDegrees(theta4_1));
-             System.out.println(inv[0]);
-             System.out.println(inv[1]);
-             System.out.println(inv[2]);
-             System.out.println(inv[3]);
-            }
-            
-           if(limbIndex == 1) {
-            //Link 2
-            inv[0] = Math.toDegrees(theta_1);
-            theta2_1 = -theta2_1 - (Math.toRadians(22.5));
+		//Front Legs
+		if(Math.toDegrees(links.get(2).getTheta())>0){
+	       	inv[0] = Math.toDegrees(theta_1);
+            theta2_1 = theta2_1 + (Math.toRadians(26.90))
             inv[1] = Math.toDegrees(theta2_1);
-            theta3_1 = -theta3_1 + (Math.toRadians(22.5));
+            theta3_1 = theta3_1 - (Math.toRadians(25.90))
             inv[2] = Math.toDegrees(theta3_1);
-            theta4_1 = -theta4_1 + (Math.toRadians(45));
-            inv[3] = Math.toDegrees(theta4_1);
-            System.out.println(inv[0]);
-            System.out.println(inv[1]);
-            System.out.println(inv[2]);
-            System.out.println(inv[3]);
-           }
-           if(limbIndex == 2) {
-             //Link 3
-             inv[0] = Math.toDegrees(theta_1);
-             theta2_2 = theta2_2 - (Math.toRadians(22.5));
+	       theta4_1 = theta4_1 - (Math.toRadians(30.2))
+            inv[3] = (Math.toDegrees(theta4_1));
+            //System.out.println(inv[0]);
+            //System.out.println(inv[1]);
+            //System.out.println(inv[2]);
+            //System.out.println(inv[3]);
+            
+          //Back Legs
+		}
+		else{
+		   inv[0] = Math.toDegrees(theta_1);
+             theta2_2 = theta2_2 - (Math.toRadians(17.30));
              inv[1] = Math.toDegrees(theta2_2);
-             theta3_1 = -theta3_1 + (Math.toRadians(22.5));
+             theta3_1 = -theta3_1 + (Math.toRadians(66.20));
              inv[2] = Math.toDegrees(theta3_1);
-             theta4_2 = theta4_2 - (Math.toRadians(45));
+             theta4_2 = theta4_2 - (Math.toRadians(68.90));
              inv[3] = Math.toDegrees(theta4_2);
              System.out.println(inv[0]);
              System.out.println(inv[1]);
              System.out.println(inv[2]);
              System.out.println(inv[3]);
-            }
-            if(limbIndex == 3) {
-             //Link 4
-             inv[0] = Math.toDegrees(theta_1);
-             theta2_2 = -theta2_2 + (Math.toRadians(22.5));
-             inv[1] = Math.toDegrees(theta2_2);
-             theta3_1 = theta3_1 - (Math.toRadians(22.5));
-             inv[2] = Math.toDegrees(theta3_1);
-             theta4_2 = -theta4_2 + (Math.toRadians(45));
-             inv[3] = Math.toDegrees(theta4_2);
-             System.out.println(inv[0]);
-             System.out.println(inv[1]);
-             System.out.println(inv[2]);
-             System.out.println(inv[3]);
-            }
+			//println "wristAngleDeg "+ wristAngleDeg+" "+shoulderTiltAngle
+			//inv[1]=wristAngleDeg-shoulderTiltAngle-Math.toDegrees(links.get(1).getTheta())
+			//println "elbowTiltAngle "+ elbowTiltAngle+" "+shoulderTiltAngle
+	       	//inv[2]=180-elbowTiltAngle-Math.toDegrees(links.get(2).getTheta())
+	       	//inv[3]=-inv[1]-inv[2]-Math.toDegrees(links.get(3).getTheta())-elev
+		}
+		
+            
+           
+           
 
+            
             if(Double.isNaN(inv[0]) || Double.isNaN(inv[1]) || Double.isNaN(inv[2]) || Double.isNaN(inv[3]))
             	throw new ArithmeticException("Can't move to that position");
             else
