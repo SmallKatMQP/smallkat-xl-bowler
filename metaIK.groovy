@@ -123,8 +123,8 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		//Front Legs
 		if(Math.toDegrees(links.get(2).getTheta())>0){
 	       inv[0] = Math.toDegrees(theta_1);
-            theta2_1 = theta2_1
-            inv[1] = Math.toDegrees(theta2_1) + Math.toDegrees(links.get(1).getTheta());
+            theta2_1 = theta2_1 
+            inv[1] = Math.toDegrees(theta2_1) - Math.toDegrees(links.get(1).getTheta());
             theta3_1 = theta3_1 
             inv[2] = Math.toDegrees(theta3_1) - Math.toDegrees(links.get(2).getTheta());
 	       theta4_1 = theta4_1
