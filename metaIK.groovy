@@ -48,13 +48,10 @@ public class scriptJavaIKModel implements DhInverseSolver {
             
             //double Oang = Math.PI/2 + q.getRotationElevation();
 
-            if(Math.toDegrees(links.get(2).getTheta())>0){
+            
             double Oang = Math.toRadians(60.8);
             double Oanginv = (Math.PI/2) - Oang;
-            }else{
-            double Oang = Math.toRadians(70);
-            double Oanginv = (Math.PI/2) - Oang;	
-            }
+            
 
             double l1_d = links.get(0).getR();
             double l2_d = links.get(1).getR();
@@ -125,13 +122,13 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
 		//Front Legs
 		if(Math.toDegrees(links.get(2).getTheta())>0){
-	       	inv[0] = Math.toDegrees(theta_1);
-            theta2_1 = theta2_1 + (Math.toRadians(26.90))
-            inv[1] = Math.toDegrees(theta2_1);
-            theta3_1 = theta3_1 - (Math.toRadians(25.90))
-            inv[2] = Math.toDegrees(theta3_1);
-	       theta4_1 = theta4_1 - (Math.toRadians(30.2))
-            inv[3] = (Math.toDegrees(theta4_1));
+	       inv[0] = Math.toDegrees(theta_1);
+            theta2_1 = theta2_1
+            inv[1] = Math.toDegrees(theta2_1) + Math.toDegrees(links.get(1).getTheta());
+            theta3_1 = theta3_1 
+            inv[2] = Math.toDegrees(theta3_1) - Math.toDegrees(links.get(2).getTheta());
+	       theta4_1 = theta4_1
+            inv[3] = (Math.toDegrees(theta4_1))-Math.toDegrees(links.get(3).getTheta());
             //System.out.println(inv[0]);
             //System.out.println(inv[1]);
             //System.out.println(inv[2]);
@@ -139,6 +136,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
             
           //Back Legs
 		}
+		/*
 		else{
 		   inv[0] = Math.toDegrees(theta_1);
              theta2_2 = theta2_2 - (Math.toRadians(17.30));
@@ -157,7 +155,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 	       	//inv[2]=180-elbowTiltAngle-Math.toDegrees(links.get(2).getTheta())
 	       	//inv[3]=-inv[1]-inv[2]-Math.toDegrees(links.get(3).getTheta())-elev
 		}
-		
+		*/
             
            
            
