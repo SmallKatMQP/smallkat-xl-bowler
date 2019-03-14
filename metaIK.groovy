@@ -47,11 +47,16 @@ public class scriptJavaIKModel implements DhInverseSolver {
             System.out.println("x: " + x);
             
             //double Oang = Math.PI/2 + q.getRotationElevation();
-
-            
-            double Oang = Math.toRadians(60.8);
-            double Oanginv = (Math.PI/2) - Oang;
-            
+			double Oang = 0;
+			double Oanginv = 0;
+            if(Math.toDegrees(links.get(2).getTheta())>0){
+            Oang = Math.toRadians(60.8);
+            Oanginv = (Math.PI/2) - Oang;
+            }
+            else{
+            Oang = Math.toRadians(70);
+            Oanginv = (Math.PI/2) - Oang;	
+            }
 
             double l1_d = links.get(0).getR();
             double l2_d = links.get(1).getR();
@@ -136,7 +141,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
             
           //Back Legs
 		}
-		/*
+		
 		else{
 		   inv[0] = Math.toDegrees(theta_1);
              theta2_2 = theta2_2 - (Math.toRadians(17.30));
@@ -155,7 +160,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 	       	//inv[2]=180-elbowTiltAngle-Math.toDegrees(links.get(2).getTheta())
 	       	//inv[3]=-inv[1]-inv[2]-Math.toDegrees(links.get(3).getTheta())-elev
 		}
-		*/
+		
             
            
            
