@@ -1,6 +1,6 @@
 package com.neuronrobotics.smallkat;
 
-import com.neuronrobotics.bowlerstudio.BowlerStudio;
+// import com.neuronrobotics.bowlerstudio.BowlerStudio;
 import com.neuronrobotics.sdk.addons.kinematics.DHChain;
 import com.neuronrobotics.sdk.addons.kinematics.DhInverseSolver;
 import com.neuronrobotics.sdk.addons.kinematics.math.RotationNR;
