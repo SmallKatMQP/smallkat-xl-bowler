@@ -182,7 +182,8 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
             	
         } catch (Throwable t) {
-            BowlerStudio.printStackTrace(t);
+            //BowlerStudio.printStackTrace(t);
+            throw (t)
             return jointSpaceVector;
         }
 	}
