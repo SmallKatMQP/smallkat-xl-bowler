@@ -113,12 +113,12 @@ public class scriptJavaIKModel implements DhInverseSolver {
           double theta2_2 = B + Y;
 
 		
-    		//double modifier = 2;
-  		//double AnkleAng = (a2*modifier);
+    		double modifier = 1;
+  		double AnkleAng = (a2*modifier);
           double ang1 = (Math.PI-(-theta2_1+theta3_2));
-          double theta4_1 = (((Math.PI - ang1) + Oanginv)) - Math.PI;
+          double theta4_1 = (((Math.PI - ang1) + Oanginv)) - Math.PI -AnkleAng;
           double ang2 = (theta2_2+theta3_2);
-          double theta4_2 = ((Math.PI-ang2)+Oanginv);
+          double theta4_2 = ((Math.PI-ang2)+Oanginv) - AnkleAng;
             
             
             //System.out.println(theta_1);
