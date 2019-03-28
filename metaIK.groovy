@@ -49,10 +49,12 @@ public class scriptJavaIKModel implements DhInverseSolver {
             //double Oang = Math.PI/2 + q.getRotationElevation();
 			double Oang = 0;
 			double Oanginv = 0;
+		//Front	
             if(Math.toDegrees(links.get(2).getTheta())>0){
             Oang = Math.toRadians(45);
             Oanginv = (Math.PI/2) - Oang;
             }
+          //Back
             else{
             Oang = Math.toRadians(45);
             Oanginv = (Math.PI/2) - Oang;	
@@ -128,10 +130,13 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		//Front Legs
 		if(Math.toDegrees(links.get(2).getTheta())>0){
 	       inv[0] = Math.toDegrees(theta_1);
+            
             theta2_1 = theta2_1 
             inv[1] = Math.toDegrees(theta2_1) - Math.toDegrees(links.get(1).getTheta());
+            
             theta3_1 = theta3_1 
             inv[2] = Math.toDegrees(theta3_1) - Math.toDegrees(links.get(2).getTheta());
+	       
 	       theta4_1 = theta4_1
             inv[3] = (Math.toDegrees(theta4_1))-Math.toDegrees(links.get(3).getTheta());
             //System.out.println(inv[0]);
@@ -144,12 +149,15 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		
 		else{
 		   inv[0] = Math.toDegrees(theta_1);
-             theta2_2 = theta2_2 - (Math.toRadians(17.30));
-             inv[1] = Math.toDegrees(theta2_2);
-             theta3_1 = -theta3_1 + (Math.toRadians(66.20));
-             inv[2] = Math.toDegrees(theta3_1);
-             theta4_2 = theta4_2 - (Math.toRadians(68.90));
-             inv[3] = Math.toDegrees(theta4_2);
+             
+             theta2_2 = theta2_2
+             inv[1] = Math.toDegrees(theta2_2) - Math.toDegrees(links.get(1).getTheta());
+             
+             theta3_1 = -theta3_1 
+             inv[2] = Math.toDegrees(theta3_1) - Math.toDegrees(links.get(2).getTheta());
+             
+            theta4_2 = theta4_2
+            inv[3] = (Math.toDegrees(theta4_2))-Math.toDegrees(links.get(3).getTheta());
              System.out.println(inv[0]);
              System.out.println(inv[1]);
              System.out.println(inv[2]);
