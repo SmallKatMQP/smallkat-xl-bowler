@@ -19,7 +19,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Kinematics/legik.groovy</file>
+		<file>metaIK.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
@@ -268,7 +268,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Kinematics/legik.groovy</file>
+		<file>metaIK.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
@@ -517,7 +517,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Kinematics/legik.groovy</file>
+		<file>metaIK.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
@@ -766,7 +766,7 @@
 	</cadEngine>
 	<kinematics>
 		<git>https://github.com/SmallKatMQP/smallkat-xl-bowler.git</git>
-		<file>Kinematics/legik.groovy</file>
+		<file>metaIK.groovy</file>
 	</kinematics>
 <link>
 	<name>shoulderRoll</name>
