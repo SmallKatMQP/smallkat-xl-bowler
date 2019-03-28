@@ -50,11 +50,11 @@ public class scriptJavaIKModel implements DhInverseSolver {
 			double Oang = 0;
 			double Oanginv = 0;
             if(Math.toDegrees(links.get(2).getTheta())>0){
-            Oang = Math.toRadians(60.8);
+            Oang = Math.toRadians(45);
             Oanginv = (Math.PI/2) - Oang;
             }
             else{
-            Oang = Math.toRadians(70);
+            Oang = Math.toRadians(45);
             Oanginv = (Math.PI/2) - Oang;	
             }
 
