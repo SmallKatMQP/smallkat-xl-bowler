@@ -24,7 +24,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 
 	@Override
 	public double[] inverseKinematics(TransformNR target, double[] jointSpaceVector, DHChain chain) {
-		System.out.println("My IK");
+		//System.out.println("My IK");
         try {
             ArrayList<DHLink> links = chain.getLinks();
             // THis is the jacobian for the given configuration
