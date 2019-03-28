@@ -20,9 +20,9 @@ enum WalkingState {
 }
 
 if(args==null){
-	double stepOverHeight=15;
+	double stepOverHeight=3;
 	long stepOverTime=20*5*3;// Servo loop times number of points times Nyquest doubeling
-	Double zLock=-215;
+	Double zLock=-205;
 	Closure calcHome = { DHParameterKinematics leg ->
 			TransformNR h=leg.calcHome()
 	 		TransformNR  legRoot= leg.getRobotToFiducialTransform()
@@ -30,10 +30,14 @@ if(args==null){
 			tr.setZ(zLock)
 			//Bambi-on-ice the legs a bit
 			if(legRoot.getY()>0){
-				//tr.translateY(-5)
+				tr.translateY(-15)
 			}else{
-				//tr.translateY(5)
+				tr.translateY(15)
 			}
+			if(legRoot.getX()>0){
+				tr.translateX(30)
+			}
+
 
 			return tr;
 

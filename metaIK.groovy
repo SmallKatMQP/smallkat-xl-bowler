@@ -42,9 +42,9 @@ public class scriptJavaIKModel implements DhInverseSolver {
 //            
             RotationNR q = target.getRotation();
              
-            System.out.println("z: " + z);
-            System.out.println("y: " + y);
-            System.out.println("x: " + x);
+            //System.out.println("z: " + z);
+            //System.out.println("y: " + y);
+            //System.out.println("x: " + x);
             
             //double Oang = Math.PI/2 + q.getRotationElevation();
 			double Oang = 0;
@@ -65,10 +65,10 @@ public class scriptJavaIKModel implements DhInverseSolver {
             double l3_d = links.get(2).getR();
             double l4_d = links.get(3).getR();
 
-            System.out.println("L1: " + l1_d);
-            System.out.println("L2: " + l2_d);
-            System.out.println("L3: " + l3_d);
-            System.out.println("L4: " + l4_d);
+           // System.out.println("L1: " + l1_d);
+           // System.out.println("L2: " + l2_d);
+           // System.out.println("L3: " + l3_d);
+           // System.out.println("L4: " + l4_d);
             
             
             double[] inv = new double[linkNum];
@@ -121,10 +121,10 @@ public class scriptJavaIKModel implements DhInverseSolver {
           double theta4_2 = ((Math.PI-ang2)+Oanginv);
             
             
-            System.out.println(theta_1);
-            System.out.println(theta2_1);
-            System.out.println(theta3_1);
-            System.out.println(theta4_1);
+            //System.out.println(theta_1);
+            //System.out.println(theta2_1);
+            //System.out.println(theta3_1);
+            //System.out.println(theta4_1);
 
 
 		//Front Legs
@@ -158,10 +158,10 @@ public class scriptJavaIKModel implements DhInverseSolver {
              
             theta4_2 = theta4_2
             inv[3] = (Math.toDegrees(theta4_2))-Math.toDegrees(links.get(3).getTheta());
-             System.out.println(inv[0]);
-             System.out.println(inv[1]);
-             System.out.println(inv[2]);
-             System.out.println(inv[3]);
+             //System.out.println(inv[0]);
+             //System.out.println(inv[1]);
+             //System.out.println(inv[2]);
+            //System.out.println(inv[3]);
 			//println "wristAngleDeg "+ wristAngleDeg+" "+shoulderTiltAngle
 			//inv[1]=wristAngleDeg-shoulderTiltAngle-Math.toDegrees(links.get(1).getTheta())
 			//println "elbowTiltAngle "+ elbowTiltAngle+" "+shoulderTiltAngle
