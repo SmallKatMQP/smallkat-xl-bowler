@@ -18,8 +18,8 @@ double toSeconds=0.03//100 ms for each increment
 
 while (!Thread.interrupted()){
 	Thread.sleep((long)(toSeconds*1000))
-	double xdata = data[2]
-	double rzdata = data[1]
+	double xdata = data[1]
+	double rzdata = data[0]
 	if(xdata<0)
 		xdata+=256
 	if(rzdata<0)
