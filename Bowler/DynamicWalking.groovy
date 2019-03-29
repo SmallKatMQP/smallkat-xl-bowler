@@ -22,7 +22,7 @@ enum WalkingState {
 if(args==null){
 	double stepOverHeight=20;
 	long stepOverTime=400;// Servo loop times number of points times Nyquest doubeling
-	Double zLock=-190;
+	Double zLock=-200;
 	Closure calcHome = { DHParameterKinematics leg ->
 			TransformNR h=leg.calcHome()
 	 		TransformNR  legRoot= leg.getRobotToFiducialTransform()
@@ -50,8 +50,8 @@ if(args==null){
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
-	double maxBodyDisplacementPerStep = 70
-	double minBodyDisplacementPerStep = 65
+	double maxBodyDisplacementPerStep = 160
+	double minBodyDisplacementPerStep = 150
 	args =  [stepOverHeight,
 	stepOverTime,
 	zLock,
@@ -156,14 +156,14 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			timeOfLastIMUPrint= System.currentTimeMillis()
 			if(velocity>0){
 
-				print "\r\nDynmics IMU state \n"
+				//print "\r\nDynmics IMU state \n"
 				for(def state :[update]){
-					print " x = "+update.getxAcceleration()
-					print "  y = "+update.getyAcceleration()
-					print " z = "+update.getzAcceleration()
-					print " rx = "+update.getRotxAcceleration()
-					print " ry = "+update.getRotyAcceleration()
-					print " rz = "+update.getRotzAcceleration()+"\r\n"
+					//print " x = "+update.getxAcceleration()
+					//print "  y = "+update.getyAcceleration()
+					//print " z = "+update.getzAcceleration()
+					//print " rx = "+update.getRotxAcceleration()
+					//print " ry = "+update.getRotyAcceleration()
+					//print " rz = "+update.getRotzAcceleration()+"\r\n"
 				}
 
 			}
@@ -306,7 +306,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			threadDone=true;
 			stepResetter=null;
 			//if(!source.getScriptingName().contains("Kat")){
-				println "FIRING reset from reset thread"
+				//println "FIRING reset from reset thread"
 				resetting=true;
 				long tmp= reset;
 				for(def d:source.getAllDHChains()){
