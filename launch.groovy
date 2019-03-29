@@ -13,7 +13,7 @@ if(gameController==null){
 	return
 }
 
-byte [] data = gameController.getData()
+def data = gameController.getData()
 double toSeconds=0.03//100 ms for each increment
 
 while (!Thread.interrupted()){
