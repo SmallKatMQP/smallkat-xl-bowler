@@ -165,7 +165,7 @@ return new ICadGenerator(){
 	}
 
 	private ArrayList<CSG> generateStickModel(DHParameterKinematics d, int linkIndex){
-		ArrayList<CSG> allCad=new ArrayList<>();
+ArrayList<CSG> allCad=new ArrayList<>();
 		ArrayList<DHLink> dhLinks = d.getChain().getLinks()
 		DHLink dh = dhLinks.get(linkIndex)
 		// Hardware to engineering units configuration
@@ -175,23 +175,25 @@ return new ICadGenerator(){
 		// Transform used by the UI to render the location of the object
 		Affine manipulator = dh.getListener();
 		Affine lastLinkFrame
+		def massKg = conf.getMassKg()
+		def centerOfMass = TransformFactory.nrToCSG(conf.getCenterOfMassFromCentroid() )
+		def CMvis = new Sphere(50*massKg).toCSG()
+					.transformed(centerOfMass)
 		
 		if(linkIndex==0)
 			lastLinkFrame=d.getRootListener()
 		else
 			lastLinkFrame=dhLinks.get(linkIndex-1).getListener();
 		
-		def rVal = new Cube(dh.getR()>0?dh.getR():
-					20, 	// x dimension
-					5,	// y dimension
-					5)	// z dimension
-					.toCSG()
+		def rVal = new Cube(dh.getR()>0?dh.getR():5,1,1).toCSG()
 					.toXMax()
 					.toZMax()
 		rVal.setColor(javafx.scene.paint.Color.RED)
-		CSG profile = new Cube(	1,		// x dimention
-													 20,		// y dimention
-														1)		// z dimention
+		CSG profile = new Cube(1,// x dimention
+					20,// y dimention
+				
+				1//  Z dimention
+				)
 				.toCSG()// converts it to a CSG tor display
 				.toYMin()
 				.toZMin()
@@ -283,7 +285,7 @@ return new ICadGenerator(){
 					.rotz(orentationAdjust)
 					.setColor(javafx.scene.paint.Color.INDIGO)
 		def lastFrameParts = [theta,dpart,upperLim,lowerLim,zeroLim,Range]
-		def parts = [rVal,alpha] as ArrayList<CSG>
+		def parts = [rVal,alpha,CMvis] as ArrayList<CSG>
 		for(int i=0;i<parts.size();i++){
 			parts.get(i).setManipulator(manipulator);
 			//parts.get(i).setColor(javafx.scene.paint.Color.RED)
@@ -294,5 +296,6 @@ return new ICadGenerator(){
 		}
 		parts.addAll(lastFrameParts)
 		return parts;
+
 	}
 }
