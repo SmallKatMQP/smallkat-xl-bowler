@@ -5,7 +5,7 @@
 import edu.wpi.SimplePacketComs.*;
 import edu.wpi.SimplePacketComs.phy.HIDSimplePacketComs;
 import com.neuronrobotics.sdk.addons.kinematics.imu.*;
-import Jama.Matrix;
+
 if (args==null)
 	args=[
 		"https://github.com/SmallKatMQP/smallkat-xl-bowler.git",
@@ -13,7 +13,7 @@ if (args==null)
 
 public class SimpleServoHID extends HIDSimplePacketComs {
 	private PacketType servos = new edu.wpi.SimplePacketComs.BytePacketType(1962, 64);
-	private PacketType imuData = new edu.wpi.SimplePacketComs.FloatPacketType(1804, 64);
+	private PacketType imuData = new edu.wpi.SimplePacketComs.FloatPacketType(1804, 15);
 	private final double[] status = new double[12];
 	private final byte[] data = new byte[64];
 	private final byte[] dataUp = new byte[64];
@@ -111,7 +111,7 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
         }
         angle = (parts[0]<<8)+parts[1];
        
-        //System.out.println("Angle"+angle);
+        System.out.println("Angle"+angle);
         return angle;
     }
 
@@ -184,218 +184,6 @@ public class HIDRotoryLink extends AbstractRotoryLink{
 	}
 
 }
-public class PhysicicsDevice extends NonBowlerDevice{
-	/**
-	 * Cross product.
-	 *
-	 * @param a the a
-	 * @param b the b
-	 * @return the double[]
-	 */
-	private double [] crossProduct(double[] a, double[] b){
-		double [] xProd = new double [3];
-		
-		xProd[0]=a[1]*b[2]-a[2]*b[1];
-		xProd[1]=a[2]*b[0]-a[0]*b[2];
-		xProd[2]=a[0]*b[1]-a[1]*b[0];
-		
-		return xProd;
-	}
-		/**
-	 * Gets the Jacobian matrix.
-	 *
-	 * @param jointSpaceVector the joint space vector
-	 * @return a matrix representing the Jacobian for the current configuration
-	 */
-	public Matrix getJacobian(DHChain chain, double[] jointSpaceVector, int index){
-		int size = chain.getLinks().size()
-		double [][] data = new double[6][size]; 
-		chain.getChain(jointSpaceVector);
-		for(int i=0;i<size;i++){
-			if(i>index){
-				
-				continue
-			}
-			Matrix rotationComponent = new TransformNR().getMatrixTransform();
-			for(int j=i;j<size && j<=index;j++) {
-				double value=0;
-				if(chain.getLinks().get(j).getLinkType()==DhLinkType.ROTORY)
-					value=Math.toRadians(jointSpaceVector[j]);
-				else
-					value=jointSpaceVector[j];
-				Matrix step = chain.getLinks().get(j).DhStep(value);
-				//Log.info( "Current:\n"+current+"Step:\n"+step);
-				//println i+" Link "+j+" index "+index+" step "+TransformNR.getMatrixString(step)
-				rotationComponent = rotationComponent.times(step);
-			}
-			double [] zVect = new double [3];
-			double [] zVectEnd = new double [3];
-			double [][] rotation=new TransformNR(rotationComponent).getRotationMatrix().getRotationMatrix()
-			zVectEnd[0]=rotation[2][2];
-			zVectEnd[1]=rotation[2][1];
-			zVectEnd[2]=rotation[2][0];
-			if(i==0 && index ==0 ){
-				zVect[0]=0;
-				zVect[1]=0;
-				zVect[2]=1;
-			}else if(i<=index){
-				//println "Link "+index+" "+TransformNR.getMatrixString(new Matrix(rotation))
-				//Get the rz vector from matrix
-				zVect[0]=zVectEnd[0];
-				zVect[1]=zVectEnd[1];
-				zVect[2]=zVectEnd[2];
-			}else{
-				zVect[0]=0;
-				zVect[1]=0;
-				zVect[2]=0;
-			}
-			//Assume all rotational joints
-			//Set to zero if prismatic
-			if(chain.getLinks().get(i).getLinkType()==DhLinkType.ROTORY){
-				data[3][i]=zVect[0];
-				data[4][i]=zVect[1];
-				data[5][i]=zVect[2];
-			}else{
-				data[3][i]=0;
-				data[4][i]=0;
-				data[5][i]=0;
-			}
-			double []rVect = new double [3];
-			
-			
-			Matrix rComponentmx = new TransformNR().getMatrixTransform();
-			//if(i>0){
-				for(int j=0;j<i ;j++) {
-					double value=0;
-					if(chain.getLinks().get(j).getLinkType()==DhLinkType.ROTORY)
-						value=Math.toRadians(jointSpaceVector[j]);
-					else
-						value=jointSpaceVector[j];
-					Matrix step = chain.getLinks().get(j).DhStep(value);
-					//Log.info( "Current:\n"+current+"Step:\n"+step);
-					//println i+" Link "+j+" index "+index+" step "+TransformNR.getMatrixString(step)
-					rComponentmx = rComponentmx.times(step);
-				}
-			//}
-			
-			//Figure out the current 
-			Matrix tipOffsetmx = new TransformNR().getMatrixTransform();
-			for(int j=0;j<size && j<=index;j++) {
-				double value=0;
-				if(chain.getLinks().get(j).getLinkType()==DhLinkType.ROTORY)
-					value=Math.toRadians(jointSpaceVector[j]);
-				else
-					value=jointSpaceVector[j];
-				Matrix step = chain.getLinks().get(j).DhStep(value);
-				//Log.info( "Current:\n"+current+"Step:\n"+step);
-				//println i+" Link "+j+" index "+index+" step "+TransformNR.getMatrixString(step)
-				tipOffsetmx = tipOffsetmx.times(step);
-			}
-			
-			double []tipOffset = new double [3];
-			double []rComponent = new double [3];
-			TransformNR tipOffsetnr = new TransformNR(tipOffsetmx)//.times(myInvertedStarting);
-			tipOffset[0]=tipOffsetnr.getX();
-			tipOffset[1]=tipOffsetnr.getY();
-			tipOffset[2]=tipOffsetnr.getZ();
-			
-			TransformNR rComponentnr = new TransformNR(rComponentmx)//.times(myInvertedStarting);
-			rComponent[0]=rComponentnr.getX();
-			rComponent[1]=rComponentnr.getY();
-			rComponent[2]=rComponentnr.getZ();
-			for(int x=0;x<3;x++)
-				rVect[x]=(tipOffset[x]-rComponent[x])
-				
-			/*
-			Matrix current = new TransformNR().getMatrixTransform();
-			for(int j=index;j>=i;j--) {
-				double value=0;
-				if(chain.getLinks().get(j).getLinkType()==DhLinkType.ROTORY)
-					value=Math.toRadians(jointSpaceVector[j]);
-				else
-					value=jointSpaceVector[j];
-				Matrix step = new TransformNR(chain.getLinks().get(j).DhStep(value)).inverse().getMatrixTransform();
-				//Log.info( "Current:\n"+current+"Step:\n"+step);
-				//println i+" Link "+j+" index "+index+" step "+TransformNR.getMatrixString(step)
-				current = current.times(step);
-			}
-			TransformNR intermediate = new TransformNR(current)//.times(myInvertedStarting);
-			rVect[0]=intermediate.getX();
-			rVect[1]=intermediate.getY();
-			rVect[2]=intermediate.getZ();	
-			*/
-			//Cross product of rVect and Z vect
-			double []xProd = crossProduct( zVect,rVect);
-			println i+" R vector "+rVect //+" \t\t Zvect "+zVect+" \t\tcrossProd "+xProd
-			//println TransformNR.getMatrixString(tipOffsetmx)
-			
-			
-			data[0][i]=xProd[0];
-			data[1][i]=xProd[1];
-			data[2][i]=xProd[2];
-			
-		}
-		println "\n\n"
-		return new Matrix(data);
-	}
-	def hidEventEngine;
-	def physicsSource ;
-	int count = 0;
-	Closure event = {
-	
-	
-			count ++
-			if(count >10){
-				count =0
-						//Get the DHChain object
-				DHChain chain = physicsSource.getChain()
-				// Setup of variables done, next perfoem one compute cycle
-				
-				//get the current FK pose to update the data used by the jacobian computation
-				TransformNR pose = physicsSource.getCurrentTaskSpaceTransform()
-				// Convert the tip transform to Matrix form for math
-				Matrix matrixForm= pose.getMatrixTransform()
-				// get the position of all the joints in engineering units
-				double[] jointSpaceVector = physicsSource.getCurrentJointSpaceVector()
-				// compute the Jacobian using Jama matrix library
-				Matrix jacobian = getJacobian(chain,jointSpaceVector,jointSpaceVector.length-1);
-				Matrix[] massMatrix =  new Matrix[jointSpaceVector.length]
-				Matrix[] incrementalJacobian =  new Matrix[jointSpaceVector.length]
-				double [] masses = new double [jointSpaceVector.length]
-				//TODO LoadMasses and mass Matrix here
-				
-				for (int i=0;i<jointSpaceVector.length;i++){
-					incrementalJacobian[i] = getJacobian(chain,jointSpaceVector,i);
-					
-					println "Increment "+i+" "+  TransformNR.getMatrixString(incrementalJacobian[i])
-				}
-				println "Total "+  TransformNR.getMatrixString(jacobian)
-								
-			}
-		}
-	public PhysicicsDevice(def c,def  d){
-		hidEventEngine=c;
-		physicsSource=d;
-		hidEventEngine.addEvent(37,event)
-		
-	}
-	@Override
-	public  void disconnectDeviceImp(){		
-		println "Physics Termination signel shutdown"
-		hidEventEngine.removeEvent(37,event)
-	}
-	
-	@Override
-	public  boolean connectDeviceImp(){
-		println "Physics Startup signel "
-	}
-	public  ArrayList<String>  getNamespacesImp(){
-		// no namespaces on dummy
-		return [];
-	}
-	
-}
-
 def dev = DeviceManager.getSpecificDevice( "hidDevice",{
 	//If the device does not exist, prompt for the connection
 
@@ -418,21 +206,21 @@ def cat =DeviceManager.getSpecificDevice( "XLKat",{
 		args[0],
 		args[1]
 		)
-	dev.simple.addEvent(1804, {
-		 double[] imuDataValues = dev.simple.getImuData()
-		 m.getImu()
-		 .setHardwareState(
-		 		new IMUUpdate(
-		 			imuDataValues[0],//Double xAcceleration,
-		 			imuDataValues[1],//Double yAcceleration
-			 		imuDataValues[2],//,Double zAcceleration
-					imuDataValues[3],//Double rotxAcceleration,
-					imuDataValues[4],//Double rotyAcceleration,
-					imuDataValues[5],//Double rotzAcceleration
-			))
+	//dev.simple.addEvent(1804, {
+		 //double[] imuDataValues = dev.simple.getImuData()
+		 //m.getImu()
+		 //.setHardwareState(
+		 //		new IMUUpdate(
+		 //			imuDataValues[0],//Double xAcceleration,
+		 //			imuDataValues[1],//Double yAcceleration
+		//	 		imuDataValues[2],//,Double zAcceleration
+		//			imuDataValues[3],//Double rotxAcceleration,
+		//			imuDataValues[4],//Double rotyAcceleration,
+		//			imuDataValues[5],//Double rotzAcceleration
+		//	))
 
 
-	});
+	//});
 	if(m==null)
 		throw new RuntimeException("Arm failed to assemble itself")
 	println "Connecting new device robot arm "+m
@@ -440,11 +228,7 @@ def cat =DeviceManager.getSpecificDevice( "XLKat",{
 })
 return null
 
-def physics =DeviceManager.getSpecificDevice( "SmallKatPhysics",{
-	PhysicicsDevice pd = new PhysicicsDevice(dev,base. getAllDHChains().get(0))
-	
-	return pd
-})
 
-//return cat
+
+return cat
 
