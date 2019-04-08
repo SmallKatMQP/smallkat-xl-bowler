@@ -27,8 +27,8 @@
 	<type>hidfast</type>
 	<index>0</index>
 	<scale>0.087890625</scale>
-	<upperLimit>2161.0</upperLimit>
-	<lowerLimit>1706.0</lowerLimit>
+	<upperLimit>2390.0</upperLimit>
+	<lowerLimit>1935.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
 	<staticOffset>2048.0</staticOffset>
@@ -81,8 +81,8 @@
 	<type>hidfast</type>
 	<index>1</index>
 	<scale>0.088</scale>
-	<upperLimit>2198.19</upperLimit>
-	<lowerLimit>717.0</lowerLimit>
+	<upperLimit>3379.0</upperLimit>
+	<lowerLimit>1898.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
 	<staticOffset>2048.0</staticOffset>
@@ -135,8 +135,8 @@
 	<type>hidfast</type>
 	<index>2</index>
 	<scale>-0.088</scale>
-	<upperLimit>3584.0</upperLimit>
-	<lowerLimit>1706.0</lowerLimit>
+	<upperLimit>2390.0</upperLimit>
+	<lowerLimit>512.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
 	<staticOffset>2048.0</staticOffset>
@@ -189,8 +189,8 @@
 	<type>hidfast</type>
 	<index>3</index>
 	<scale>0.088</scale>
-	<upperLimit>2860.0</upperLimit>
-	<lowerLimit>869.0</lowerLimit>
+	<upperLimit>3227.0</upperLimit>
+	<lowerLimit>1236.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
 	<staticOffset>2048.0</staticOffset>
