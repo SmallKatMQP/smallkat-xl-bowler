@@ -25,10 +25,10 @@
 	<name>shoulderRoll</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>0</index>
+	<index>4</index>
 	<scale>0.087890625</scale>
 	<upperLimit>2390.0</upperLimit>
-	<lowerLimit>1700.0</lowerLimit>
+	<lowerLimit>1500.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
 	<staticOffset>1900.0</staticOffset>
@@ -79,10 +79,10 @@
 	<name>shoulderPitch</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>1</index>
+	<index>5</index>
 	<scale>0.088</scale>
 	<upperLimit>3379.0</upperLimit>
-	<lowerLimit>1898.0</lowerLimit>
+	<lowerLimit>1000.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
 	<staticOffset>2048.0</staticOffset>
@@ -133,10 +133,10 @@
 	<name>kneePitch</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>2</index>
+	<index>6</index>
 	<scale>-0.088</scale>
-	<upperLimit>2500.0</upperLimit>
-	<lowerLimit>200.0</lowerLimit>
+	<upperLimit>3584.0</upperLimit>
+	<lowerLimit>1500.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
 	<staticOffset>2048.0</staticOffset>
@@ -187,13 +187,13 @@
 	<name>anklePitch</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>3</index>
+	<index>7</index>
 	<scale>0.088</scale>
 	<upperLimit>3227.0</upperLimit>
 	<lowerLimit>1236.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>2048.0</staticOffset>
+	<staticOffset>1885.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>145</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -274,13 +274,13 @@
 	<name>shoulderRoll</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>4</index>
+	<index>0</index>
 	<scale>-0.088</scale>
 	<upperLimit>2390.0</upperLimit>
 	<lowerLimit>1500.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>1780.0</staticOffset>
+	<staticOffset>1900.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>105</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -328,13 +328,13 @@
 	<name>shoulderPitch</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>5</index>
+	<index>1</index>
 	<scale>-0.088</scale>
 	<upperLimit>3379.0</upperLimit>
-	<lowerLimit>1000.0</lowerLimit>
+	<lowerLimit>1898.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>2210.097014925373</staticOffset>
+	<staticOffset>2048.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>105</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -382,13 +382,13 @@
 	<name>kneePitch</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>6</index>
+	<index>2</index>
 	<scale>0.087890625</scale>
-	<upperLimit>3584.0</upperLimit>
-	<lowerLimit>1500.0</lowerLimit>
+	<upperLimit>2500.0</upperLimit>
+	<lowerLimit>200.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>1912.0298507462685</staticOffset>
+	<staticOffset>2048.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>97</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -436,13 +436,13 @@
 	<name>anklePitch</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>7</index>
+	<index>3</index>
 	<scale>-0.088</scale>
 	<upperLimit>3227.0</upperLimit>
 	<lowerLimit>1236.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>1888.0</staticOffset>
+	<staticOffset>2048.0</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>145</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
