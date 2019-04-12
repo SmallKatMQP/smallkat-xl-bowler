@@ -846,7 +846,8 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 
 	}
 	public void DriveArcLocal(MobileBase s, TransformNR n, double sec, boolean retry) {
-
+		
+		n=n.times(new TransformNR(0,0,0,new RotationNR(0,0,5)))
 		try{
 
 			//println "Walk update "+n
