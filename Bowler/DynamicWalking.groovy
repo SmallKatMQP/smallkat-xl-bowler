@@ -20,9 +20,9 @@ enum WalkingState {
 }
 
 if(args==null){
-	double stepOverHeight = 30;
+	double stepOverHeight = 40;
 	long stepOverTime=600;// Servo loop times number of points times Nyquest doubeling
-	Double zLock=-215;
+	Double zLock=-205;
 	Closure calcHome = { DHParameterKinematics leg ->
 			TransformNR h=leg.calcHome()
 	 		TransformNR  legRoot= leg.getRobotToFiducialTransform()
@@ -48,13 +48,13 @@ if(args==null){
 	boolean usePhysicsToMove = true;
 	long stepCycleTime =5000
 	long walkingTimeout =5000
-	int numStepCycleGroups = 2
-	double standardHeadTailAngle =0;// -20
+	int numStepCycleGroups = 4
+	double standardHeadTailAngle = 0;// -20
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
-	double maxBodyDisplacementPerStep = 90
-	double minBodyDisplacementPerStep = 80
+	double maxBodyDisplacementPerStep = 20
+	double minBodyDisplacementPerStep = 10
 	args =  [stepOverHeight,
 	stepOverTime,
 	zLock,
