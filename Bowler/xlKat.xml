@@ -1081,7 +1081,7 @@
 	<lowerLimit>0.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>2048.0</staticOffset>
+	<staticOffset>1559.0447761194032</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>128</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>
@@ -1135,7 +1135,7 @@
 	<lowerLimit>0.0</lowerLimit>
 	<upperVelocity>1.0E8</upperVelocity>
 	<lowerVelocity>-1.0E8</lowerVelocity>
-	<staticOffset>2048.0</staticOffset>
+	<staticOffset>2445.276119402985</staticOffset>
 	<isLatch>true</isLatch>
 	<indexLatch>128</indexLatch>
 	<isStopOnLatch>false</isStopOnLatch>

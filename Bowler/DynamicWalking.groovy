@@ -46,7 +46,7 @@ if(args==null){
 
 	}
 	boolean usePhysicsToMove = true;
-	long stepCycleTime =50
+	long stepCycleTime =5000
 	long walkingTimeout =5000
 	int numStepCycleGroups = 2
 	double standardHeadTailAngle =0;// -20
