@@ -35,7 +35,7 @@ if(args==null){
 				tr.translateY(-20)
 			}
 			if(legRoot.getX()>0){
-				tr.translateX(30)
+				tr.translateX(20)
 			}
 			if(legRoot.getX()<0){
 				tr.translateX(-15)
@@ -53,8 +53,8 @@ if(args==null){
 	double staticPanOffset = 0;// 10
 	double coriolisGain = 1
 	boolean headStable = false
-	double maxBodyDisplacementPerStep = 10
-	double minBodyDisplacementPerStep = 5
+	double maxBodyDisplacementPerStep = 20
+	double minBodyDisplacementPerStep = 15
 	args =  [stepOverHeight,
 	stepOverTime,
 	zLock,
