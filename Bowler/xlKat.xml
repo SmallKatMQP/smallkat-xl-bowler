@@ -1075,7 +1075,7 @@
 	<name>headTilt</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>19</index>
+	<index>17</index>
 	<scale>0.087890625</scale>
 	<upperLimit>4095.0</upperLimit>
 	<lowerLimit>0.0</lowerLimit>
@@ -1129,7 +1129,7 @@
 	<name>headPan</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>19</index>
+	<index>16</index>
 	<scale>0.087890625</scale>
 	<upperLimit>4095.0</upperLimit>
 	<lowerLimit>0.0</lowerLimit>
@@ -1216,7 +1216,7 @@
 	<name>baseTilt</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>16</index>
+	<index>20</index>
 	<scale>0.087890625</scale>
 	<upperLimit>4095.0</upperLimit>
 	<lowerLimit>0.0</lowerLimit>
@@ -1270,7 +1270,7 @@
 	<name>basePan</name>
 	<deviceName>hidDevice</deviceName>
 	<type>hidfast</type>
-	<index>17</index>
+	<index>19</index>
 	<scale>0.087890625</scale>
 	<upperLimit>4095.0</upperLimit>
 	<lowerLimit>0.0</lowerLimit>
