@@ -35,7 +35,7 @@ if(args==null){
 				tr.translateY(-25)
 			}
 			if(legRoot.getX()>0){
-				tr.translateX(25)
+				tr.translateX(20)
 			}
 			if(legRoot.getX()<0){
 				tr.translateX(-10)
@@ -847,7 +847,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	}
 	public void DriveArcLocal(MobileBase s, TransformNR n, double sec, boolean retry) {
 		
-		n=n.times(new TransformNR(0,0,0,new RotationNR(0,0,-3)))
+		n=n.times(new TransformNR(0,0,0,new RotationNR(0,0,-2)))
 		try{
 
 			//println "Walk update "+n
