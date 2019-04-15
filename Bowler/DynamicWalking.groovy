@@ -22,7 +22,7 @@ enum WalkingState {
 if(args==null){
 	double stepOverHeight = 30;
 	long stepOverTime=450;// Servo loop times number of points times Nyquest doubeling
-	Double zLock=-210;
+	Double zLock=-215;
 	Closure calcHome = { DHParameterKinematics leg ->
 			TransformNR h=leg.calcHome()
 	 		TransformNR  legRoot= leg.getRobotToFiducialTransform()
@@ -30,12 +30,12 @@ if(args==null){
 			tr.setZ(zLock)
 			//Bambi-on-ice the legs a bit
 			if(legRoot.getY()>0){
-				tr.translateY(8)
+				tr.translateY(25)
 			}else{
-				tr.translateY(-8)
+				tr.translateY(-25)
 			}
 			if(legRoot.getX()>0){
-				tr.translateX(10)
+				tr.translateX(25)
 			}
 			if(legRoot.getX()<0){
 				tr.translateX(-10)
@@ -847,7 +847,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	}
 	public void DriveArcLocal(MobileBase s, TransformNR n, double sec, boolean retry) {
 		
-		n=n.times(new TransformNR(0,0,0,new RotationNR(0,0,5)))
+		n=n.times(new TransformNR(0,0,0,new RotationNR(0,0,-3)))
 		try{
 
 			//println "Walk update "+n
