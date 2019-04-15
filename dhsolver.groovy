@@ -86,7 +86,7 @@ public class scriptJavaIKModel implements DhInverseSolver {
 		double a2d = Math.toDegrees(a2);
 		//println a2d
 		//double elev = -a2d -45
-		double elev = -25-(1.3*(a2d))
+		double elev = -25-(1.35*(a2d))
 		//println "R Vector Angle "+a2d
 
        	double r1 = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)); // X and Y plane Vector
