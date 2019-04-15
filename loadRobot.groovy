@@ -111,7 +111,7 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
         }
         angle = (parts[0]<<8)+parts[1];
        
-        System.out.println("Angle"+angle);
+        //System.out.println("Angle"+angle);
         return angle;
     }
 
