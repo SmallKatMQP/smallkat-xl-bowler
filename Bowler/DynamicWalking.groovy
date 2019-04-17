@@ -49,8 +49,8 @@ if(args==null){
 	long stepCycleTime =5000
 	long walkingTimeout =5000
 	int numStepCycleGroups = 4
-	double standardHeadTailAngle = 0;// -20
-	double staticPanOffset = 0;// 10
+	double standardHeadTailAngle = 20;// -20
+	double staticPanOffset = 10;// 10
 	double coriolisGain = 1
 	boolean headStable = false
 	double maxBodyDisplacementPerStep = 40
@@ -144,6 +144,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 
 		long incrementTime = (System.currentTimeMillis()-timeOfLastIMUPrint)
 		double velocity=0
+		
 		if(	Math.abs(update.getxAcceleration())>0 ||
 			Math.abs(update.getxAcceleration())>0 ||
 			Math.abs(update.getxAcceleration())>0
@@ -170,7 +171,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 				}
 
 			}
-			long timeSince=	(System.currentTimeMillis()-timeOfCycleStart)
+			long timeSince = (System.currentTimeMillis()-timeOfCycleStart)
 			double gaitTimeRemaining = (double) (System.currentTimeMillis()-timeOfCycleStart)
 			double gaitPercentage = gaitTimeRemaining/(double)(stepCycleTime)
 			double sinPanOffset = Math.sin(gaitPercentage*Math.PI)*staticPanOffset
@@ -201,31 +202,32 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 					if(limbName.contentEquals("Tail")){
 						d.setDesiredJointAxisValue(0,// link index
 									computedTilt, //target angle
-									2) // 2 seconds
+									0) // 2 seconds
+									
 						d.setDesiredJointAxisValue(1,// link index
 									computedPan, //target angle
-									2) // 2 seconds
+									0) // 2 seconds
 					}
 					if(limbName.contentEquals("Head")){
 						if(!headStable){
 							d.setDesiredJointAxisValue(0,// link index
 										computedTilt, //target angle
-										2) // 2 seconds
+										0) // 2 seconds
 							d.setDesiredJointAxisValue(1,// link index
 										computedPan, //target angle
-										2) // 2 seconds
+										0) // 2 seconds
 						}else{
 							d.setDesiredJointAxisValue(0,// link index
 										standardHeadTailAngle, //target angle
-										2) // 2 seconds
+										0) // 2 seconds
 							d.setDesiredJointAxisValue(1,// link index
 										0, //target angle
-										2) // 2 seconds
+										0) // 2 seconds
 						}
 					}
 					//Thread.sleep(5)
 				}catch(Exception e){
-					//BowlerStudio.printStackTrace(e)
+					BowlerStudio.printStackTrace(e)
 				}
 			}
 

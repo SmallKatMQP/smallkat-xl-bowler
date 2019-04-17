@@ -206,21 +206,21 @@ def cat =DeviceManager.getSpecificDevice( "XLKat",{
 		args[0],
 		args[1]
 		)
-	//dev.simple.addEvent(1804, {
-		 //double[] imuDataValues = dev.simple.getImuData()
-		 //m.getImu()
-		 //.setHardwareState(
-		 //		new IMUUpdate(
-		 //			imuDataValues[0],//Double xAcceleration,
-		 //			imuDataValues[1],//Double yAcceleration
-		//	 		imuDataValues[2],//,Double zAcceleration
-		//			imuDataValues[3],//Double rotxAcceleration,
-		//			imuDataValues[4],//Double rotyAcceleration,
-		//			imuDataValues[5],//Double rotzAcceleration
-		//	))
+	dev.simple.addEvent(1804, {
+		 double[] imuDataValues = dev.simple.getImuData()
+		 m.getImu()
+		 .setHardwareState(
+		 		new IMUUpdate(
+		 			imuDataValues[0],//Double xAcceleration,
+		 			imuDataValues[1],//Double yAcceleration
+			 		imuDataValues[2],//,Double zAcceleration
+					imuDataValues[3],//Double rotxAcceleration,
+					imuDataValues[4],//Double rotyAcceleration,
+					imuDataValues[5],//Double rotzAcceleration
+			))
 
 
-	//});
+	});
 	if(m==null)
 		throw new RuntimeException("Arm failed to assemble itself")
 	println "Connecting new device robot arm "+m
