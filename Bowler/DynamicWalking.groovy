@@ -201,26 +201,26 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 					if(limbName.contentEquals("Tail")){
 						d.setDesiredJointAxisValue(0,// link index
 									computedTilt, //target angle
-									0) // 2 seconds
+									2) // 2 seconds
 						d.setDesiredJointAxisValue(1,// link index
 									computedPan, //target angle
-									0) // 2 seconds
+									2) // 2 seconds
 					}
 					if(limbName.contentEquals("Head")){
 						if(!headStable){
 							d.setDesiredJointAxisValue(0,// link index
 										computedTilt, //target angle
-										0) // 2 seconds
+										2) // 2 seconds
 							d.setDesiredJointAxisValue(1,// link index
 										computedPan, //target angle
-										0) // 2 seconds
+										2) // 2 seconds
 						}else{
 							d.setDesiredJointAxisValue(0,// link index
 										standardHeadTailAngle, //target angle
-										0) // 2 seconds
+										2) // 2 seconds
 							d.setDesiredJointAxisValue(1,// link index
 										0, //target angle
-										0) // 2 seconds
+										2) // 2 seconds
 						}
 					}
 					//Thread.sleep(5)
