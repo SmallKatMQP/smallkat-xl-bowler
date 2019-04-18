@@ -396,7 +396,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 		def tf =dynamicHome( leg)
 		def NewTmpPose = timout?new TransformNR():newPose.inverse()
 
-		double tiltAngle = 2.0
+		double tiltAngle = 3.0//increase this to lean more
 		if(stepCycyleActiveIndex%2!=0)//this might need to be changed to 4
 			tiltAngle=tiltAngle*-1
 		def tilt = new TransformNR(0,0,0,new RotationNR(((tiltAngle*Math.sin(gaitPercentage*Math.PI*-1))),0,0))
