@@ -397,7 +397,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 		def NewTmpPose = timout?new TransformNR():newPose.inverse()
 
 		double tiltAngle = 2.0
-		if(stepCycyleActiveIndex%2!=0)//this might need to be changed to 4
+		if(stepCycyleActiveIndex%4!=0)//this might need to be changed to 4
 			tiltAngle=tiltAngle*-1
 		def tilt = new TransformNR(0,0,0,new RotationNR(((tiltAngle*Math.sin(gaitPercentage*Math.PI))),0,0))
 							 
