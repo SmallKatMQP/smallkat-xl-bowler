@@ -227,7 +227,7 @@ def cat =DeviceManager.getSpecificDevice( "XLKat",{
 	println "Connecting new device robot arm "+m
 	return m
 })
-return null
+//return null
 
 
 
