@@ -228,7 +228,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 					}
 					//Thread.sleep(5)
 				}catch(Exception e){
-					BowlerStudio.printStackTrace(e)
+					//BowlerStudio.printStackTrace(e)
 				}
 			}
 
@@ -402,7 +402,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 		def tilt = new TransformNR(0,0,0,new RotationNR(((tiltAngle*Math.sin(gaitPercentage*Math.PI*-1))),0,0))
 							 
 		pose(tilt)
-		System.out.println(tilt);
+		//System.out.println(tilt);
 		def myPose=timout?new TransformNR():newPose
 
 		switch(walkingState){
