@@ -49,7 +49,7 @@ if(args==null){
 	long stepCycleTime =5000
 	long walkingTimeout =5000
 	int numStepCycleGroups = 4
-	double standardHeadTailAngle = 20;// -20
+	double standardHeadTailAngle = 40;// -20
 	double staticPanOffset = 10;// 10
 	double coriolisGain = 1
 	boolean headStable = false
@@ -98,6 +98,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 	TransformNR previousGLobalState;
 	TransformNR target;
 	TransformNR cachedNewPose;
+	TransformNR cachedNewPoseStarting;
 	double cachedSeconds;
 	RotationNR rot;
 	int resettingindex=0;
@@ -394,6 +395,14 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 		double gaitPercentage = gaitTimeRemaining/(double)(stepCycleTime)
 		def tf =dynamicHome( leg)
 		def NewTmpPose = timout?new TransformNR():newPose.inverse()
+
+		double tiltAngle = 2.0
+		if(stepCycyleActiveIndex%2!=0)//this might need to be changed to 4
+			tiltAngle=tiltAngle*-1
+		def tilt = new TransformNR(0,0,0,new RotationNR(((tiltAngle*Math.sin(gaitPercentage*Math.PI))),0,0))
+							 
+		pose(tilt)
+		System.out.println(tilt);
 		def myPose=timout?new TransformNR():newPose
 
 		switch(walkingState){
@@ -878,6 +887,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 				buildCycleGroups();
 			}
 			cachedNewPose=n;
+			cachedNewPoseStarting=n;
 			cachedSecond=sec;
 			resetStepTimer();
 

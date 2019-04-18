@@ -82,9 +82,7 @@ public class HIDSimpleComsDevice extends NonBowlerDevice{
 		data[0] = simple.getDataUp()[2*i]
 		data[1] = simple.getDataUp()[2*i+1]
 		angle = bytesToAngle(data);
-		if(i ==17 || i == 18){
-			System.out.println(angle);
-		}
+		
 		return (angle)
 	}
 	public float[] getImuData() {
