@@ -401,7 +401,7 @@ return new com.neuronrobotics.sdk.addons.kinematics.IDriveEngine (){
 			tiltAngle=tiltAngle*-1
 		def tilt = new TransformNR(0,0,0,new RotationNR(((tiltAngle*Math.sin(gaitPercentage*Math.PI*-1))),0,0))
 							 
-		pose(tilt)
+		//pose(tilt)
 		//System.out.println(tilt);
 		def myPose=timout?new TransformNR():newPose
 
